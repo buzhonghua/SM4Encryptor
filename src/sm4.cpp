@@ -1,6 +1,6 @@
 // SM4.cpp 
 // This C++ file implements the SM4 encryption algorithm.
-// And it terms for Verilator to verify the top design.
+// And it serves for Verilator to verify the top design.
 
 #include <cstdint>
 #include <vector>
@@ -120,3 +120,4 @@ int main(int argc, char *argv[]){
     std::puts("");
     return 0;
 }
+
