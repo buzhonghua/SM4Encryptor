@@ -3,3 +3,4 @@ obj_dir/*
 *.ipynb
 .ipynb_checkpoints
 src/sm4
+obj_dir
