@@ -1,3 +1,11 @@
+// -------------------------------------------------------
+// -- sbox_memory.sv
+// -------------------------------------------------------
+// This is a temporary Sbox implementation for functional testing. 
+// In the future, this file will be deprecated.
+// -------------------------------------------------------
+
+
 module sbox_memory(
   input [7:0] i
   ,output logic [7:0] o

@@ -10,6 +10,7 @@ package sm4_encryptor;
     parameter integer word_width_p = 32;
     parameter integer group_size_p = 128;
     parameter integer key_size_p = group_size_p;
+    parameter integer turn_key_num_p = 32;
 
     
 endpackage
