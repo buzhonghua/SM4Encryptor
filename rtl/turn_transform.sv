@@ -9,7 +9,7 @@
 // -------------------------------------------------------
 
 module turn_transform 
-    import sm4_encryptor::*;
+    import sm4_encryptor_pkg::*;
 (
     input [group_size_p-1:0] i
     ,input is_key_i // Whether i is key. Because rolling shifting is different for key and content.
