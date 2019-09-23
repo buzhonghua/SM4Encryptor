@@ -1,0 +1,1 @@
+../../../../rtl/sm4_encryptor.sv

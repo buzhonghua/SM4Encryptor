@@ -21,6 +21,8 @@ module sm4_encryptor
     // handshake ports
     ,output v_o
     ,input yumi_i
+    // invalid cache lines.
+    ,input invalid_cache_i
 );
     /*
         State Machine of Accelerator:
@@ -134,6 +136,8 @@ module sm4_encryptor
         ,.v_w_i(state_r == eEvaKey)
 
         ,.tkey_o(cache_output)
+
+        ,.invalid_i(invalid_cache_i)
     );
 
     assign ready_o = state_r == eIdle;
