@@ -1,8 +1,6 @@
 #ifndef SM4_DRIVER_H
 #define SM4_DRIVER_H
 
-#include <stdint.h>
-
 struct QWord{
     int value[4];
 };

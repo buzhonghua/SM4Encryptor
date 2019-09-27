@@ -458,6 +458,7 @@
 	
 	wire [127:0] result;
 	wire is_ready;
+	wire valid;
 	
 	sm4_encryptor core(
 		.clk_i(S_AXI_ACLK)
@@ -469,7 +470,7 @@
 		,.ready_o(is_ready)
 
 		,.crypt_o(result)
-		,.v_o()
+		,.v_o(valid)
 		,.yumi_i(1'b1)
 		,.invalid_cache_i(clear_cache_r)
 	);
@@ -480,7 +481,8 @@
 		is_ready_r <= '0;
 	end
 	else begin
-		result_r <= result;
+		if(valid)
+			result_r <= result;
 		is_ready_r <= is_ready;
 	end
 end
