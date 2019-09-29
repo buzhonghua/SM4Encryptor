@@ -156,6 +156,8 @@ $$
 
 借助这些手段，我们可以用组合逻辑直接实现SBox. 详细的硬件信息请在数字模块实现方案中查看。下表是查找表实现的SBox和组合逻辑实现的SBox在TSMC 65nm工艺下综合后的面积信息。
 
+(补全)
+
 #### Cache与性能
 
 SM4的用途非常广，其中一个很重要的用途就是用于无线局域网的信息加密。而无线局域网本身可能会存在多机通讯的问题，因而同一个设备同时处理多个密钥进行加密是非常常见的情况。
@@ -331,7 +333,6 @@ o| width_p | 输出 | 结果
 
 在硬件上验证系统功能主要基于`sm4_encryptor`模块，主要需要验证的方案有：
 - 加密/解密结果的正确性， 包括
-    - 产生轮密钥的正确性
     - 每一次迭代结果的取值
     - 抵抗侧信道攻击而引入的带有随机Maks信息的结果
 - 状态机的正确性，包括
@@ -345,18 +346,155 @@ o| width_p | 输出 | 结果
     - 经过冗余后的SBox的输出的Hamming Weight是否接近16.（总数为32）
 
 软件方面，主要的测试方面为：
-- AXI总线的正确配置，包括
-    - 寄存器读写是否有效
-    - 软件层与硬件层的联合操作是否符合预期
+- AXI总线的正确配置，软件层与硬件层的联合操作是否符合预期
 - ECB/CBC函数的正确性
 
 附件Testplan.xls文件提供了硬件详细的计划说明。
 
 #### UVM 整体平台
 
+下图描述了我们顶层UVM平台的整体框图：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg"></div>
+
+顶层平台上有两个Environment, 其分别对应不同的Scoreboard, 一个用于检测正确性，另外一个则用于检测Cycle的数目，以验证是否符合周期。
+
+下表列出了用于检测正确性的Environment中的Agent。
+
+Agent序号|测试目标|Sequence Item|Monitor
+-|-|-|-
+
 
 
 #### 软件验证/仿真
+
+首先，我们使用Vivado搭建基于Zynq 7000系列FPGA的测试平台，并使用框图构建以下系统：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="vivado_system.svg"></div>
+
+其中AXI_SM4为我们代码包装好的IP核，AXI Timer则是用于统计时间的计时器。接下来我们进行综合，并将硬件导出到Xilinx SDK中。随后创立C程序加载我们编写的驱动，然后编写第一个程序用于检测软硬件是否协同工作：
+
+```c
+#include <stdio.h>
+#include "platform.h"
+// This file is written by ourselves.
+// You may find it in driver/sm4_encryptor.h
+#include "sm4_encryptor.h"
+
+int main(){
+    init_platform();
+    // Specify the base address of SM4 Accelerator.
+    volatile void *sm4_base = 0x43C00000;
+    // Generate Testing Key.
+    struct QWord content = {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210};
+    struct QWord key = {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210};
+    // Do encrypting.
+    struct QWord res = encrypt(sm4_base, content, key, 0);
+    // Output result
+    printf("Encrypt:\n");
+
+    for(int i = 0; i < 4; ++i){
+    	printf("%x\n", res.value[i]);
+    }
+    // Do decrypting.
+    printf("Decrypt:\n");
+
+    struct QWord back_res = encrypt(sm4_base, res, key, 1);
+    // Output result
+    for(int i = 0; i < 4; ++i){
+    	printf("%x\n", back_res.value[i]);
+    }
+
+    cleanup_platform();
+    return 0;
+}
+```
+
+下图为SDK Terminal给出的输出，可以看到，SM4的加密和解密算法执行下来是完全正确的：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="picture2.png"></div>
+
+同时我们还统计了加密/解密的时间用于检测是否有Cache命中的情况。分别执行在第二次加密之前执行/不执行清除Cache的功能，得到的时间是完全不一样的：
+
+```c
+    struct QWord back_res = encrypt(sm4_base, res, key, 1);
+
+    printf("Decryption result is:\n");
+    for(int i = 0; i < 4; ++i){
+    	printf("%x\n", back_res.value[i]);
+    }
+
+    invalid_cache(sm4_base); // Clean Cache.
+
+    struct QWord back_res_2 = encrypt(sm4_base, res, key, 1);
+
+    printf("Decryption result is:\n");
+    for(int i = 0; i < 4; ++i){
+        printf("%x\n", back_res_2.value[i]);
+    }
+```
+
+其结果如下图所示：
+
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="pict3.png"></div>
+
+可见二者之间的差距大约为32个周期。
+
+随后我们测试了ECB和CBC两种不同加密方式的正确性。这里以CBC为例说明，其代码如下所示：
+
+```c
+    struct QWord content[3] = {
+        {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210},
+        {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210},
+        {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0}
+    };
+    struct QWord key = {0x1234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210};
+
+    struct QWord res = encrypt(sm4_base, content[0], key, 0);
+
+    for(int i = 0; i < 4; ++i){
+    	printf("%x\n", res.value[i]);
+    }
+
+    printf("\n");
+
+    struct QWord initial = {0, 0, 0, 0};
+
+    struct QWord back_res[3] = {0};
+    int size = cbc_encrypt(sm4_base, (char *)(&content), 44, 
+        key, initial, (char *)(&back_res), 0);
+
+    for(int j = 0; j < 3; ++j){
+        for(int i = 0; i < 4; ++i){
+            printf("%x ", back_res[j].value[i]);
+        }
+        printf("\n");
+    }
+        
+
+    printf("\n");
+
+    int size2 = cbc_encrypt(sm4_base, (char *)(&back_res), 48,
+         key, initial, (char *)(&content), 1);
+
+    for(int j = 0; j < 3; ++j){
+        for(int i = 0; i < 4; ++i){
+            printf("%x ", content[j].value[i]);
+        }
+        printf("\n");
+    }
+```
+
+其输出如下图所示：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="pic4.png"></div>
+
+可知第二个Block进行加密前的明文为：[0x693d9a53, 0x5bad5bb1, 0x786f53d7, 0x253a7056], 而使用C++编写的验证出来的结果为：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="pic5.png"></div>
+
+第三组结果也是可以对应上的，也可以看到程序确实成功实现了解密。更为基础的ECB算法的验证过程同理，这里就不给出详细过程了。
 
 ### 总结
 

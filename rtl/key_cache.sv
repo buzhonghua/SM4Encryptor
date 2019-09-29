@@ -6,7 +6,7 @@
 import sm4_encryptor_pkg::*;
 
 module key_cache #(
-    parameter bit debug_p = 1
+    parameter bit debug_p = 0
 )(
     input clk_i
     ,input reset_i

@@ -13,6 +13,8 @@ module sm4_encryptor
     ,input [group_size_p-1:0] content_i
     ,input [group_size_p-1:0] key_i
     ,input encode_or_decode_i // decode is 1.
+    // random masking.
+    ,input [word_width_p-1:0] mask_i
     // handshake ports
     ,input v_i
     ,output ready_o
@@ -34,7 +36,6 @@ module sm4_encryptor
         eReverse: Reverse the order of encryption
         eDone: finished.
     */
-    typedef enum logic [3:0] {eIdle, eCheckKey, eEvaKey, eLoadCrypt, eCrypt, eReverse, eDone} state_e;
     state_e state_r;
 
     wire cache_is_miss; 
@@ -74,6 +75,11 @@ module sm4_encryptor
     reg [group_size_p-1:0] sfr_r; // register containing current operand to perform turn keys
     wire [group_size_p-1:0] xor_res = sfr_r ^ key_xor_mask_p;
     wire [word_width_p-1:0] turn_transform_res;
+
+    logic [word_width_p-1:0] mask_n;
+    reg [word_width_p-1:0] mask_r;
+    reg [word_width_p-1:0] mask_delay_r;
+
     always_ff @(posedge clk_i) begin
         if(reset_i) begin
             sfr_r <= '0; 
@@ -82,13 +88,40 @@ module sm4_encryptor
             eIdle: if(v_i) sfr_r <= key_i;
             eCheckKey: sfr_r <= xor_res;
             eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[group_size_p-1:word_width_p]};
-            eLoadCrypt: sfr_r <= content_i;
-            eCrypt: sfr_r <= {turn_transform_res ,sfr_r[group_size_p-1:word_width_p]};
-            eReverse: sfr_r <= { sfr_r[word_width_p-1:0], sfr_r[2*word_width_p-1:word_width_p], sfr_r[3*word_width_p-1:2*word_width_p], sfr_r[group_size_p-1:3*word_width_p]};
+            eLoadCrypt: sfr_r <= content_i ^ {mask_i, 96'b0};
+            eCrypt: sfr_r <= {turn_transform_res, sfr_r[4*word_width_p-1:3*word_width_p] ^ mask_r, sfr_r[3*word_width_p-1:word_width_p]};
+            eReverse: sfr_r <= {sfr_r[word_width_p-1:0], sfr_r[2*word_width_p-1:word_width_p], sfr_r[3*word_width_p-1:2*word_width_p], (sfr_r[group_size_p-1:3*word_width_p]) ^ mask_r};
             default: begin
 
             end
         endcase
+    end
+    // Update for mask_r
+    always_ff @(posedge clk_i) begin
+        if(reset_i) begin
+            mask_r <= '0;
+        end
+        else unique case(state_r)
+            eCheckKey: begin
+                mask_r <= '0;
+            end
+            eLoadCrypt: begin
+                mask_r <= mask_i;
+            end
+            eCrypt: begin
+                mask_r <= mask_n;
+            end
+            default: begin
+                
+            end
+        endcase
+    end
+    always_ff @(posedge clk_i) begin
+        //for(integer i = 0; i < 4; ++i) begin
+        //    $write("%b ",sfr_r[i*word_width_p+:word_width_p]);
+        //end
+        //$display("");
+        $display("%b", mask_r);
     end
 
     logic [word_width_p-1:0] turn_rkeys;
@@ -97,8 +130,9 @@ module sm4_encryptor
         .i(sfr_r)
         ,.is_key_i(state_r == eEvaKey)
         ,.rkey_i(turn_rkeys)
+        ,.mask_i(mask_r)
         ,.o(turn_transform_res)
-        ,.testing_clk_i()
+        ,.mask_o(mask_n)
     );
 
     logic [word_width_p-1:0] cache_output;

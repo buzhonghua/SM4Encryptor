@@ -8,11 +8,29 @@ sm4_encryptor:
 	../rtl/lru_recorder.sv \
 	../rtl/sm4_encryptor.sv \
 	../rtl/turn_transform.sv \
+	../rtl/random_mask.sv \
 	../rtl/priority_encoder.sv \
 	--exe sm4_encryptor.cpp \
 	--top-module sm4_encryptor 
 
 	make -C obj_dir -f Vsm4_encryptor.mk
+
+
+sbox_backup:
+	verilator --cc -sv -Wno-fatal \
+	../rtl/sbox_backup.sv \
+	--exe sm4_box_backup.cpp \
+	--top-module sbox_backup
+
+	make -C obj_dir -f Vsbox_backup.mk
+
+sbox:
+	verilator --cc -sv -Wno-fatal \
+	../rtl/sbox.sv \
+	--exe sm4_box.cpp \
+	--top-module sbox
+
+	make -C obj_dir -f Vsbox.mk
 
 key_cache:
 	verilator --cc -sv -Wno-fatal \

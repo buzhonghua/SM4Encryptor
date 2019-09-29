@@ -107,17 +107,20 @@ QWord encryption(const QWord &value, const QWord &key){
 
 int main(int argc, char *argv[]){
     QWord origin{};
-    origin[0] = 0x01234567;
-    origin[1] = 0x89abcdef;
-    origin[2] = 0xfedcba98;
-    origin[3] = 0x76543210;
-    QWord key = origin;
+    origin[0] = 0x681edf34 ^ 0x01234567;
+    origin[1] = 0xd206965e ^ 0x89ABCDEF;
+    origin[2] = 0x86b3e94f ^ 0xFEDCBA98;
+    origin[3] = 0x536e4246 ^ 0x76543210;
+    QWord key{};
+    key[0] = 0x01234567;
+    key[1] = 0x89ABCDEF;
+    key[2] = 0xFEDCBA98;
+    key[3] = 0x76543210;
     QWord encrypt = encryption(origin, key);
     std::printf("Final Result: \n");
-    for(int i = 3; i >= 0; --i){
-        std::printf("%x", encrypt[i]);
+    for(int i = 0; i < 4; ++i){
+        std::printf("%x ", encrypt[i]);
     }
     std::puts("");
     return 0;
 }
-

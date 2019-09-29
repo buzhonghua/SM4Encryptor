@@ -1,6 +1,8 @@
 #include "verilated.h"
 #include "obj_dir/Vsm4_encryptor.h"
 
+#include <stdlib.h>
+#include <time.h>
 
 int main(int argc, char ** argv){
     Verilated::commandArgs(argc, argv);
@@ -16,6 +18,7 @@ int main(int argc, char ** argv){
     dut->encode_or_decode_i = 0;
     dut->v_i = 0;
     dut->yumi_i = 1;
+    dut->mask_i = 0;
 
     dut->eval();
 
@@ -38,8 +41,11 @@ int main(int argc, char ** argv){
     dut->key_i[2] = 0xFEDCBA98;
     dut->key_i[3] = 0x76543210;
 
+    srand(time(nullptr));
+
     dut->v_i = 1;
     dut->encode_or_decode_i = 0;
+    dut->mask_i = rand();
 
     dut->eval();
 
@@ -56,6 +62,7 @@ int main(int argc, char ** argv){
         dut->clk_i = 0;
         dut->eval();
         ++cyc1;
+        //std::getchar();
     }
 
     for(int i = 0; i < 4; ++i){
@@ -72,6 +79,7 @@ int main(int argc, char ** argv){
     }
     dut->encode_or_decode_i = 1;
     dut->v_i = 1;
+    dut->mask_i = rand();
     dut->eval();
 
     dut->clk_i = 1;
@@ -87,6 +95,7 @@ int main(int argc, char ** argv){
         dut->clk_i = 0;
         dut->eval();
         ++cyc1;
+        //std::getchar();
     }
 
     for(int i = 0; i < 4; ++i){

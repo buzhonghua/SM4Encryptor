@@ -47,17 +47,6 @@ module lru_recorder(
         .i(row_is_zero)
         ,.o(replace_which_o)
     );
-
-    always_ff @(posedge clk_i) begin
-        $display("================");
-        for(integer i = 0; i < 4; ++i) begin
-            for(integer j = 0; j < 4; ++j) begin
-                $write(matrix_r[i][j]);
-                $write(" ");
-            end
-            $display("");
-        end
-    end
     
 endmodule
 

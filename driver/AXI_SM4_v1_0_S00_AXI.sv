@@ -466,6 +466,7 @@
 		,.content_i(content_r)
 		,.key_i(key_r)
 		,.encode_or_decode_i(decode_r)
+		,.mask_i(shuffle_seed_r)
 		,.v_i(start_r)
 		,.ready_o(is_ready)
 

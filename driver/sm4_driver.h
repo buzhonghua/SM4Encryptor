@@ -4,14 +4,17 @@
 struct QWord{
     int value[4];
 };
+// Uncoment this macro to enable AXI Timer profiling.
+//#define SM4_PROFILE
 
-struct QWord encrypt(void *device, struct QWord content, struct QWord key, int is_decrypt);
+struct QWord encrypt(volatile void *device, struct QWord content, struct QWord key, int is_decrypt, int mask = 0);
 
-void ecb_encrypt(void *device, char *input, unsigned N, struct QWord key, char *output);
-void ecb_decrypt(void *device, char *input, unsigned N, struct QWord key, char *output);
+void invalid_cache(volatile void *device);
 
-void cbc_encrypt(void *device, char *input, unsigned N, struct QWord key, char *output);
-void cbc_decrypt(void *device, char *input, unsigned N, struct QWord key, char *output);
+
+int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, char *output, int is_decrypt,  int mask = 0);
+
+int cbc_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, struct QWord initial, char *output, int is_decrypt,  int mask = 0);
 
 
 #endif
