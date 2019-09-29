@@ -1,0 +1,1997 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 10
+        -transition_time
+Design : sbox_wrapper
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 00:31:08 2019
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[7] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul3/x2[2] (mul_4_0)                                    0.00       2.21 r
+  sbox/inv1/mul3/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul3/map2/x[2] (mapping_4_1)                            0.00       2.21 r
+  sbox/inv1/mul3/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul3/map2/U3/YS (HAX1)                        0.08      0.10       2.31 r
+  sbox/inv1/mul3/map2/d_l[1] (net)              5                   0.00       2.31 r
+  sbox/inv1/mul3/map2/U2/Y (INVX1)                        0.01      0.03       2.34 f
+  sbox/inv1/mul3/map2/n2 (net)                  1                   0.00       2.34 f
+  sbox/inv1/mul3/map2/U1/Y (MUX2X1)                       0.08      0.07       2.41 r
+  sbox/inv1/mul3/map2/d_h[0] (net)              4                   0.00       2.41 r
+  sbox/inv1/mul3/map2/d_h[0] (mapping_4_1)                          0.00       2.41 r
+  sbox/inv1/mul3/t3[0] (net)                                        0.00       2.41 r
+  sbox/inv1/mul3/mul2/x2[0] (mul_2_with_masked_2)                   0.00       2.41 r
+  sbox/inv1/mul3/mul2/_1_net_[0] (net)                              0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/x2[0] (mul_2_5)                         0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/x2[0] (net)                             0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       2.44 f
+  sbox/inv1/mul3/mul2/mul_1/n13 (net)           1                   0.00       2.44 f
+  sbox/inv1/mul3/mul2/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.49 f
+  sbox/inv1/mul3/mul2/mul_1/n14 (net)           1                   0.00       2.49 f
+  sbox/inv1/mul3/mul2/mul_1/U7/Y (INVX1)                  0.00      0.01       2.50 r
+  sbox/inv1/mul3/mul2/mul_1/n7 (net)            1                   0.00       2.50 r
+  sbox/inv1/mul3/mul2/mul_1/U5/Y (XOR2X1)                 0.02      0.03       2.53 f
+  sbox/inv1/mul3/mul2/mul_1/n15 (net)           1                   0.00       2.53 f
+  sbox/inv1/mul3/mul2/mul_1/U1/Y (MUX2X1)                 0.07      0.06       2.59 r
+  sbox/inv1/mul3/mul2/mul_1/d[1] (net)          2                   0.00       2.59 r
+  sbox/inv1/mul3/mul2/mul_1/d[1] (mul_2_5)                          0.00       2.59 r
+  sbox/inv1/mul3/mul2/d[1] (net)                                    0.00       2.59 r
+  sbox/inv1/mul3/mul2/d[1] (mul_2_with_masked_2)                    0.00       2.59 r
+  sbox/inv1/mul3/t8[1] (net)                                        0.00       2.59 r
+  sbox/inv1/mul3/mul4/x1[1] (mul_2_with_masked_0)                   0.00       2.59 r
+  sbox/inv1/mul3/mul4/_0_net_[1] (net)                              0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/x1[1] (mul_2_1)                         0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/x1[1] (net)                             0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/U2/Y (XNOR2X1)                0.04      0.04       2.63 r
+  sbox/inv1/mul3/mul4/mul_1/n1 (net)            1                   0.00       2.63 r
+  sbox/inv1/mul3/mul4/mul_1/U1/Y (INVX1)                  0.01      0.03       2.66 f
+  sbox/inv1/mul3/mul4/mul_1/d[1] (net)          1                   0.00       2.66 f
+  sbox/inv1/mul3/mul4/mul_1/d[1] (mul_2_1)                          0.00       2.66 f
+  sbox/inv1/mul3/mul4/d[1] (net)                                    0.00       2.66 f
+  sbox/inv1/mul3/mul4/d[1] (mul_2_with_masked_0)                    0.00       2.66 f
+  sbox/inv1/mul3/t10[1] (net)                                       0.00       2.66 f
+  sbox/inv1/mul3/U7/Y (MUX2X1)                            0.06      0.06       2.72 r
+  sbox/inv1/mul3/t12[1] (net)                   3                   0.00       2.72 r
+  sbox/inv1/mul3/imap1/x2[1] (invmapping_4_1)                       0.00       2.72 r
+  sbox/inv1/mul3/imap1/x2[1] (net)                                  0.00       2.72 r
+  sbox/inv1/mul3/imap1/U3/Y (INVX1)                       0.02      0.04       2.75 f
+  sbox/inv1/mul3/imap1/n2 (net)                 2                   0.00       2.75 f
+  sbox/inv1/mul3/imap1/U1/Y (MUX2X1)                      0.05      0.05       2.81 r
+  sbox/inv1/mul3/imap1/d[2] (net)               1                   0.00       2.81 r
+  sbox/inv1/mul3/imap1/d[2] (invmapping_4_1)                        0.00       2.81 r
+  sbox/inv1/mul3/d[2] (net)                                         0.00       2.81 r
+  sbox/inv1/mul3/d[2] (mul_4_0)                                     0.00       2.81 r
+  sbox/inv1/t9[2] (net)                                             0.00       2.81 r
+  sbox/inv1/imap1/x2[2] (invmapping_8_1)                            0.00       2.81 r
+  sbox/inv1/imap1/x2[2] (net)                                       0.00       2.81 r
+  sbox/inv1/imap1/U6/Y (MUX2X1)                           0.07      0.07       2.87 r
+  sbox/inv1/imap1/n4 (net)                      2                   0.00       2.87 r
+  sbox/inv1/imap1/U2/Y (MUX2X1)                           0.05      0.05       2.92 r
+  sbox/inv1/imap1/d[6] (net)                    2                   0.00       2.92 r
+  sbox/inv1/imap1/d[6] (invmapping_8_1)                             0.00       2.92 r
+  sbox/inv1/d[6] (net)                                              0.00       2.92 r
+  sbox/inv1/d[6] (inversion_8)                                      0.00       2.92 r
+  sbox/t2[6] (net)                                                  0.00       2.92 r
+  sbox/aff2/x[6] (affine_8_1)                                       0.00       2.92 r
+  sbox/aff2/x[6] (net)                                              0.00       2.92 r
+  sbox/aff2/U5/Y (INVX1)                                  0.02      0.03       2.96 f
+  sbox/aff2/n43 (net)                           2                   0.00       2.96 f
+  sbox/aff2/U8/Y (AOI22X1)                                0.04      0.03       2.98 r
+  sbox/aff2/n49 (net)                           1                   0.00       2.98 r
+  sbox/aff2/U34/Y (BUFX2)                                 0.03      0.05       3.03 r
+  sbox/aff2/n26 (net)                           4                   0.00       3.03 r
+  sbox/aff2/U38/Y (INVX1)                                 0.02      0.03       3.06 f
+  sbox/aff2/n30 (net)                           2                   0.00       3.06 f
+  sbox/aff2/U3/Y (AOI22X1)                                0.04      0.03       3.09 r
+  sbox/aff2/n50 (net)                           1                   0.00       3.09 r
+  sbox/aff2/U35/Y (BUFX2)                                 0.01      0.04       3.13 r
+  sbox/aff2/n27 (net)                           1                   0.00       3.13 r
+  sbox/aff2/U2/Y (MUX2X1)                                 0.05      0.05       3.18 r
+  sbox/aff2/n52 (net)                           1                   0.00       3.18 r
+  sbox/aff2/U1/Y (MUX2X1)                                 0.04      0.04       3.22 r
+  sbox/aff2/d[7] (net)                          1                   0.00       3.22 r
+  sbox/aff2/d[7] (affine_8_1)                                       0.00       3.22 r
+  sbox/t3[7] (net)                                                  0.00       3.22 r
+  sbox/U1/Y (INVX1)                                       0.01      0.02       3.25 f
+  sbox/o[7] (net)                               1                   0.00       3.25 f
+  sbox/o[7] (sbox)                                                  0.00       3.25 f
+  lo[7] (net)                                                       0.00       3.25 f
+  U18/Y (AND2X1)                                          0.01      0.03       3.28 f
+  N18 (net)                                     1                   0.00       3.28 f
+  o_reg[7]/D (DFFPOSX1)                                   0.01      0.00       3.28 f
+  data arrival time                                                            3.28
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[7]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.28
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.00
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[4] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U13/Y (MUX2X1)                          0.10      0.09       2.91 r
+  sbox/inv1/imap1/d[1] (net)                    5                   0.00       2.91 r
+  sbox/inv1/imap1/U9/Y (MUX2X1)                           0.07      0.07       2.98 r
+  sbox/inv1/imap1/d[3] (net)                    2                   0.00       2.98 r
+  sbox/inv1/imap1/d[3] (invmapping_8_1)                             0.00       2.98 r
+  sbox/inv1/d[3] (net)                                              0.00       2.98 r
+  sbox/inv1/d[3] (inversion_8)                                      0.00       2.98 r
+  sbox/t2[3] (net)                                                  0.00       2.98 r
+  sbox/aff2/x[3] (affine_8_1)                                       0.00       2.98 r
+  sbox/aff2/x[3] (net)                                              0.00       2.98 r
+  sbox/aff2/U24/Y (MUX2X1)                                0.07      0.07       3.05 r
+  sbox/aff2/n35 (net)                           3                   0.00       3.05 r
+  sbox/aff2/U23/Y (MUX2X1)                                0.07      0.07       3.12 r
+  sbox/aff2/n40 (net)                           2                   0.00       3.12 r
+  sbox/aff2/U10/Y (MUX2X1)                                0.05      0.05       3.17 r
+  sbox/aff2/n41 (net)                           1                   0.00       3.17 r
+  sbox/aff2/U9/Y (MUX2X1)                                 0.04      0.04       3.22 r
+  sbox/aff2/d[4] (net)                          1                   0.00       3.22 r
+  sbox/aff2/d[4] (affine_8_1)                                       0.00       3.22 r
+  sbox/t3_4 (net)                                                   0.00       3.22 r
+  sbox/U3/Y (INVX1)                                       0.01      0.02       3.24 f
+  sbox/o[4] (net)                               1                   0.00       3.24 f
+  sbox/o[4] (sbox)                                                  0.00       3.24 f
+  lo[4] (net)                                                       0.00       3.24 f
+  U21/Y (AND2X1)                                          0.01      0.03       3.27 f
+  N15 (net)                                     1                   0.00       3.27 f
+  o_reg[4]/D (DFFPOSX1)                                   0.01      0.00       3.27 f
+  data arrival time                                                            3.27
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[4]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.27
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.01
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U13/Y (MUX2X1)                          0.10      0.09       2.91 r
+  sbox/inv1/imap1/d[1] (net)                    5                   0.00       2.91 r
+  sbox/inv1/imap1/U9/Y (MUX2X1)                           0.07      0.07       2.98 r
+  sbox/inv1/imap1/d[3] (net)                    2                   0.00       2.98 r
+  sbox/inv1/imap1/d[3] (invmapping_8_1)                             0.00       2.98 r
+  sbox/inv1/d[3] (net)                                              0.00       2.98 r
+  sbox/inv1/d[3] (inversion_8)                                      0.00       2.98 r
+  sbox/t2[3] (net)                                                  0.00       2.98 r
+  sbox/aff2/x[3] (affine_8_1)                                       0.00       2.98 r
+  sbox/aff2/x[3] (net)                                              0.00       2.98 r
+  sbox/aff2/U24/Y (MUX2X1)                                0.07      0.07       3.05 r
+  sbox/aff2/n35 (net)                           3                   0.00       3.05 r
+  sbox/aff2/U23/Y (MUX2X1)                                0.07      0.07       3.12 r
+  sbox/aff2/n40 (net)                           2                   0.00       3.12 r
+  sbox/aff2/U22/Y (MUX2X1)                                0.05      0.05       3.17 r
+  sbox/aff2/n33 (net)                           1                   0.00       3.17 r
+  sbox/aff2/U21/Y (MUX2X1)                                0.04      0.04       3.22 r
+  sbox/aff2/d[1] (net)                          1                   0.00       3.22 r
+  sbox/aff2/d[1] (affine_8_1)                                       0.00       3.22 r
+  sbox/t3_1 (net)                                                   0.00       3.22 r
+  sbox/U4/Y (INVX1)                                       0.01      0.02       3.24 f
+  sbox/o[1] (net)                               1                   0.00       3.24 f
+  sbox/o[1] (sbox)                                                  0.00       3.24 f
+  lo[1] (net)                                                       0.00       3.24 f
+  U24/Y (AND2X1)                                          0.01      0.03       3.27 f
+  N12 (net)                                     1                   0.00       3.27 f
+  o_reg[1]/D (DFFPOSX1)                                   0.01      0.00       3.27 f
+  data arrival time                                                            3.27
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[1]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.27
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.01
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U16/Y (INVX1)                           0.01      0.03       2.86 f
+  sbox/inv1/imap1/n10 (net)                     1                   0.00       2.86 f
+  sbox/inv1/imap1/U15/Y (MUX2X1)                          0.08      0.07       2.93 r
+  sbox/inv1/imap1/d[0] (net)                    4                   0.00       2.93 r
+  sbox/inv1/imap1/d[0] (invmapping_8_1)                             0.00       2.93 r
+  sbox/inv1/d[0] (net)                                              0.00       2.93 r
+  sbox/inv1/d[0] (inversion_8)                                      0.00       2.93 r
+  sbox/t2[0] (net)                                                  0.00       2.93 r
+  sbox/aff2/x[0] (affine_8_1)                                       0.00       2.93 r
+  sbox/aff2/x[0] (net)                                              0.00       2.93 r
+  sbox/aff2/U30/Y (INVX1)                                 0.02      0.05       2.97 f
+  sbox/aff2/n51 (net)                           3                   0.00       2.97 f
+  sbox/aff2/U29/Y (MUX2X1)                                0.07      0.07       3.04 r
+  sbox/aff2/n38 (net)                           3                   0.00       3.04 r
+  sbox/aff2/U28/Y (MUX2X1)                                0.05      0.05       3.10 r
+  sbox/aff2/n31 (net)                           1                   0.00       3.10 r
+  sbox/aff2/U27/Y (MUX2X1)                                0.05      0.05       3.15 r
+  sbox/aff2/n32 (net)                           1                   0.00       3.15 r
+  sbox/aff2/U26/Y (MUX2X1)                                0.04      0.04       3.19 r
+  sbox/aff2/d[0] (net)                          1                   0.00       3.19 r
+  sbox/aff2/d[0] (affine_8_1)                                       0.00       3.19 r
+  sbox/t3_0 (net)                                                   0.00       3.19 r
+  sbox/U5/Y (INVX1)                                       0.01      0.02       3.22 f
+  sbox/o[0] (net)                               1                   0.00       3.22 f
+  sbox/o[0] (sbox)                                                  0.00       3.22 f
+  lo[0] (net)                                                       0.00       3.22 f
+  U25/Y (AND2X1)                                          0.01      0.03       3.25 f
+  N11 (net)                                     1                   0.00       3.25 f
+  o_reg[0]/D (DFFPOSX1)                                   0.01      0.00       3.25 f
+  data arrival time                                                            3.25
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[0]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.25
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.03
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[6] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U16/Y (INVX1)                           0.01      0.03       2.86 f
+  sbox/inv1/imap1/n10 (net)                     1                   0.00       2.86 f
+  sbox/inv1/imap1/U15/Y (MUX2X1)                          0.08      0.07       2.93 r
+  sbox/inv1/imap1/d[0] (net)                    4                   0.00       2.93 r
+  sbox/inv1/imap1/d[0] (invmapping_8_1)                             0.00       2.93 r
+  sbox/inv1/d[0] (net)                                              0.00       2.93 r
+  sbox/inv1/d[0] (inversion_8)                                      0.00       2.93 r
+  sbox/t2[0] (net)                                                  0.00       2.93 r
+  sbox/aff2/x[0] (affine_8_1)                                       0.00       2.93 r
+  sbox/aff2/x[0] (net)                                              0.00       2.93 r
+  sbox/aff2/U30/Y (INVX1)                                 0.02      0.05       2.97 f
+  sbox/aff2/n51 (net)                           3                   0.00       2.97 f
+  sbox/aff2/U29/Y (MUX2X1)                                0.07      0.07       3.04 r
+  sbox/aff2/n38 (net)                           3                   0.00       3.04 r
+  sbox/aff2/U14/Y (INVX1)                                 0.01      0.03       3.08 f
+  sbox/aff2/n39 (net)                           1                   0.00       3.08 f
+  sbox/aff2/U13/Y (MUX2X1)                                0.07      0.06       3.14 r
+  sbox/aff2/n47 (net)                           2                   0.00       3.14 r
+  sbox/aff2/U4/Y (MUX2X1)                                 0.04      0.05       3.19 r
+  sbox/aff2/d[6] (net)                          1                   0.00       3.19 r
+  sbox/aff2/d[6] (affine_8_1)                                       0.00       3.19 r
+  sbox/t3[6] (net)                                                  0.00       3.19 r
+  sbox/U2/Y (INVX1)                                       0.01      0.02       3.21 f
+  sbox/o[6] (net)                               1                   0.00       3.21 f
+  sbox/o[6] (sbox)                                                  0.00       3.21 f
+  lo[6] (net)                                                       0.00       3.21 f
+  U19/Y (AND2X1)                                          0.01      0.03       3.24 f
+  N17 (net)                                     1                   0.00       3.24 f
+  o_reg[6]/D (DFFPOSX1)                                   0.01      0.00       3.24 f
+  data arrival time                                                            3.24
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[6]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.04
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[5] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul3/x2[2] (mul_4_0)                                    0.00       2.21 r
+  sbox/inv1/mul3/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul3/map2/x[2] (mapping_4_1)                            0.00       2.21 r
+  sbox/inv1/mul3/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul3/map2/U3/YS (HAX1)                        0.08      0.10       2.31 r
+  sbox/inv1/mul3/map2/d_l[1] (net)              5                   0.00       2.31 r
+  sbox/inv1/mul3/map2/U2/Y (INVX1)                        0.01      0.03       2.34 f
+  sbox/inv1/mul3/map2/n2 (net)                  1                   0.00       2.34 f
+  sbox/inv1/mul3/map2/U1/Y (MUX2X1)                       0.08      0.07       2.41 r
+  sbox/inv1/mul3/map2/d_h[0] (net)              4                   0.00       2.41 r
+  sbox/inv1/mul3/map2/d_h[0] (mapping_4_1)                          0.00       2.41 r
+  sbox/inv1/mul3/t3[0] (net)                                        0.00       2.41 r
+  sbox/inv1/mul3/mul2/x2[0] (mul_2_with_masked_2)                   0.00       2.41 r
+  sbox/inv1/mul3/mul2/_1_net_[0] (net)                              0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/x2[0] (mul_2_5)                         0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/x2[0] (net)                             0.00       2.41 r
+  sbox/inv1/mul3/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       2.44 f
+  sbox/inv1/mul3/mul2/mul_1/n13 (net)           1                   0.00       2.44 f
+  sbox/inv1/mul3/mul2/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.49 f
+  sbox/inv1/mul3/mul2/mul_1/n14 (net)           1                   0.00       2.49 f
+  sbox/inv1/mul3/mul2/mul_1/U7/Y (INVX1)                  0.00      0.01       2.50 r
+  sbox/inv1/mul3/mul2/mul_1/n7 (net)            1                   0.00       2.50 r
+  sbox/inv1/mul3/mul2/mul_1/U5/Y (XOR2X1)                 0.02      0.03       2.53 f
+  sbox/inv1/mul3/mul2/mul_1/n15 (net)           1                   0.00       2.53 f
+  sbox/inv1/mul3/mul2/mul_1/U1/Y (MUX2X1)                 0.07      0.06       2.59 r
+  sbox/inv1/mul3/mul2/mul_1/d[1] (net)          2                   0.00       2.59 r
+  sbox/inv1/mul3/mul2/mul_1/d[1] (mul_2_5)                          0.00       2.59 r
+  sbox/inv1/mul3/mul2/d[1] (net)                                    0.00       2.59 r
+  sbox/inv1/mul3/mul2/d[1] (mul_2_with_masked_2)                    0.00       2.59 r
+  sbox/inv1/mul3/t8[1] (net)                                        0.00       2.59 r
+  sbox/inv1/mul3/mul4/x1[1] (mul_2_with_masked_0)                   0.00       2.59 r
+  sbox/inv1/mul3/mul4/_0_net_[1] (net)                              0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/x1[1] (mul_2_1)                         0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/x1[1] (net)                             0.00       2.59 r
+  sbox/inv1/mul3/mul4/mul_1/U2/Y (XNOR2X1)                0.04      0.04       2.63 r
+  sbox/inv1/mul3/mul4/mul_1/n1 (net)            1                   0.00       2.63 r
+  sbox/inv1/mul3/mul4/mul_1/U1/Y (INVX1)                  0.01      0.03       2.66 f
+  sbox/inv1/mul3/mul4/mul_1/d[1] (net)          1                   0.00       2.66 f
+  sbox/inv1/mul3/mul4/mul_1/d[1] (mul_2_1)                          0.00       2.66 f
+  sbox/inv1/mul3/mul4/d[1] (net)                                    0.00       2.66 f
+  sbox/inv1/mul3/mul4/d[1] (mul_2_with_masked_0)                    0.00       2.66 f
+  sbox/inv1/mul3/t10[1] (net)                                       0.00       2.66 f
+  sbox/inv1/mul3/U7/Y (MUX2X1)                            0.06      0.06       2.72 r
+  sbox/inv1/mul3/t12[1] (net)                   3                   0.00       2.72 r
+  sbox/inv1/mul3/imap1/x2[1] (invmapping_4_1)                       0.00       2.72 r
+  sbox/inv1/mul3/imap1/x2[1] (net)                                  0.00       2.72 r
+  sbox/inv1/mul3/imap1/U3/Y (INVX1)                       0.02      0.04       2.75 f
+  sbox/inv1/mul3/imap1/n2 (net)                 2                   0.00       2.75 f
+  sbox/inv1/mul3/imap1/U1/Y (MUX2X1)                      0.05      0.05       2.81 r
+  sbox/inv1/mul3/imap1/d[2] (net)               1                   0.00       2.81 r
+  sbox/inv1/mul3/imap1/d[2] (invmapping_4_1)                        0.00       2.81 r
+  sbox/inv1/mul3/d[2] (net)                                         0.00       2.81 r
+  sbox/inv1/mul3/d[2] (mul_4_0)                                     0.00       2.81 r
+  sbox/inv1/t9[2] (net)                                             0.00       2.81 r
+  sbox/inv1/imap1/x2[2] (invmapping_8_1)                            0.00       2.81 r
+  sbox/inv1/imap1/x2[2] (net)                                       0.00       2.81 r
+  sbox/inv1/imap1/U6/Y (MUX2X1)                           0.07      0.07       2.87 r
+  sbox/inv1/imap1/n4 (net)                      2                   0.00       2.87 r
+  sbox/inv1/imap1/U5/Y (MUX2X1)                           0.08      0.07       2.95 r
+  sbox/inv1/imap1/d[4] (net)                    4                   0.00       2.95 r
+  sbox/inv1/imap1/d[4] (invmapping_8_1)                             0.00       2.95 r
+  sbox/inv1/d[4] (net)                                              0.00       2.95 r
+  sbox/inv1/d[4] (inversion_8)                                      0.00       2.95 r
+  sbox/t2[4] (net)                                                  0.00       2.95 r
+  sbox/aff2/x[4] (affine_8_1)                                       0.00       2.95 r
+  sbox/aff2/x[4] (net)                                              0.00       2.95 r
+  sbox/aff2/U15/Y (INVX1)                                 0.02      0.05       2.99 f
+  sbox/aff2/n48 (net)                           3                   0.00       2.99 f
+  sbox/aff2/U18/Y (AOI22X1)                               0.04      0.04       3.03 r
+  sbox/aff2/n44 (net)                           1                   0.00       3.03 r
+  sbox/aff2/U37/Y (BUFX2)                                 0.03      0.05       3.08 r
+  sbox/aff2/n29 (net)                           4                   0.00       3.08 r
+  sbox/aff2/U36/Y (INVX1)                                 0.02      0.03       3.10 f
+  sbox/aff2/n28 (net)                           2                   0.00       3.10 f
+  sbox/aff2/U7/Y (MUX2X1)                                 0.05      0.05       3.16 r
+  sbox/aff2/n45 (net)                           1                   0.00       3.16 r
+  sbox/aff2/U6/Y (MUX2X1)                                 0.01      0.04       3.20 f
+  sbox/aff2/d[5] (net)                          1                   0.00       3.20 f
+  sbox/aff2/d[5] (affine_8_1)                                       0.00       3.20 f
+  sbox/o[5] (net)                                                   0.00       3.20 f
+  sbox/o[5] (sbox)                                                  0.00       3.20 f
+  lo[5] (net)                                                       0.00       3.20 f
+  U20/Y (AND2X1)                                          0.01      0.03       3.23 f
+  N16 (net)                                     1                   0.00       3.23 f
+  o_reg[5]/D (DFFPOSX1)                                   0.01      0.00       3.23 f
+  data arrival time                                                            3.23
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[5]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.23
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.05
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[3] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U16/Y (INVX1)                           0.01      0.03       2.86 f
+  sbox/inv1/imap1/n10 (net)                     1                   0.00       2.86 f
+  sbox/inv1/imap1/U15/Y (MUX2X1)                          0.08      0.07       2.93 r
+  sbox/inv1/imap1/d[0] (net)                    4                   0.00       2.93 r
+  sbox/inv1/imap1/d[0] (invmapping_8_1)                             0.00       2.93 r
+  sbox/inv1/d[0] (net)                                              0.00       2.93 r
+  sbox/inv1/d[0] (inversion_8)                                      0.00       2.93 r
+  sbox/t2[0] (net)                                                  0.00       2.93 r
+  sbox/aff2/x[0] (affine_8_1)                                       0.00       2.93 r
+  sbox/aff2/x[0] (net)                                              0.00       2.93 r
+  sbox/aff2/U30/Y (INVX1)                                 0.02      0.05       2.97 f
+  sbox/aff2/n51 (net)                           3                   0.00       2.97 f
+  sbox/aff2/U29/Y (MUX2X1)                                0.07      0.07       3.04 r
+  sbox/aff2/n38 (net)                           3                   0.00       3.04 r
+  sbox/aff2/U14/Y (INVX1)                                 0.01      0.03       3.08 f
+  sbox/aff2/n39 (net)                           1                   0.00       3.08 f
+  sbox/aff2/U13/Y (MUX2X1)                                0.07      0.06       3.14 r
+  sbox/aff2/n47 (net)                           2                   0.00       3.14 r
+  sbox/aff2/U12/Y (MUX2X1)                                0.01      0.04       3.18 f
+  sbox/aff2/d[3] (net)                          1                   0.00       3.18 f
+  sbox/aff2/d[3] (affine_8_1)                                       0.00       3.18 f
+  sbox/o[3] (net)                                                   0.00       3.18 f
+  sbox/o[3] (sbox)                                                  0.00       3.18 f
+  lo[3] (net)                                                       0.00       3.18 f
+  U22/Y (AND2X1)                                          0.01      0.03       3.21 f
+  N14 (net)                                     1                   0.00       3.21 f
+  o_reg[3]/D (DFFPOSX1)                                   0.01      0.00       3.21 f
+  data arrival time                                                            3.21
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[3]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.21
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.06
+
+
+  Startpoint: i_r_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[2] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  i_r_reg[1]/CLK (DFFPOSX1)                               0.00      0.00       0.00 r
+  i_r_reg[1]/Q (DFFPOSX1)                                 0.03      0.11       0.11 f
+  i_r[1] (net)                                  4                   0.00       0.11 f
+  sbox/i[1] (sbox)                                                  0.00       0.11 f
+  sbox/i[1] (net)                                                   0.00       0.11 f
+  sbox/aff1/x[1] (affine_8_3)                                       0.00       0.11 f
+  sbox/aff1/x[1] (net)                                              0.00       0.11 f
+  sbox/aff1/U24/Y (MUX2X1)                                0.07      0.06       0.17 r
+  sbox/aff1/n21 (net)                           3                   0.00       0.17 r
+  sbox/aff1/U23/Y (MUX2X1)                                0.07      0.07       0.24 r
+  sbox/aff1/n16 (net)                           2                   0.00       0.24 r
+  sbox/aff1/U10/Y (MUX2X1)                                0.05      0.05       0.30 r
+  sbox/aff1/n15 (net)                           1                   0.00       0.30 r
+  sbox/aff1/U9/Y (MUX2X1)                                 0.04      0.04       0.34 r
+  sbox/aff1/d[4] (net)                          1                   0.00       0.34 r
+  sbox/aff1/d[4] (affine_8_3)                                       0.00       0.34 r
+  sbox/t1[4] (net)                                                  0.00       0.34 r
+  sbox/U8/Y (INVX1)                                       0.01      0.03       0.37 f
+  sbox/_0_net_[4] (net)                         2                   0.00       0.37 f
+  sbox/inv1/x[4] (inversion_8)                                      0.00       0.37 f
+  sbox/inv1/x[4] (net)                                              0.00       0.37 f
+  sbox/inv1/map1/x[4] (mapping_8_1)                                 0.00       0.37 f
+  sbox/inv1/map1/x[4] (net)                                         0.00       0.37 f
+  sbox/inv1/map1/U22/Y (INVX1)                            0.00      0.00       0.37 r
+  sbox/inv1/map1/n17 (net)                      1                   0.00       0.37 r
+  sbox/inv1/map1/U20/Y (AND2X2)                           0.01      0.03       0.40 r
+  sbox/inv1/map1/n16 (net)                      1                   0.00       0.40 r
+  sbox/inv1/map1/U21/Y (INVX1)                            0.01      0.01       0.41 f
+  sbox/inv1/map1/n11 (net)                      1                   0.00       0.41 f
+  sbox/inv1/map1/U16/Y (AND2X1)                           0.02      0.04       0.45 f
+  sbox/inv1/map1/n9 (net)                       1                   0.00       0.45 f
+  sbox/inv1/map1/U7/Y (INVX1)                             0.03      0.04       0.49 r
+  sbox/inv1/map1/n14 (net)                      4                   0.00       0.49 r
+  sbox/inv1/map1/U19/Y (INVX4)                            0.03      0.03       0.53 f
+  sbox/inv1/map1/d_h[0] (net)                  11                   0.00       0.53 f
+  sbox/inv1/map1/U8/Y (MUX2X1)                            0.21      0.16       0.68 r
+  sbox/inv1/map1/d_h[3] (net)                  12                   0.00       0.68 r
+  sbox/inv1/map1/d_h[3] (mapping_8_1)                               0.00       0.68 r
+  sbox/inv1/t1[3] (net)                                             0.00       0.68 r
+  sbox/inv1/U2/Y (XOR2X1)                                 0.12      0.12       0.80 r
+  sbox/inv1/t3[3] (net)                         6                   0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (mul_4_2)                                    0.00       0.80 r
+  sbox/inv1/mul1/x1[3] (net)                                        0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (mapping_4_13)                           0.00       0.80 r
+  sbox/inv1/mul1/map1/x[3] (net)                                    0.00       0.80 r
+  sbox/inv1/mul1/map1/U1/Y (XOR2X1)                       0.11      0.09       0.89 r
+  sbox/inv1/mul1/map1/d_l[1] (net)              5                   0.00       0.89 r
+  sbox/inv1/mul1/map1/U2/Y (XOR2X1)                       0.09      0.08       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (net)              3                   0.00       0.97 r
+  sbox/inv1/mul1/map1/d_h[0] (mapping_4_13)                         0.00       0.97 r
+  sbox/inv1/mul1/t1[0] (net)                                        0.00       0.97 r
+  sbox/inv1/mul1/U6/YS (HAX1)                             0.03      0.07       1.04 r
+  sbox/inv1/mul1/t5[0] (net)                    2                   0.00       1.04 r
+  sbox/inv1/mul1/mul1/x1[0] (mul_2_with_masked_14)                  0.00       1.04 r
+  sbox/inv1/mul1/mul1/_0_net_[0] (net)                              0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (mul_2_29)                        0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/x1[0] (net)                             0.00       1.04 r
+  sbox/inv1/mul1/mul1/mul_1/U2/YS (HAX1)                  0.02      0.06       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/n15 (net)           1                   0.00       1.10 f
+  sbox/inv1/mul1/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (net)          1                   0.00       1.14 r
+  sbox/inv1/mul1/mul1/mul_1/d[1] (mul_2_29)                         0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (net)                                    0.00       1.14 r
+  sbox/inv1/mul1/mul1/d[1] (mul_2_with_masked_14)                   0.00       1.14 r
+  sbox/inv1/mul1/t7[1] (net)                                        0.00       1.14 r
+  sbox/inv1/mul1/U9/Y (MUX2X1)                            0.08      0.07       1.21 r
+  sbox/inv1/mul1/t11[1] (net)                   2                   0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (invmapping_4_7)                       0.00       1.21 r
+  sbox/inv1/mul1/imap1/x1[1] (net)                                  0.00       1.21 r
+  sbox/inv1/mul1/imap1/U3/Y (XOR2X1)                      0.06      0.07       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (net)               1                   0.00       1.28 r
+  sbox/inv1/mul1/imap1/d[2] (invmapping_4_7)                        0.00       1.28 r
+  sbox/inv1/mul1/d[2] (net)                                         0.00       1.28 r
+  sbox/inv1/mul1/d[2] (mul_4_2)                                     0.00       1.28 r
+  sbox/inv1/t5[2] (net)                                             0.00       1.28 r
+  sbox/inv1/U5/Y (XOR2X1)                                 0.05      0.05       1.33 r
+  sbox/inv1/t6[2] (net)                         1                   0.00       1.33 r
+  sbox/inv1/inv1/x[2] (inversion_4)                                 0.00       1.33 r
+  sbox/inv1/inv1/x[2] (net)                                         0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (mapping_4_9)                            0.00       1.33 r
+  sbox/inv1/inv1/map1/x[2] (net)                                    0.00       1.33 r
+  sbox/inv1/inv1/map1/U3/YS (HAX1)                        0.07      0.10       1.42 r
+  sbox/inv1/inv1/map1/d_l[1] (net)              5                   0.00       1.42 r
+  sbox/inv1/inv1/map1/U2/Y (INVX1)                        0.01      0.03       1.46 f
+  sbox/inv1/inv1/map1/n2 (net)                  1                   0.00       1.46 f
+  sbox/inv1/inv1/map1/U1/Y (MUX2X1)                       0.11      0.09       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (net)              4                   0.00       1.55 r
+  sbox/inv1/inv1/map1/d_h[0] (mapping_4_9)                          0.00       1.55 r
+  sbox/inv1/inv1/t1[0] (net)                                        0.00       1.55 r
+  sbox/inv1/inv1/U4/YS (HAX1)                             0.07      0.09       1.64 r
+  sbox/inv1/inv1/t3[0] (net)                    4                   0.00       1.64 r
+  sbox/inv1/inv1/mul1/x1[0] (mul_2_with_masked_10)                  0.00       1.64 r
+  sbox/inv1/inv1/mul1/_0_net_[0] (net)                              0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (mul_2_21)                        0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/x1[0] (net)                             0.00       1.64 r
+  sbox/inv1/inv1/mul1/mul_1/U12/Y (XOR2X1)                0.02      0.04       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/n15 (net)           1                   0.00       1.68 f
+  sbox/inv1/inv1/mul1/mul_1/U1/Y (MUX2X1)                 0.06      0.05       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (net)          1                   0.00       1.73 r
+  sbox/inv1/inv1/mul1/mul_1/d[1] (mul_2_21)                         0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (net)                                    0.00       1.73 r
+  sbox/inv1/inv1/mul1/d[1] (mul_2_with_masked_10)                   0.00       1.73 r
+  sbox/inv1/inv1/t5[1] (net)                                        0.00       1.73 r
+  sbox/inv1/inv1/U6/Y (XOR2X1)                            0.12      0.09       1.82 r
+  sbox/inv1/inv1/t6[1] (net)                    5                   0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (inversion_2_1)                          0.00       1.82 r
+  sbox/inv1/inv1/inv1/x[1] (net)                                    0.00       1.82 r
+  sbox/inv1/inv1/inv1/U1/Y (XOR2X1)                       0.08      0.07       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (net)                6                   0.00       1.89 r
+  sbox/inv1/inv1/inv1/d[0] (inversion_2_1)                          0.00       1.89 r
+  sbox/inv1/inv1/t7[0] (net)                                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/x2[0] (mul_2_with_masked_9)                   0.00       1.89 r
+  sbox/inv1/inv1/mul2/_1_net_[0] (net)                              0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (mul_2_19)                        0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/x2[0] (net)                             0.00       1.89 r
+  sbox/inv1/inv1/mul2/mul_1/U4/Y (INVX1)                  0.01      0.03       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/n13 (net)           1                   0.00       1.93 f
+  sbox/inv1/inv1/mul2/mul_1/U7/Y (AND2X2)                 0.01      0.04       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/n14 (net)           1                   0.00       1.96 f
+  sbox/inv1/inv1/mul2/mul_1/U8/Y (INVX1)                  0.00      0.01       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/n7 (net)            1                   0.00       1.97 r
+  sbox/inv1/inv1/mul2/mul_1/U2/YS (HAX1)                  0.02      0.05       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/n15 (net)           1                   0.00       2.02 f
+  sbox/inv1/inv1/mul2/mul_1/U1/Y (MUX2X1)                 0.04      0.04       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (net)          1                   0.00       2.06 r
+  sbox/inv1/inv1/mul2/mul_1/d[1] (mul_2_19)                         0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (net)                                    0.00       2.06 r
+  sbox/inv1/inv1/mul2/d[1] (mul_2_with_masked_9)                    0.00       2.06 r
+  sbox/inv1/inv1/t8[1] (net)                                        0.00       2.06 r
+  sbox/inv1/inv1/U5/Y (INVX1)                             0.01      0.02       2.09 f
+  sbox/inv1/inv1/n1 (net)                       1                   0.00       2.09 f
+  sbox/inv1/inv1/U1/Y (INVX2)                             0.07      0.06       2.14 r
+  sbox/inv1/inv1/n2 (net)                       9                   0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (invmapping_4_5)                       0.00       2.14 r
+  sbox/inv1/inv1/imap1/x1[1] (net)                                  0.00       2.14 r
+  sbox/inv1/inv1/imap1/U1/Y (MUX2X1)                      0.07      0.07       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (net)               2                   0.00       2.21 r
+  sbox/inv1/inv1/imap1/d[2] (invmapping_4_5)                        0.00       2.21 r
+  sbox/inv1/inv1/d[2] (net)                                         0.00       2.21 r
+  sbox/inv1/inv1/d[2] (inversion_4)                                 0.00       2.21 r
+  sbox/inv1/t7[2] (net)                                             0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (mul_4_1)                                    0.00       2.21 r
+  sbox/inv1/mul2/x2[2] (net)                                        0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (mapping_4_5)                            0.00       2.21 r
+  sbox/inv1/mul2/map2/x[2] (net)                                    0.00       2.21 r
+  sbox/inv1/mul2/map2/U3/YS (HAX1)                        0.08      0.11       2.32 r
+  sbox/inv1/mul2/map2/d_l[1] (net)              4                   0.00       2.32 r
+  sbox/inv1/mul2/map2/U1/Y (XOR2X1)                       0.08      0.07       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (net)              4                   0.00       2.38 r
+  sbox/inv1/mul2/map2/d_h[0] (mapping_4_5)                          0.00       2.38 r
+  sbox/inv1/mul2/t3[0] (net)                                        0.00       2.38 r
+  sbox/inv1/mul2/U4/YS (HAX1)                             0.03      0.07       2.45 r
+  sbox/inv1/mul2/t6[0] (net)                    3                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/x2[0] (mul_2_with_masked_7)                   0.00       2.45 r
+  sbox/inv1/mul2/mul1/_1_net_[0] (net)                              0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (mul_2_15)                        0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/x2[0] (net)                             0.00       2.45 r
+  sbox/inv1/mul2/mul1/mul_1/U4/Y (INVX1)                  0.01      0.02       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/n13 (net)           1                   0.00       2.47 f
+  sbox/inv1/mul2/mul1/mul_1/U3/Y (AND2X1)                 0.02      0.04       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/n14 (net)           1                   0.00       2.51 f
+  sbox/inv1/mul2/mul1/mul_1/U12/Y (INVX1)                 0.00      0.01       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/n10 (net)           1                   0.00       2.52 r
+  sbox/inv1/mul2/mul1/mul_1/U2/YS (HAX1)                  0.02      0.05       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/n15 (net)           1                   0.00       2.58 f
+  sbox/inv1/mul2/mul1/mul_1/U1/Y (MUX2X1)                 0.05      0.04       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (net)          1                   0.00       2.62 r
+  sbox/inv1/mul2/mul1/mul_1/d[1] (mul_2_15)                         0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (net)                                    0.00       2.62 r
+  sbox/inv1/mul2/mul1/d[1] (mul_2_with_masked_7)                    0.00       2.62 r
+  sbox/inv1/mul2/t7[1] (net)                                        0.00       2.62 r
+  sbox/inv1/mul2/U9/Y (MUX2X1)                            0.09      0.08       2.70 r
+  sbox/inv1/mul2/t11[1] (net)                   4                   0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (invmapping_4_3)                       0.00       2.70 r
+  sbox/inv1/mul2/imap1/x1[1] (net)                                  0.00       2.70 r
+  sbox/inv1/mul2/imap1/U1/Y (MUX2X1)                      0.05      0.06       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (net)               1                   0.00       2.76 r
+  sbox/inv1/mul2/imap1/d[2] (invmapping_4_3)                        0.00       2.76 r
+  sbox/inv1/mul2/d[2] (net)                                         0.00       2.76 r
+  sbox/inv1/mul2/d[2] (mul_4_1)                                     0.00       2.76 r
+  sbox/inv1/t8[2] (net)                                             0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (invmapping_8_1)                            0.00       2.76 r
+  sbox/inv1/imap1/x1[2] (net)                                       0.00       2.76 r
+  sbox/inv1/imap1/U17/Y (MUX2X1)                          0.07      0.07       2.82 r
+  sbox/inv1/imap1/n9 (net)                      3                   0.00       2.82 r
+  sbox/inv1/imap1/U13/Y (MUX2X1)                          0.10      0.09       2.91 r
+  sbox/inv1/imap1/d[1] (net)                    5                   0.00       2.91 r
+  sbox/inv1/imap1/U9/Y (MUX2X1)                           0.07      0.07       2.98 r
+  sbox/inv1/imap1/d[3] (net)                    2                   0.00       2.98 r
+  sbox/inv1/imap1/d[3] (invmapping_8_1)                             0.00       2.98 r
+  sbox/inv1/d[3] (net)                                              0.00       2.98 r
+  sbox/inv1/d[3] (inversion_8)                                      0.00       2.98 r
+  sbox/t2[3] (net)                                                  0.00       2.98 r
+  sbox/aff2/x[3] (affine_8_1)                                       0.00       2.98 r
+  sbox/aff2/x[3] (net)                                              0.00       2.98 r
+  sbox/aff2/U24/Y (MUX2X1)                                0.07      0.07       3.05 r
+  sbox/aff2/n35 (net)                           3                   0.00       3.05 r
+  sbox/aff2/U20/Y (INVX1)                                 0.01      0.03       3.09 f
+  sbox/aff2/n36 (net)                           1                   0.00       3.09 f
+  sbox/aff2/U17/Y (MUX2X1)                                0.05      0.05       3.14 r
+  sbox/aff2/n37 (net)                           1                   0.00       3.14 r
+  sbox/aff2/U16/Y (MUX2X1)                                0.01      0.04       3.18 f
+  sbox/aff2/d[2] (net)                          1                   0.00       3.18 f
+  sbox/aff2/d[2] (affine_8_1)                                       0.00       3.18 f
+  sbox/o[2] (net)                                                   0.00       3.18 f
+  sbox/o[2] (sbox)                                                  0.00       3.18 f
+  lo[2] (net)                                                       0.00       3.18 f
+  U23/Y (AND2X1)                                          0.01      0.03       3.21 f
+  N13 (net)                                     1                   0.00       3.21 f
+  o_reg[2]/D (DFFPOSX1)                                   0.01      0.00       3.21 f
+  data arrival time                                                            3.21
+
+  clock clk_i (rise edge)                                           3.33       3.33
+  clock network delay (ideal)                                       0.00       3.33
+  o_reg[2]/CLK (DFFPOSX1)                                           0.00       3.33 r
+  library setup time                                               -0.06       3.28
+  data required time                                                           3.28
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           3.28
+  data arrival time                                                           -3.21
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.07
+
+
+1

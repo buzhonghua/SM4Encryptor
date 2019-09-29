@@ -1,0 +1,49 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : sm4_encryptor
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 01:14:30 2019
+****************************************
+
+
+Library(s) Used:
+
+    gscl45nm (File: /home/xusine/FreePDK/lib/files/gscl45nm.db)
+
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =  18.0916 mW   (92%)
+  Net Switching Power  =   1.5407 mW    (8%)
+                         ---------
+Total Dynamic Power    =  19.6323 mW  (100%)
+
+Cell Leakage Power     = 499.1799 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          17.0018            0.1062        2.6362e+05           17.3717  (  86.29%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      1.0903            1.4344        2.3556e+05            2.7603  (  13.71%)
+--------------------------------------------------------------------------------------------------
+Total             18.0921 mW         1.5407 mW     4.9918e+05 nW        20.1320 mW
+1

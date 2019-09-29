@@ -1,0 +1,641 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 10
+        -transition_time
+Design : sbox_memory_wrapper
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 00:32:21 2019
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: i_r_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[6] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[0]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[0]/Q (DFFPOSX1)                  0.05      0.09       0.09 r
+  i_r[0] (net)                   7                   0.00       0.09 r
+  sbox/i[0] (sbox_memory)                            0.00       0.09 r
+  sbox/i[0] (net)                                    0.00       0.09 r
+  sbox/U520/Y (INVX1)                      0.01      0.03       0.12 f
+  sbox/n504 (net)                2                   0.00       0.12 f
+  sbox/U911/Y (AND2X1)                     0.01      0.04       0.16 f
+  sbox/n471 (net)                1                   0.00       0.16 f
+  sbox/U910/Y (INVX1)                      0.02      0.03       0.19 r
+  sbox/n904 (net)                4                   0.00       0.19 r
+  sbox/U419/Y (OR2X1)                      0.05      0.07       0.26 r
+  sbox/n159 (net)                4                   0.00       0.26 r
+  sbox/U418/Y (INVX1)                      0.11      0.10       0.36 f
+  sbox/n120 (net)               17                   0.00       0.36 f
+  sbox/U677/Y (AND2X1)                     0.02      0.06       0.42 f
+  sbox/n364 (net)                2                   0.00       0.42 f
+  sbox/U226/Y (OR2X1)                      0.01      0.05       0.47 f
+  sbox/n700 (net)                1                   0.00       0.47 f
+  sbox/U223/Y (OR2X1)                      0.02      0.05       0.52 f
+  sbox/n698 (net)                1                   0.00       0.52 f
+  sbox/U218/Y (NOR3X1)                     0.05      0.02       0.54 r
+  sbox/n358 (net)                1                   0.00       0.54 r
+  sbox/U613/Y (INVX1)                      0.01      0.03       0.57 f
+  sbox/n702 (net)                1                   0.00       0.57 f
+  sbox/U233/Y (OR2X1)                      0.01      0.05       0.62 f
+  sbox/n704 (net)                1                   0.00       0.62 f
+  sbox/U232/Y (OR2X1)                      0.02      0.05       0.67 f
+  sbox/n701 (net)                1                   0.00       0.67 f
+  sbox/U215/Y (NOR3X1)                     0.07      0.04       0.70 r
+  sbox/n72 (net)                 2                   0.00       0.70 r
+  sbox/U187/Y (NAND3X1)                    0.01      0.02       0.73 f
+  sbox/n303 (net)                1                   0.00       0.73 f
+  sbox/U546/Y (BUFX2)                      0.00      0.03       0.76 f
+  sbox/n611 (net)                1                   0.00       0.76 f
+  sbox/U174/Y (NOR3X1)                     0.06      0.05       0.82 r
+  sbox/n65 (net)                 2                   0.00       0.82 r
+  sbox/U27/Y (INVX1)                       0.01      0.03       0.85 f
+  sbox/n36 (net)                 1                   0.00       0.85 f
+  sbox/U15/Y (NOR3X1)                      0.05      0.04       0.89 r
+  sbox/n34 (net)                 1                   0.00       0.89 r
+  sbox/U14/Y (NAND3X1)                     0.01      0.02       0.91 f
+  sbox/n911 (net)                1                   0.00       0.91 f
+  sbox/U350/Y (BUFX2)                      0.00      0.03       0.94 f
+  sbox/o[6] (net)                1                   0.00       0.94 f
+  sbox/o[6] (sbox_memory)                            0.00       0.94 f
+  lo[6] (net)                                        0.00       0.94 f
+  U11/Y (AND2X1)                           0.01      0.03       0.97 f
+  N17 (net)                      1                   0.00       0.97 f
+  o_reg[6]/D (DFFPOSX1)                    0.01      0.00       0.97 f
+  data arrival time                                             0.97
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[6]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.97
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.31
+
+
+  Startpoint: i_r_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[5] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[0]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[0]/Q (DFFPOSX1)                  0.05      0.09       0.09 r
+  i_r[0] (net)                   7                   0.00       0.09 r
+  sbox/i[0] (sbox_memory)                            0.00       0.09 r
+  sbox/i[0] (net)                                    0.00       0.09 r
+  sbox/U520/Y (INVX1)                      0.01      0.03       0.12 f
+  sbox/n504 (net)                2                   0.00       0.12 f
+  sbox/U911/Y (AND2X1)                     0.01      0.04       0.16 f
+  sbox/n471 (net)                1                   0.00       0.16 f
+  sbox/U910/Y (INVX1)                      0.02      0.03       0.19 r
+  sbox/n904 (net)                4                   0.00       0.19 r
+  sbox/U416/Y (OR2X1)                      0.04      0.06       0.25 r
+  sbox/n110 (net)                3                   0.00       0.25 r
+  sbox/U415/Y (INVX1)                      0.15      0.12       0.38 f
+  sbox/n49 (net)                20                   0.00       0.38 f
+  sbox/U298/Y (AND2X1)                     0.01      0.05       0.43 f
+  sbox/n332 (net)                1                   0.00       0.43 f
+  sbox/U177/Y (OR2X1)                      0.01      0.05       0.48 f
+  sbox/n649 (net)                1                   0.00       0.48 f
+  sbox/U175/Y (OR2X1)                      0.02      0.05       0.53 f
+  sbox/n648 (net)                1                   0.00       0.53 f
+  sbox/U190/Y (NOR3X1)                     0.05      0.04       0.57 r
+  sbox/n323 (net)                1                   0.00       0.57 r
+  sbox/U189/Y (NAND3X1)                    0.01      0.02       0.59 f
+  sbox/n321 (net)                1                   0.00       0.59 f
+  sbox/U619/Y (BUFX2)                      0.00      0.03       0.63 f
+  sbox/n711 (net)                1                   0.00       0.63 f
+  sbox/U188/Y (NOR3X1)                     0.07      0.03       0.66 r
+  sbox/n200 (net)                2                   0.00       0.66 r
+  sbox/U105/Y (NAND3X1)                    0.01      0.02       0.69 f
+  sbox/n199 (net)                1                   0.00       0.69 f
+  sbox/U629/Y (BUFX2)                      0.00      0.03       0.72 f
+  sbox/n727 (net)                1                   0.00       0.72 f
+  sbox/U104/Y (NOR3X1)                     0.06      0.03       0.75 r
+  sbox/n71 (net)                 2                   0.00       0.75 r
+  sbox/U30/Y (NAND3X1)                     0.01      0.02       0.78 f
+  sbox/n70 (net)                 1                   0.00       0.78 f
+  sbox/U639/Y (BUFX2)                      0.00      0.03       0.81 f
+  sbox/n743 (net)                1                   0.00       0.81 f
+  sbox/U29/Y (NOR3X1)                      0.05      0.02       0.83 r
+  sbox/n68 (net)                 1                   0.00       0.83 r
+  sbox/U28/Y (NAND3X1)                     0.02      0.02       0.85 f
+  sbox/n912 (net)                1                   0.00       0.85 f
+  sbox/U349/Y (BUFX2)                      0.00      0.03       0.89 f
+  sbox/o[5] (net)                1                   0.00       0.89 f
+  sbox/o[5] (sbox_memory)                            0.00       0.89 f
+  lo[5] (net)                                        0.00       0.89 f
+  U12/Y (AND2X1)                           0.01      0.03       0.92 f
+  N16 (net)                      1                   0.00       0.92 f
+  o_reg[5]/D (DFFPOSX1)                    0.01      0.00       0.92 f
+  data arrival time                                             0.92
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[5]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.92
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.36
+
+
+  Startpoint: i_r_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[2] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[0]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[0]/Q (DFFPOSX1)                  0.05      0.09       0.09 r
+  i_r[0] (net)                   7                   0.00       0.09 r
+  sbox/i[0] (sbox_memory)                            0.00       0.09 r
+  sbox/i[0] (net)                                    0.00       0.09 r
+  sbox/U520/Y (INVX1)                      0.01      0.03       0.12 f
+  sbox/n504 (net)                2                   0.00       0.12 f
+  sbox/U911/Y (AND2X1)                     0.01      0.04       0.16 f
+  sbox/n471 (net)                1                   0.00       0.16 f
+  sbox/U910/Y (INVX1)                      0.02      0.03       0.19 r
+  sbox/n904 (net)                4                   0.00       0.19 r
+  sbox/U419/Y (OR2X1)                      0.05      0.07       0.26 r
+  sbox/n159 (net)                4                   0.00       0.26 r
+  sbox/U418/Y (INVX1)                      0.11      0.10       0.36 f
+  sbox/n120 (net)               17                   0.00       0.36 f
+  sbox/U677/Y (AND2X1)                     0.02      0.06       0.42 f
+  sbox/n364 (net)                2                   0.00       0.42 f
+  sbox/U226/Y (OR2X1)                      0.01      0.05       0.47 f
+  sbox/n700 (net)                1                   0.00       0.47 f
+  sbox/U223/Y (OR2X1)                      0.02      0.05       0.52 f
+  sbox/n698 (net)                1                   0.00       0.52 f
+  sbox/U218/Y (NOR3X1)                     0.05      0.02       0.54 r
+  sbox/n358 (net)                1                   0.00       0.54 r
+  sbox/U613/Y (INVX1)                      0.01      0.03       0.57 f
+  sbox/n702 (net)                1                   0.00       0.57 f
+  sbox/U233/Y (OR2X1)                      0.01      0.05       0.62 f
+  sbox/n704 (net)                1                   0.00       0.62 f
+  sbox/U232/Y (OR2X1)                      0.02      0.05       0.67 f
+  sbox/n701 (net)                1                   0.00       0.67 f
+  sbox/U215/Y (NOR3X1)                     0.07      0.04       0.70 r
+  sbox/n72 (net)                 2                   0.00       0.70 r
+  sbox/U187/Y (NAND3X1)                    0.01      0.02       0.73 f
+  sbox/n303 (net)                1                   0.00       0.73 f
+  sbox/U546/Y (BUFX2)                      0.00      0.03       0.76 f
+  sbox/n611 (net)                1                   0.00       0.76 f
+  sbox/U174/Y (NOR3X1)                     0.06      0.05       0.82 r
+  sbox/n65 (net)                 2                   0.00       0.82 r
+  sbox/U126/Y (NAND3X1)                    0.02      0.02       0.84 f
+  sbox/n915 (net)                1                   0.00       0.84 f
+  sbox/U345/Y (BUFX2)                      0.00      0.03       0.87 f
+  sbox/o[2] (net)                1                   0.00       0.87 f
+  sbox/o[2] (sbox_memory)                            0.00       0.87 f
+  lo[2] (net)                                        0.00       0.87 f
+  U15/Y (AND2X1)                           0.01      0.03       0.90 f
+  N13 (net)                      1                   0.00       0.90 f
+  o_reg[2]/D (DFFPOSX1)                    0.01      0.00       0.90 f
+  data arrival time                                             0.90
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[2]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.90
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.37
+
+
+  Startpoint: i_r_reg[3] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[4] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[3]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[3]/Q (DFFPOSX1)                  0.04      0.12       0.12 f
+  i_r[3] (net)                   7                   0.00       0.12 f
+  sbox/i[3] (sbox_memory)                            0.00       0.12 f
+  sbox/i[3] (net)                                    0.00       0.12 f
+  sbox/U890/Y (AND2X1)                     0.02      0.05       0.17 f
+  sbox/n472 (net)                3                   0.00       0.17 f
+  sbox/U891/Y (INVX1)                      0.00      0.02       0.19 r
+  sbox/n893 (net)                2                   0.00       0.19 r
+  sbox/U407/Y (OR2X1)                      0.07      0.08       0.27 r
+  sbox/n111 (net)                5                   0.00       0.27 r
+  sbox/U406/Y (INVX1)                      0.14      0.12       0.39 f
+  sbox/n23 (net)                18                   0.00       0.39 f
+  sbox/U405/Y (OAI21X1)                    0.03      0.06       0.45 r
+  sbox/n468 (net)                1                   0.00       0.45 r
+  sbox/U400/Y (NAND3X1)                    0.02      0.02       0.47 f
+  sbox/n466 (net)                1                   0.00       0.47 f
+  sbox/U563/Y (BUFX2)                      0.00      0.03       0.50 f
+  sbox/n634 (net)                1                   0.00       0.50 f
+  sbox/U395/Y (NOR3X1)                     0.05      0.03       0.54 r
+  sbox/n465 (net)                1                   0.00       0.54 r
+  sbox/U595/Y (INVX1)                      0.01      0.03       0.56 f
+  sbox/n676 (net)                1                   0.00       0.56 f
+  sbox/U213/Y (OR2X1)                      0.01      0.04       0.60 f
+  sbox/n679 (net)                1                   0.00       0.60 f
+  sbox/U210/Y (OR2X1)                      0.02      0.05       0.65 f
+  sbox/n675 (net)                1                   0.00       0.65 f
+  sbox/U393/Y (NOR3X1)                     0.06      0.03       0.69 r
+  sbox/n132 (net)                2                   0.00       0.69 r
+  sbox/U61/Y (NAND3X1)                     0.02      0.02       0.71 f
+  sbox/n131 (net)                1                   0.00       0.71 f
+  sbox/U382/Y (BUFX2)                      0.00      0.03       0.75 f
+  sbox/n536 (net)                1                   0.00       0.75 f
+  sbox/U60/Y (AOI21X1)                     0.03      0.01       0.76 r
+  sbox/n113 (net)                1                   0.00       0.76 r
+  sbox/U514/Y (BUFX2)                      0.01      0.04       0.80 r
+  sbox/n589 (net)                1                   0.00       0.80 r
+  sbox/U51/Y (NAND3X1)                     0.02      0.01       0.81 f
+  sbox/n913 (net)                1                   0.00       0.81 f
+  sbox/U346/Y (BUFX2)                      0.00      0.03       0.84 f
+  sbox/o[4] (net)                1                   0.00       0.84 f
+  sbox/o[4] (sbox_memory)                            0.00       0.84 f
+  lo[4] (net)                                        0.00       0.84 f
+  U13/Y (AND2X1)                           0.01      0.03       0.87 f
+  N15 (net)                      1                   0.00       0.87 f
+  o_reg[4]/D (DFFPOSX1)                    0.01      0.00       0.87 f
+  data arrival time                                             0.87
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[4]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.87
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.41
+
+
+  Startpoint: i_r_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[3] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[0]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[0]/Q (DFFPOSX1)                  0.04      0.12       0.12 f
+  i_r[0] (net)                   7                   0.00       0.12 f
+  sbox/i[0] (sbox_memory)                            0.00       0.12 f
+  sbox/i[0] (net)                                    0.00       0.12 f
+  sbox/U892/Y (AND2X1)                     0.03      0.06       0.17 f
+  sbox/n473 (net)                3                   0.00       0.17 f
+  sbox/U442/Y (NAND3X1)                    0.03      0.03       0.21 r
+  sbox/n245 (net)                1                   0.00       0.21 r
+  sbox/U883/Y (BUFX2)                      0.02      0.04       0.25 r
+  sbox/n889 (net)                3                   0.00       0.25 r
+  sbox/U882/Y (INVX1)                      0.16      0.12       0.37 f
+  sbox/n888 (net)               21                   0.00       0.37 f
+  sbox/U766/Y (AND2X1)                     0.01      0.05       0.42 f
+  sbox/n152 (net)                1                   0.00       0.42 f
+  sbox/U767/Y (INVX1)                      0.00      0.01       0.43 r
+  sbox/n811 (net)                2                   0.00       0.43 r
+  sbox/U96/Y (NAND3X1)                     0.02      0.01       0.44 f
+  sbox/n186 (net)                1                   0.00       0.44 f
+  sbox/U377/Y (BUFX2)                      0.00      0.03       0.48 f
+  sbox/n533 (net)                1                   0.00       0.48 f
+  sbox/U95/Y (AOI21X1)                     0.03      0.01       0.49 r
+  sbox/n185 (net)                1                   0.00       0.49 r
+  sbox/U138/Y (BUFX2)                      0.01      0.03       0.52 r
+  sbox/n389 (net)                1                   0.00       0.52 r
+  sbox/U555/Y (INVX1)                      0.01      0.02       0.54 f
+  sbox/n625 (net)                1                   0.00       0.54 f
+  sbox/U169/Y (OR2X1)                      0.01      0.04       0.58 f
+  sbox/n627 (net)                1                   0.00       0.58 f
+  sbox/U168/Y (OR2X1)                      0.02      0.05       0.63 f
+  sbox/n624 (net)                1                   0.00       0.63 f
+  sbox/U88/Y (NOR3X1)                      0.07      0.06       0.69 r
+  sbox/n33 (net)                 2                   0.00       0.69 r
+  sbox/U87/Y (NAND3X1)                     0.02      0.02       0.71 f
+  sbox/n162 (net)                1                   0.00       0.71 f
+  sbox/U585/Y (BUFX2)                      0.00      0.03       0.75 f
+  sbox/n664 (net)                1                   0.00       0.75 f
+  sbox/U78/Y (NOR3X1)                      0.05      0.04       0.78 r
+  sbox/n160 (net)                1                   0.00       0.78 r
+  sbox/U358/Y (AND2X1)                     0.03      0.04       0.82 r
+  sbox/n914 (net)                1                   0.00       0.82 r
+  sbox/U359/Y (INVX1)                      0.01      0.02       0.84 f
+  sbox/o[3] (net)                1                   0.00       0.84 f
+  sbox/o[3] (sbox_memory)                            0.00       0.84 f
+  lo[3] (net)                                        0.00       0.84 f
+  U14/Y (AND2X1)                           0.01      0.03       0.87 f
+  N14 (net)                      1                   0.00       0.87 f
+  o_reg[3]/D (DFFPOSX1)                    0.01      0.00       0.87 f
+  data arrival time                                             0.87
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[3]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.87
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.41
+
+
+  Startpoint: i_r_reg[3] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[1] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[3]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[3]/Q (DFFPOSX1)                  0.04      0.12       0.12 f
+  i_r[3] (net)                   7                   0.00       0.12 f
+  sbox/i[3] (sbox_memory)                            0.00       0.12 f
+  sbox/i[3] (net)                                    0.00       0.12 f
+  sbox/U890/Y (AND2X1)                     0.02      0.05       0.17 f
+  sbox/n472 (net)                3                   0.00       0.17 f
+  sbox/U891/Y (INVX1)                      0.00      0.02       0.19 r
+  sbox/n893 (net)                2                   0.00       0.19 r
+  sbox/U407/Y (OR2X1)                      0.07      0.08       0.27 r
+  sbox/n111 (net)                5                   0.00       0.27 r
+  sbox/U406/Y (INVX1)                      0.14      0.12       0.39 f
+  sbox/n23 (net)                18                   0.00       0.39 f
+  sbox/U405/Y (OAI21X1)                    0.03      0.06       0.45 r
+  sbox/n468 (net)                1                   0.00       0.45 r
+  sbox/U400/Y (NAND3X1)                    0.02      0.02       0.47 f
+  sbox/n466 (net)                1                   0.00       0.47 f
+  sbox/U563/Y (BUFX2)                      0.00      0.03       0.50 f
+  sbox/n634 (net)                1                   0.00       0.50 f
+  sbox/U395/Y (NOR3X1)                     0.05      0.03       0.54 r
+  sbox/n465 (net)                1                   0.00       0.54 r
+  sbox/U595/Y (INVX1)                      0.01      0.03       0.56 f
+  sbox/n676 (net)                1                   0.00       0.56 f
+  sbox/U213/Y (OR2X1)                      0.01      0.04       0.60 f
+  sbox/n679 (net)                1                   0.00       0.60 f
+  sbox/U210/Y (OR2X1)                      0.02      0.05       0.65 f
+  sbox/n675 (net)                1                   0.00       0.65 f
+  sbox/U393/Y (NOR3X1)                     0.06      0.03       0.69 r
+  sbox/n132 (net)                2                   0.00       0.69 r
+  sbox/U374/Y (NAND3X1)                    0.02      0.02       0.71 f
+  sbox/n451 (net)                1                   0.00       0.71 f
+  sbox/U599/Y (BUFX2)                      0.00      0.03       0.75 f
+  sbox/n681 (net)                1                   0.00       0.75 f
+  sbox/U373/Y (NOR3X1)                     0.07      0.03       0.78 r
+  sbox/n373 (net)                2                   0.00       0.78 r
+  sbox/U228/Y (NAND3X1)                    0.01      0.03       0.81 f
+  sbox/n916 (net)                1                   0.00       0.81 f
+  sbox/U342/Y (BUFX2)                      0.00      0.03       0.84 f
+  sbox/o[1] (net)                1                   0.00       0.84 f
+  sbox/o[1] (sbox_memory)                            0.00       0.84 f
+  lo[1] (net)                                        0.00       0.84 f
+  U16/Y (AND2X1)                           0.01      0.03       0.87 f
+  N12 (net)                      1                   0.00       0.87 f
+  o_reg[1]/D (DFFPOSX1)                    0.01      0.00       0.87 f
+  data arrival time                                             0.87
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[1]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.87
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.41
+
+
+  Startpoint: i_r_reg[3] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[3]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[3]/Q (DFFPOSX1)                  0.04      0.12       0.12 f
+  i_r[3] (net)                   7                   0.00       0.12 f
+  sbox/i[3] (sbox_memory)                            0.00       0.12 f
+  sbox/i[3] (net)                                    0.00       0.12 f
+  sbox/U890/Y (AND2X1)                     0.02      0.05       0.17 f
+  sbox/n472 (net)                3                   0.00       0.17 f
+  sbox/U891/Y (INVX1)                      0.00      0.02       0.19 r
+  sbox/n893 (net)                2                   0.00       0.19 r
+  sbox/U407/Y (OR2X1)                      0.07      0.08       0.27 r
+  sbox/n111 (net)                5                   0.00       0.27 r
+  sbox/U406/Y (INVX1)                      0.14      0.12       0.39 f
+  sbox/n23 (net)                18                   0.00       0.39 f
+  sbox/U405/Y (OAI21X1)                    0.03      0.06       0.45 r
+  sbox/n468 (net)                1                   0.00       0.45 r
+  sbox/U400/Y (NAND3X1)                    0.02      0.02       0.47 f
+  sbox/n466 (net)                1                   0.00       0.47 f
+  sbox/U563/Y (BUFX2)                      0.00      0.03       0.50 f
+  sbox/n634 (net)                1                   0.00       0.50 f
+  sbox/U395/Y (NOR3X1)                     0.05      0.03       0.54 r
+  sbox/n465 (net)                1                   0.00       0.54 r
+  sbox/U595/Y (INVX1)                      0.01      0.03       0.56 f
+  sbox/n676 (net)                1                   0.00       0.56 f
+  sbox/U213/Y (OR2X1)                      0.01      0.04       0.60 f
+  sbox/n679 (net)                1                   0.00       0.60 f
+  sbox/U210/Y (OR2X1)                      0.02      0.05       0.65 f
+  sbox/n675 (net)                1                   0.00       0.65 f
+  sbox/U393/Y (NOR3X1)                     0.06      0.03       0.69 r
+  sbox/n132 (net)                2                   0.00       0.69 r
+  sbox/U374/Y (NAND3X1)                    0.02      0.02       0.71 f
+  sbox/n451 (net)                1                   0.00       0.71 f
+  sbox/U599/Y (BUFX2)                      0.00      0.03       0.75 f
+  sbox/n681 (net)                1                   0.00       0.75 f
+  sbox/U373/Y (NOR3X1)                     0.07      0.03       0.78 r
+  sbox/n373 (net)                2                   0.00       0.78 r
+  sbox/U302/Y (NAND3X1)                    0.01      0.02       0.80 f
+  sbox/n917 (net)                1                   0.00       0.80 f
+  sbox/U341/Y (BUFX2)                      0.00      0.03       0.84 f
+  sbox/o[0] (net)                1                   0.00       0.84 f
+  sbox/o[0] (sbox_memory)                            0.00       0.84 f
+  lo[0] (net)                                        0.00       0.84 f
+  U17/Y (AND2X1)                           0.01      0.03       0.87 f
+  N11 (net)                      1                   0.00       0.87 f
+  o_reg[0]/D (DFFPOSX1)                    0.01      0.00       0.87 f
+  data arrival time                                             0.87
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[0]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.87
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.41
+
+
+  Startpoint: i_r_reg[0] (rising edge-triggered flip-flop clocked by clk_i)
+  Endpoint: o_reg[7] (rising edge-triggered flip-flop clocked by clk_i)
+  Path Group: clk_i
+  Path Type: max
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                        Fanout     Trans      Incr       Path      Attributes
+  ------------------------------------------------------------------------------------------
+  clock clk_i (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  i_r_reg[0]/CLK (DFFPOSX1)                0.00      0.00       0.00 r
+  i_r_reg[0]/Q (DFFPOSX1)                  0.04      0.12       0.12 f
+  i_r[0] (net)                   7                   0.00       0.12 f
+  sbox/i[0] (sbox_memory)                            0.00       0.12 f
+  sbox/i[0] (net)                                    0.00       0.12 f
+  sbox/U892/Y (AND2X1)                     0.03      0.06       0.17 f
+  sbox/n473 (net)                3                   0.00       0.17 f
+  sbox/U442/Y (NAND3X1)                    0.03      0.03       0.21 r
+  sbox/n245 (net)                1                   0.00       0.21 r
+  sbox/U883/Y (BUFX2)                      0.02      0.04       0.25 r
+  sbox/n889 (net)                3                   0.00       0.25 r
+  sbox/U882/Y (INVX1)                      0.16      0.12       0.37 f
+  sbox/n888 (net)               21                   0.00       0.37 f
+  sbox/U733/Y (AND2X1)                     0.01      0.05       0.42 f
+  sbox/n78 (net)                 1                   0.00       0.42 f
+  sbox/U734/Y (INVX1)                      0.00      0.01       0.43 r
+  sbox/n794 (net)                2                   0.00       0.43 r
+  sbox/U70/Y (NAND3X1)                     0.02      0.02       0.45 f
+  sbox/n151 (net)                1                   0.00       0.45 f
+  sbox/U381/Y (BUFX2)                      0.00      0.03       0.48 f
+  sbox/n535 (net)                1                   0.00       0.48 f
+  sbox/U69/Y (AOI21X1)                     0.03      0.01       0.50 r
+  sbox/n149 (net)                1                   0.00       0.50 r
+  sbox/U146/Y (BUFX2)                      0.01      0.03       0.53 r
+  sbox/n462 (net)                1                   0.00       0.53 r
+  sbox/U634/Y (INVX1)                      0.01      0.01       0.54 f
+  sbox/n735 (net)                1                   0.00       0.54 f
+  sbox/U256/Y (OR2X1)                      0.01      0.05       0.59 f
+  sbox/n737 (net)                1                   0.00       0.59 f
+  sbox/U255/Y (OR2X1)                      0.02      0.05       0.64 f
+  sbox/n734 (net)                1                   0.00       0.64 f
+  sbox/U67/Y (NOR3X1)                      0.05      0.03       0.67 r
+  sbox/n144 (net)                1                   0.00       0.67 r
+  sbox/U66/Y (NAND3X1)                     0.02      0.02       0.69 f
+  sbox/n141 (net)                1                   0.00       0.69 f
+  sbox/U636/Y (BUFX2)                      0.00      0.03       0.72 f
+  sbox/n738 (net)                1                   0.00       0.72 f
+  sbox/U65/Y (NOR3X1)                      0.07      0.03       0.76 r
+  sbox/n1 (net)                  2                   0.00       0.76 r
+  sbox/U3/Y (NAND3X1)                      0.01      0.02       0.78 f
+  sbox/n910 (net)                1                   0.00       0.78 f
+  sbox/U355/Y (BUFX2)                      0.00      0.03       0.81 f
+  sbox/o[7] (net)                1                   0.00       0.81 f
+  sbox/o[7] (sbox_memory)                            0.00       0.81 f
+  lo[7] (net)                                        0.00       0.81 f
+  U10/Y (AND2X1)                           0.01      0.03       0.84 f
+  N18 (net)                      1                   0.00       0.84 f
+  o_reg[7]/D (DFFPOSX1)                    0.01      0.00       0.84 f
+  data arrival time                                             0.84
+
+  clock clk_i (rise edge)                            3.33       3.33
+  clock network delay (ideal)                        0.00       3.33
+  o_reg[7]/CLK (DFFPOSX1)                            0.00       3.33 r
+  library setup time                                -0.06       3.28
+  data required time                                            3.28
+  ------------------------------------------------------------------------------------------
+  data required time                                            3.28
+  data arrival time                                            -0.84
+  ------------------------------------------------------------------------------------------
+  slack (MET)                                                   2.43
+
+
+1

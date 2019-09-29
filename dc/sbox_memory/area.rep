@@ -1,0 +1,44 @@
+ 
+****************************************
+Report : area
+Design : sbox_memory_wrapper
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 00:32:21 2019
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /home/xusine/FreePDK/lib/files/gscl45nm.db)
+
+Number of ports:                           34
+Number of nets:                           976
+Number of cells:                          951
+Number of combinational cells:            934
+Number of sequential cells:                16
+Number of macros/black boxes:               0
+Number of buf/inv:                        416
+Number of references:                       4
+
+Combinational area:               2098.709545
+Buf/Inv area:                      769.651979
+Noncombinational area:             127.649597
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                  2226.359142
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  -----------
+sbox_memory_wrapper               2226.3591    100.0    38.9519   127.6496  0.0000  sbox_memory_wrapper
+sbox                              2059.7576     92.5  2059.7576     0.0000  0.0000  sbox_memory
+--------------------------------  ---------  -------  ---------  ---------  ------  -----------
+Total                                                 2098.7095   127.6496  0.0000
+
+1

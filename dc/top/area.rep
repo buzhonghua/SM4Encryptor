@@ -1,0 +1,733 @@
+ 
+****************************************
+Report : area
+Design : sm4_encryptor
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 01:14:30 2019
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /home/xusine/FreePDK/lib/files/gscl45nm.db)
+
+Number of ports:                         6120
+Number of nets:                         36365
+Number of cells:                        30894
+Number of combinational cells:          25649
+Number of sequential cells:              4863
+Number of macros/black boxes:               0
+Number of buf/inv:                       7385
+Number of references:                      23
+
+Combinational area:              63582.640247
+Buf/Inv area:                    11869.066093
+Noncombinational area:           38254.988651
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                101837.628898
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area             Local cell area
+                                  --------------------  ------------------------------ 
+Hierarchical cell                 Absolute     Percent  Combi-      Noncombi-   Black-
+                                  Total        Total    national    national    boxes   Design
+--------------------------------  -----------  -------  ----------  ----------  ------  --------------------------------------------
+sm4_encryptor                     101837.6289    100.0   4731.9518   1348.2989  0.0000  sm4_encryptor
+cache                              82730.0798     81.2  45624.8761  36810.9526  0.0000  key_cache
+cache/enc                             19.7106      0.0     19.7106      0.0000  0.0000  priority_encoder_1
+cache/lru                            274.5405      0.3    153.9304     95.7372  0.0000  lru_recorder
+cache/lru/encoder                     24.8729      0.0     24.8729      0.0000  0.0000  priority_encoder_0
+turn                               13027.2984     12.8    690.3403      0.0000  0.0000  turn_transform
+turn/SBOX_ARRAY[0].sbox             2597.1061      2.6     22.0571      0.0000  0.0000  sbox_3
+turn/SBOX_ARRAY[0].sbox/aff1         126.2417      0.1    126.2417      0.0000  0.0000  affine_8_15
+turn/SBOX_ARRAY[0].sbox/aff2         119.2022      0.1    119.2022      0.0000  0.0000  affine_8_13
+turn/SBOX_ARRAY[0].sbox/affm1        110.7548      0.1    110.7548      0.0000  0.0000  affine_8_14
+turn/SBOX_ARRAY[0].sbox/affm2        101.3688      0.1    101.3688      0.0000  0.0000  affine_8_12
+turn/SBOX_ARRAY[0].sbox/inv1        2117.4816      2.1     99.0223      0.0000  0.0000  inversion_8_3
+turn/SBOX_ARRAY[0].sbox/inv1/imap1
+                                      69.4564      0.1     69.4564      0.0000  0.0000  invmapping_8_7
+turn/SBOX_ARRAY[0].sbox/inv1/imap2
+                                      54.9081      0.1     54.9081      0.0000  0.0000  invmapping_8_6
+turn/SBOX_ARRAY[0].sbox/inv1/inv1    369.8084      0.4     48.3379      0.0000  0.0000  inversion_4_3
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/imap1
+                                      15.0176      0.0     15.0176      0.0000  0.0000  invmapping_4_35
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/imap2
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_34
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/inv1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  inversion_2_7
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/inv2
+                                       4.6930      0.0      4.6930      0.0000  0.0000  inversion_2_6
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/map1
+                                      13.1404      0.0     13.1404      0.0000  0.0000  mapping_4_57
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_56
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul1
+                                      82.1275      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_58
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul1/mul_1
+                                      24.4036      0.0     24.4036      0.0000  0.0000  mul_2_117
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul1/mul_2
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_116
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul2
+                                      91.0442      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_57
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul2/mul_1
+                                      28.6273      0.0     28.6273      0.0000  0.0000  mul_2_115
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul2/mul_2
+                                      34.2589      0.0     34.2589      0.0000  0.0000  mul_2_114
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul3
+                                      87.2898      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_56
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_113
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/mul3/mul_2
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_112
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/sqr1
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_7
+turn/SBOX_ARRAY[0].sbox/inv1/inv1/sqr2
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_6
+turn/SBOX_ARRAY[0].sbox/inv1/map1     76.4959      0.1     76.4959      0.0000  0.0000  mapping_8_7
+turn/SBOX_ARRAY[0].sbox/inv1/map2     62.4169      0.1     62.4169      0.0000  0.0000  mapping_8_6
+turn/SBOX_ARRAY[0].sbox/inv1/mul1    418.6156      0.4     65.7020      0.0000  0.0000  mul_4_11
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_37
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_36
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/map1
+                                      13.1404      0.0     13.1404      0.0000  0.0000  mapping_4_61
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/map2
+                                      13.6097      0.0     13.6097      0.0000  0.0000  mapping_4_59
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_60
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_58
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul1
+                                      88.2284      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_62
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul1/mul_1
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_125
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_124
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul2
+                                      90.5749      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_61
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul2/mul_1
+                                      28.6273      0.0     28.6273      0.0000  0.0000  mul_2_123
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul2/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_122
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul3
+                                      88.2284      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_60
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_121
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul3/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_120
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul4
+                                      18.3027      0.0     10.7939      0.0000  0.0000  mul_2_with_masked_59
+turn/SBOX_ARRAY[0].sbox/inv1/mul1/mul4/mul_1
+                                       7.5088      0.0      7.5088      0.0000  0.0000  mul_2_119
+turn/SBOX_ARRAY[0].sbox/inv1/mul2    417.6770      0.4     65.7020      0.0000  0.0000  mul_4_10
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/imap1
+                                      10.7939      0.0     10.7939      0.0000  0.0000  invmapping_4_33
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/imap2
+                                      11.2632      0.0     11.2632      0.0000  0.0000  invmapping_4_32
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_55
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/map2
+                                      15.0176      0.0     15.0176      0.0000  0.0000  mapping_4_53
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_54
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mapm2
+                                      10.3246      0.0     10.3246      0.0000  0.0000  mapping_4_52
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul1
+                                      86.8205      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_55
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul1/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_111
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul1/mul_2
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_110
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul2
+                                      89.6363      0.1     32.3817      0.0000  0.0000  mul_2_with_masked_54
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul2/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_109
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul2/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_108
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul3
+                                      90.1056      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_53
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_107
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul3/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_106
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul4
+                                      18.3027      0.0     10.7939      0.0000  0.0000  mul_2_with_masked_52
+turn/SBOX_ARRAY[0].sbox/inv1/mul2/mul4/mul_1
+                                       7.5088      0.0      7.5088      0.0000  0.0000  mul_2_105
+turn/SBOX_ARRAY[0].sbox/inv1/mul3    405.4752      0.4     65.7020      0.0000  0.0000  mul_4_9
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/imap1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_31
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_30
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_51
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/map2
+                                      11.7325      0.0     11.7325      0.0000  0.0000  mapping_4_49
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_50
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mapm2
+                                      10.3246      0.0     10.3246      0.0000  0.0000  mapping_4_48
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul1
+                                      86.8205      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_51
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul1/mul_1
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_103
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul1/mul_2
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_102
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul2
+                                      90.5749      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_50
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul2/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_101
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul2/mul_2
+                                      32.8510      0.0     32.8510      0.0000  0.0000  mul_2_100
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul3
+                                      88.2284      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_49
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_99
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul3/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_98
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul4
+                                      14.0790      0.0      9.3860      0.0000  0.0000  mul_2_with_masked_48
+turn/SBOX_ARRAY[0].sbox/inv1/mul3/mul4/mul_1
+                                       4.6930      0.0      4.6930      0.0000  0.0000  mul_2_97
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1    143.6058      0.1     28.1580      0.0000  0.0000  square_4_3
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/imap1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_39
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_38
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/map1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_63
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_62
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/mul1
+                                      78.3731      0.1     18.7720      0.0000  0.0000  mul_2_with_masked_63
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/mul1/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_127
+turn/SBOX_ARRAY[0].sbox/inv1/sqr1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_126
+turn/SBOX_ARRAY[1].sbox             2636.5273      2.6     22.5264      0.0000  0.0000  sbox_2
+turn/SBOX_ARRAY[1].sbox/aff1         132.8119      0.1    132.8119      0.0000  0.0000  affine_8_11
+turn/SBOX_ARRAY[1].sbox/aff2         129.9961      0.1    129.9961      0.0000  0.0000  affine_8_9
+turn/SBOX_ARRAY[1].sbox/affm1        110.7548      0.1    110.7548      0.0000  0.0000  affine_8_10
+turn/SBOX_ARRAY[1].sbox/affm2        102.7767      0.1    102.7767      0.0000  0.0000  affine_8_8
+turn/SBOX_ARRAY[1].sbox/inv1        2137.6614      2.1     94.7986      0.0000  0.0000  inversion_8_2
+turn/SBOX_ARRAY[1].sbox/inv1/imap1
+                                      76.0266      0.1     76.0266      0.0000  0.0000  invmapping_8_5
+turn/SBOX_ARRAY[1].sbox/inv1/imap2
+                                      54.9081      0.1     54.9081      0.0000  0.0000  invmapping_8_4
+turn/SBOX_ARRAY[1].sbox/inv1/inv1    381.5409      0.4     48.8072      0.0000  0.0000  inversion_4_2
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/imap1
+                                      17.8334      0.0     17.8334      0.0000  0.0000  invmapping_4_25
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/imap2
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_24
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/inv1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  inversion_2_5
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/inv2
+                                       4.6930      0.0      4.6930      0.0000  0.0000  inversion_2_4
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/map1
+                                      11.2632      0.0     11.2632      0.0000  0.0000  mapping_4_41
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_40
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul1
+                                      89.1670      0.1     32.3817      0.0000  0.0000  mul_2_with_masked_42
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul1/mul_1
+                                      27.2194      0.0     27.2194      0.0000  0.0000  mul_2_85
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_84
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul2
+                                      93.3907      0.1     32.8510      0.0000  0.0000  mul_2_with_masked_41
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul2/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_83
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul2/mul_2
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_82
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul3
+                                      88.2284      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_40
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul3/mul_1
+                                      29.0966      0.0     29.0966      0.0000  0.0000  mul_2_81
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/mul3/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_80
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/sqr1
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_5
+turn/SBOX_ARRAY[1].sbox/inv1/inv1/sqr2
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_4
+turn/SBOX_ARRAY[1].sbox/inv1/map1     87.2898      0.1     87.2898      0.0000  0.0000  mapping_8_5
+turn/SBOX_ARRAY[1].sbox/inv1/map2     58.6625      0.1     58.6625      0.0000  0.0000  mapping_8_4
+turn/SBOX_ARRAY[1].sbox/inv1/mul1    424.2472      0.4     68.5178      0.0000  0.0000  mul_4_8
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/imap1
+                                      13.1404      0.0     13.1404      0.0000  0.0000  invmapping_4_27
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_26
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/map1
+                                      13.6097      0.0     13.6097      0.0000  0.0000  mapping_4_45
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/map2
+                                      13.1404      0.0     13.1404      0.0000  0.0000  mapping_4_43
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mapm1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  mapping_4_44
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_42
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul1
+                                      88.2284      0.1     30.9738      0.0000  0.0000  mul_2_with_masked_46
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul1/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_93
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_92
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul2
+                                      90.1056      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_45
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul2/mul_1
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_91
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul2/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_90
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul3
+                                      88.6977      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_44
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul3/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_89
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul3/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_88
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul4
+                                      17.8334      0.0     10.7939      0.0000  0.0000  mul_2_with_masked_43
+turn/SBOX_ARRAY[1].sbox/inv1/mul1/mul4/mul_1
+                                       7.0395      0.0      7.0395      0.0000  0.0000  mul_2_87
+turn/SBOX_ARRAY[1].sbox/inv1/mul2    418.6156      0.4     67.1099      0.0000  0.0000  mul_4_7
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_23
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/imap2
+                                      11.2632      0.0     11.2632      0.0000  0.0000  invmapping_4_22
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_39
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/map2
+                                      13.6097      0.0     13.6097      0.0000  0.0000  mapping_4_37
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_38
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_36
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul1
+                                      88.6977      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_39
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul1/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_79
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul1/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_78
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul2
+                                      89.1670      0.1     30.9738      0.0000  0.0000  mul_2_with_masked_38
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul2/mul_1
+                                      28.6273      0.0     28.6273      0.0000  0.0000  mul_2_77
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul2/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_76
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul3
+                                      87.2898      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_37
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_75
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul3/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_74
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul4
+                                      19.7106      0.0     12.2018      0.0000  0.0000  mul_2_with_masked_36
+turn/SBOX_ARRAY[1].sbox/inv1/mul2/mul4/mul_1
+                                       7.5088      0.0      7.5088      0.0000  0.0000  mul_2_73
+turn/SBOX_ARRAY[1].sbox/inv1/mul3    397.9664      0.4     65.7020      0.0000  0.0000  mul_4_6
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/imap1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_21
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_20
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_35
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/map2
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_33
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_34
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_32
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul1
+                                      87.2898      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_35
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul1/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_71
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_70
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul2
+                                      86.3512      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_34
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul2/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_69
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul2/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_68
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul3
+                                      87.2898      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_33
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_67
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul3/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_66
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul4
+                                      14.0790      0.0      9.3860      0.0000  0.0000  mul_2_with_masked_32
+turn/SBOX_ARRAY[1].sbox/inv1/mul3/mul4/mul_1
+                                       4.6930      0.0      4.6930      0.0000  0.0000  mul_2_65
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1    143.6058      0.1     28.1580      0.0000  0.0000  square_4_2
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/imap1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_29
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_28
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_47
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_46
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/mul1
+                                      77.9038      0.1     18.7720      0.0000  0.0000  mul_2_with_masked_47
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/mul1/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_95
+turn/SBOX_ARRAY[1].sbox/inv1/sqr1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_94
+turn/SBOX_ARRAY[2].sbox             2660.4616      2.6     21.5878      0.0000  0.0000  sbox_1
+turn/SBOX_ARRAY[2].sbox/aff1         139.3821      0.1    139.3821      0.0000  0.0000  affine_8_7
+turn/SBOX_ARRAY[2].sbox/aff2         138.4435      0.1    138.4435      0.0000  0.0000  affine_8_5
+turn/SBOX_ARRAY[2].sbox/affm1        106.5311      0.1    106.5311      0.0000  0.0000  affine_8_6
+turn/SBOX_ARRAY[2].sbox/affm2        104.6539      0.1    104.6539      0.0000  0.0000  affine_8_4
+turn/SBOX_ARRAY[2].sbox/inv1        2149.8633      2.1     95.7372      0.0000  0.0000  inversion_8_1
+turn/SBOX_ARRAY[2].sbox/inv1/imap1
+                                      69.4564      0.1     69.4564      0.0000  0.0000  invmapping_8_3
+turn/SBOX_ARRAY[2].sbox/inv1/imap2
+                                      59.1318      0.1     59.1318      0.0000  0.0000  invmapping_8_2
+turn/SBOX_ARRAY[2].sbox/inv1/inv1    383.8874      0.4     51.6230      0.0000  0.0000  inversion_4_1
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/imap1
+                                      15.0176      0.0     15.0176      0.0000  0.0000  invmapping_4_15
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_14
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/inv1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  inversion_2_3
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/inv2
+                                       4.6930      0.0      4.6930      0.0000  0.0000  inversion_2_2
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/map1
+                                      12.6711      0.0     12.6711      0.0000  0.0000  mapping_4_25
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/map2
+                                      11.7325      0.0     11.7325      0.0000  0.0000  mapping_4_24
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul1
+                                      88.6977      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_26
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul1/mul_1
+                                      28.6273      0.0     28.6273      0.0000  0.0000  mul_2_53
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul1/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_52
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul2
+                                      91.9828      0.1     32.3817      0.0000  0.0000  mul_2_with_masked_25
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul2/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_51
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul2/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_50
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul3
+                                      89.6363      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_24
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul3/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_49
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/mul3/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_48
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/sqr1
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_3
+turn/SBOX_ARRAY[2].sbox/inv1/inv1/sqr2
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_2
+turn/SBOX_ARRAY[2].sbox/inv1/map1     83.0661      0.1     83.0661      0.0000  0.0000  mapping_8_3
+turn/SBOX_ARRAY[2].sbox/inv1/map2     61.4783      0.1     61.4783      0.0000  0.0000  mapping_8_2
+turn/SBOX_ARRAY[2].sbox/inv1/mul1    427.5323      0.4     68.5178      0.0000  0.0000  mul_4_5
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_17
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_16
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/map1
+                                      13.1404      0.0     13.1404      0.0000  0.0000  mapping_4_29
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/map2
+                                      12.2018      0.0     12.2018      0.0000  0.0000  mapping_4_27
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mapm1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  mapping_4_28
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_26
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul1
+                                      88.6977      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_30
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul1/mul_1
+                                      31.4431      0.0     31.4431      0.0000  0.0000  mul_2_61
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul1/mul_2
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_60
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul2
+                                      92.9214      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_29
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul2/mul_1
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_59
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul2/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_58
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul3
+                                      89.1670      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_28
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul3/mul_1
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_57
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul3/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_56
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul4
+                                      19.7106      0.0     12.2018      0.0000  0.0000  mul_2_with_masked_27
+turn/SBOX_ARRAY[2].sbox/inv1/mul1/mul4/mul_1
+                                       7.5088      0.0      7.5088      0.0000  0.0000  mul_2_55
+turn/SBOX_ARRAY[2].sbox/inv1/mul2    415.3305      0.4     68.5178      0.0000  0.0000  mul_4_4
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_13
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_12
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_23
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/map2
+                                      13.1404      0.0     13.1404      0.0000  0.0000  mapping_4_21
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_22
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mapm2
+                                      10.3246      0.0     10.3246      0.0000  0.0000  mapping_4_20
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul1
+                                      85.8819      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_23
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul1/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_47
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_46
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul2
+                                      92.4521      0.1     29.5659      0.0000  0.0000  mul_2_with_masked_22
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul2/mul_1
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_45
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul2/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_44
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul3
+                                      87.2898      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_21
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_43
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul3/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_42
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul4
+                                      16.8948      0.0     10.7939      0.0000  0.0000  mul_2_with_masked_20
+turn/SBOX_ARRAY[2].sbox/inv1/mul2/mul4/mul_1
+                                       6.1009      0.0      6.1009      0.0000  0.0000  mul_2_41
+turn/SBOX_ARRAY[2].sbox/inv1/mul3    405.0059      0.4     68.0485      0.0000  0.0000  mul_4_3
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/imap1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_11
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_10
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_19
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/map2
+                                      12.2018      0.0     12.2018      0.0000  0.0000  mapping_4_17
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_18
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_16
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul1
+                                      85.4126      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_19
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul1/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_39
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul1/mul_2
+                                      29.0966      0.0     29.0966      0.0000  0.0000  mul_2_38
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul2
+                                      84.4740      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_18
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul2/mul_1
+                                      26.2808      0.0     26.2808      0.0000  0.0000  mul_2_37
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul2/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_36
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul3
+                                      90.1056      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_17
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_35
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul3/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_34
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul4
+                                      16.8948      0.0      9.3860      0.0000  0.0000  mul_2_with_masked_16
+turn/SBOX_ARRAY[2].sbox/inv1/mul3/mul4/mul_1
+                                       7.5088      0.0      7.5088      0.0000  0.0000  mul_2_33
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1    149.2374      0.1     28.1580      0.0000  0.0000  square_4_1
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/imap1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_19
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_18
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/map1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_31
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_30
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/mul1
+                                      84.0047      0.1     18.7720      0.0000  0.0000  mul_2_with_masked_31
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/mul1/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_63
+turn/SBOX_ARRAY[2].sbox/inv1/sqr1/mul1/mul_2
+                                      35.1975      0.0     35.1975      0.0000  0.0000  mul_2_62
+turn/SBOX_ARRAY[3].sbox             2616.8167      2.6     15.9562      0.0000  0.0000  sbox_0
+turn/SBOX_ARRAY[3].sbox/aff1         128.1189      0.1    128.1189      0.0000  0.0000  affine_8_3
+turn/SBOX_ARRAY[3].sbox/aff2         133.7505      0.1    133.7505      0.0000  0.0000  affine_8_1
+turn/SBOX_ARRAY[3].sbox/affm1        114.0399      0.1    114.0399      0.0000  0.0000  affine_8_2
+turn/SBOX_ARRAY[3].sbox/affm2        106.0618      0.1    106.0618      0.0000  0.0000  affine_8_0
+turn/SBOX_ARRAY[3].sbox/inv1        2118.8895      2.1     99.4916      0.0000  0.0000  inversion_8_0
+turn/SBOX_ARRAY[3].sbox/inv1/imap1
+                                      64.2941      0.1     64.2941      0.0000  0.0000  invmapping_8_1
+turn/SBOX_ARRAY[3].sbox/inv1/imap2
+                                      54.9081      0.1     54.9081      0.0000  0.0000  invmapping_8_0
+turn/SBOX_ARRAY[3].sbox/inv1/inv1    382.4795      0.4     53.5002      0.0000  0.0000  inversion_4_0
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/imap1
+                                      14.5483      0.0     14.5483      0.0000  0.0000  invmapping_4_5
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_4
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/inv1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  inversion_2_1
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/inv2
+                                       6.5702      0.0      6.5702      0.0000  0.0000  inversion_2_0
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/map1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_9
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/map2
+                                      14.0790      0.0     14.0790      0.0000  0.0000  mapping_4_8
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul1
+                                      92.4521      0.1     31.9124      0.0000  0.0000  mul_2_with_masked_10
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul1/mul_1
+                                      29.0966      0.0     29.0966      0.0000  0.0000  mul_2_21
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul1/mul_2
+                                      31.4431      0.0     31.4431      0.0000  0.0000  mul_2_20
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul2
+                                      85.8819      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_9
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul2/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_19
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul2/mul_2
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_18
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul3
+                                      88.2284      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_8
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul3/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_17
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/mul3/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_16
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/sqr1
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_1
+turn/SBOX_ARRAY[3].sbox/inv1/inv1/sqr2
+                                       0.0000      0.0      0.0000      0.0000  0.0000  square_2_0
+turn/SBOX_ARRAY[3].sbox/inv1/map1     76.0266      0.1     76.0266      0.0000  0.0000  mapping_8_1
+turn/SBOX_ARRAY[3].sbox/inv1/map2     60.0704      0.1     60.0704      0.0000  0.0000  mapping_8_0
+turn/SBOX_ARRAY[3].sbox/inv1/mul1    417.2077      0.4     65.7020      0.0000  0.0000  mul_4_2
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_7
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_6
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/map1
+                                      15.0176      0.0     15.0176      0.0000  0.0000  mapping_4_13
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/map2
+                                      15.9562      0.0     15.9562      0.0000  0.0000  mapping_4_11
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mapm1
+                                      10.7939      0.0     10.7939      0.0000  0.0000  mapping_4_12
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mapm2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_10
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul1
+                                      84.0047      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_14
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul1/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_29
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul1/mul_2
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_28
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul2
+                                      90.1056      0.1     30.9738      0.0000  0.0000  mul_2_with_masked_13
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul2/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_27
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul2/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_26
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul3
+                                      85.4126      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_12
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul3/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_25
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul3/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_24
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul4
+                                      19.2413      0.0     12.2018      0.0000  0.0000  mul_2_with_masked_11
+turn/SBOX_ARRAY[3].sbox/inv1/mul1/mul4/mul_1
+                                       7.0395      0.0      7.0395      0.0000  0.0000  mul_2_23
+turn/SBOX_ARRAY[3].sbox/inv1/mul2    417.2077      0.4     65.7020      0.0000  0.0000  mul_4_1
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/imap1
+                                      12.2018      0.0     12.2018      0.0000  0.0000  invmapping_4_3
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_2
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_7
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/map2
+                                      13.6097      0.0     13.6097      0.0000  0.0000  mapping_4_5
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_6
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mapm2
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_4
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul1
+                                      89.6363      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_7
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul1/mul_1
+                                      30.9738      0.0     30.9738      0.0000  0.0000  mul_2_15
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul1/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_14
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul2
+                                      90.1056      0.1     32.3817      0.0000  0.0000  mul_2_with_masked_6
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul2/mul_1
+                                      27.6887      0.0     27.6887      0.0000  0.0000  mul_2_13
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul2/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_12
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul3
+                                      88.2284      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_5
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_11
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul3/mul_2
+                                      30.5045      0.0     30.5045      0.0000  0.0000  mul_2_10
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul4
+                                      19.7106      0.0     10.7939      0.0000  0.0000  mul_2_with_masked_4
+turn/SBOX_ARRAY[3].sbox/inv1/mul2/mul4/mul_1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  mul_2_9
+turn/SBOX_ARRAY[3].sbox/inv1/mul3    402.1901      0.4     65.7020      0.0000  0.0000  mul_4_0
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/imap1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  invmapping_4_1
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_0
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/map1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_3
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/map2
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_1
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mapm1
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_2
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mapm2
+                                      11.7325      0.0     11.7325      0.0000  0.0000  mapping_4_0
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul1
+                                      85.8819      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_3
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul1/mul_1
+                                      28.1580      0.0     28.1580      0.0000  0.0000  mul_2_7
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_6
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul2
+                                      84.9433      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_2
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul2/mul_1
+                                      26.7501      0.0     26.7501      0.0000  0.0000  mul_2_5
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul2/mul_2
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_4
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul3
+                                      90.1056      0.1     28.1580      0.0000  0.0000  mul_2_with_masked_1
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul3/mul_1
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_3
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul3/mul_2
+                                      32.3817      0.0     32.3817      0.0000  0.0000  mul_2_2
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul4
+                                      16.4255      0.0      9.3860      0.0000  0.0000  mul_2_with_masked_0
+turn/SBOX_ARRAY[3].sbox/inv1/mul3/mul4/mul_1
+                                       7.0395      0.0      7.0395      0.0000  0.0000  mul_2_1
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1    145.0137      0.1     28.1580      0.0000  0.0000  square_4_0
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/imap1
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_9
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/imap2
+                                       8.9167      0.0      8.9167      0.0000  0.0000  invmapping_4_8
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/map1
+                                       9.3860      0.0      9.3860      0.0000  0.0000  mapping_4_15
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/map2
+                                       9.8553      0.0      9.8553      0.0000  0.0000  mapping_4_14
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/mul1
+                                      79.7810      0.1     20.1799      0.0000  0.0000  mul_2_with_masked_15
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/mul1/mul_1
+                                      30.0352      0.0     30.0352      0.0000  0.0000  mul_2_31
+turn/SBOX_ARRAY[3].sbox/inv1/sqr1/mul1/mul_2
+                                      29.5659      0.0     29.5659      0.0000  0.0000  mul_2_30
+turn/final_xor                      1068.5961      1.0   1068.5961      0.0000  0.0000  xor_tree_width_p32_size_p8
+turn/mo_con                            0.0000      0.0      0.0000      0.0000  0.0000  rolling_shifting_group_32_2_0000000200000012
+turn/mo_con/SHIFTER[0].sfter           0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000012_1_0
+turn/mo_con/SHIFTER[1].sfter           0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000002_1_0
+turn/mo_ext                            0.0000      0.0      0.0000      0.0000  0.0000  rolling_shifting_group_32_2_0000000a00000018
+turn/mo_ext/SHIFTER[0].sfter           0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000018_1_0
+turn/mo_ext/SHIFTER[1].sfter           0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s0000000a_1_0
+turn/mo_xor                          285.3344      0.3    285.3344      0.0000  0.0000  xor_tree_width_p32_size_p3
+turn/rsg_con                           4.6930      0.0      4.6930      0.0000  0.0000  rolling_shifting_group_32_4
+turn/rsg_con/SHIFTER[0].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000018_1_1
+turn/rsg_con/SHIFTER[1].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000012_1_1
+turn/rsg_con/SHIFTER[2].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s0000000a_1_1
+turn/rsg_con/SHIFTER[3].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000002_1_1
+turn/rsg_key                           5.1623      0.0      5.1623      0.0000  0.0000  rolling_shifting_group_32_2_0000000d00000017
+turn/rsg_key/SHIFTER[0].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s00000017_1
+turn/rsg_key/SHIFTER[1].sfter          0.0000      0.0      0.0000      0.0000  0.0000  roll_shifter_32_s0000000d_1
+turn/xor_tree_0                      462.2605      0.5    462.2605      0.0000  0.0000  xor_tree_width_p32_size_p4
+--------------------------------  -----------  -------  ----------  ----------  ------  --------------------------------------------
+Total                                                   63582.6402  38254.9887  0.0000
+
+1
