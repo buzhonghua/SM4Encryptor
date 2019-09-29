@@ -212,6 +212,88 @@ SM4是一种分组加密算法，这也意味着长度超过128bit的明文需�
 
 
 #### SBox
+模块`Sbox`的I/O口如下：
+
+名称|位宽|方向|意义
+-|-|-|-
+i|8|输入|待变换的字节
+m|8|输入|掩码输入
+o|8|输出|非线性变换后的字节
+m_o|8|输出|掩码输出
+
+Sbox模块内部使用有限域上的代数运算替代查找表产生结果，参照方案介绍部分对Sbox面积优化的讨论，整体的硬件结构为：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src=sbox.svg></div>
+
+其中，两次仿射变换均为线性变换，硬件上就是少量的异或门，很容易实现。关键结构为$GF(2^8)$上的求逆，参照文献[2]和文献[3]的实现，其结构为：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src=inverse_8.svg></div>
+
+其中，同构映射矩阵$T_8$和它的逆分别为：
+$$
+T_8 = 
+\left(
+\begin{matrix}
+    0 & 1 & 0 & 1 & 1 & 1 & 1 & 0 \\
+    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+    1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 \\
+\end{matrix}
+\right)
+T^{-1}_8 = 
+\left(
+\begin{matrix}
+    0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\
+    1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 \\
+    1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+\end{matrix}
+\right)
+$$
+`inversion_8`模块结构图中除了输入输出外，所有的数据线都是4位的，除去加法器是简单的4比特数按位异或外，还涉及3个子模块调用：$GF(2^4)$上的乘法器`mul_4`，在运算上特别优化过的复合乘法运算模块`square_4`（用于计算$v \otimes \gamma ^2$，其中常数v = {1001}）,以及$GF(2^4)$上的乘法逆`inversion_4`。下面依次进行说明，`inversion_4`模块的结构与`inversion_8`基本相同，它进一步将一个$GF(2^4)$上的乘法逆拆解到$GF(2^2)$上：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src=inverse_4.svg></div>
+
+上图除输入输出外数据线均是2位的，常数N={10}，同构映射矩阵$T_4$和它的逆分别为：
+$$
+T_4 = 
+\left(
+\begin{matrix}
+    1 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 0 \\
+    1 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+\end{matrix}
+\right)
+T^{-1}_4 = 
+\left(
+\begin{matrix}
+    1 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+\end{matrix}
+\right)
+$$
+
+这样，最终问题变成了$GF(2^2)$上的乘法逆，但这是非常简单的，因为它的真值表只有4项，很容易写出逻辑表达式。
+下面是文献[3]给出的$GF(2^4)$上的乘法器结构，它构成了模块`mul_4`：
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src=mul_4.svg></div>
+
+以及$GF(2^2)$上的乘法器，它构成了模块`mul_2`:
+
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src=mul_2.svg></div>
+
+这个乘法器中所有的加法器均为1位的异或门，乘法器为1位的与门，因此已经是底层的硬件实现。
 
 #### AXI4-Lite 接口模块
 
