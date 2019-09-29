@@ -1,0 +1,101 @@
+ 
+****************************************
+Report : area
+Design : sbox_wrapper
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 00:31:08 2019
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /home/xusine/FreePDK/lib/files/gscl45nm.db)
+
+Number of ports:                          666
+Number of nets:                           890
+Number of cells:                          498
+Number of combinational cells:            398
+Number of sequential cells:                42
+Number of macros/black boxes:               0
+Number of buf/inv:                        153
+Number of references:                       4
+
+Combinational area:               1109.425181
+Buf/Inv area:                      228.549096
+Noncombinational area:             127.649597
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                  1237.074778
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  --------------------
+sbox_wrapper                      1237.0748    100.0    38.9519   127.6496  0.0000  sbox_wrapper
+sbox                              1070.4733     86.5    14.0790     0.0000  0.0000  sbox
+sbox/aff1                          104.1846      8.4   104.1846     0.0000  0.0000  affine_8_3
+sbox/aff2                          106.5311      8.6   106.5311     0.0000  0.0000  affine_8_1
+sbox/inv1                          845.6786     68.4    39.8905     0.0000  0.0000  inversion_8
+sbox/inv1/imap1                     54.9081      4.4    54.9081     0.0000  0.0000  invmapping_8_1
+sbox/inv1/inv1                     136.5663     11.0    22.0571     0.0000  0.0000  inversion_4
+sbox/inv1/inv1/imap1                 8.9167      0.7     8.9167     0.0000  0.0000  invmapping_4_5
+sbox/inv1/inv1/inv1                  4.6930      0.4     4.6930     0.0000  0.0000  inversion_2_1
+sbox/inv1/inv1/map1                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_9
+sbox/inv1/inv1/mul1                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_10
+sbox/inv1/inv1/mul1/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_21
+sbox/inv1/inv1/mul2                 30.9738      2.5     0.0000     0.0000  0.0000  mul_2_with_masked_9
+sbox/inv1/inv1/mul2/mul_1           30.9738      2.5    30.9738     0.0000  0.0000  mul_2_19
+sbox/inv1/inv1/mul3                 30.5045      2.5     0.0000     0.0000  0.0000  mul_2_with_masked_8
+sbox/inv1/inv1/mul3/mul_1           30.5045      2.5    30.5045     0.0000  0.0000  mul_2_17
+sbox/inv1/inv1/sqr1                  0.0000      0.0     0.0000     0.0000  0.0000  square_2_1
+sbox/inv1/map1                      69.4564      5.6    69.4564     0.0000  0.0000  mapping_8_1
+sbox/inv1/mul1                     159.5620     12.9    36.6054     0.0000  0.0000  mul_4_2
+sbox/inv1/mul1/imap1                 9.8553      0.8     9.8553     0.0000  0.0000  invmapping_4_7
+sbox/inv1/mul1/map1                  9.3860      0.8     9.3860     0.0000  0.0000  mapping_4_13
+sbox/inv1/mul1/map2                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_11
+sbox/inv1/mul1/mul1                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_14
+sbox/inv1/mul1/mul1/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_29
+sbox/inv1/mul1/mul2                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_13
+sbox/inv1/mul1/mul2/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_27
+sbox/inv1/mul1/mul3                 30.0352      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_12
+sbox/inv1/mul1/mul3/mul_1           30.0352      2.4    30.0352     0.0000  0.0000  mul_2_25
+sbox/inv1/mul1/mul4                  4.6930      0.4     0.0000     0.0000  0.0000  mul_2_with_masked_11
+sbox/inv1/mul1/mul4/mul_1            4.6930      0.4     4.6930     0.0000  0.0000  mul_2_23
+sbox/inv1/mul2                     162.8471     13.2    36.6054     0.0000  0.0000  mul_4_1
+sbox/inv1/mul2/imap1                 8.9167      0.7     8.9167     0.0000  0.0000  invmapping_4_3
+sbox/inv1/mul2/map1                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_7
+sbox/inv1/mul2/map2                  9.3860      0.8     9.3860     0.0000  0.0000  mapping_4_5
+sbox/inv1/mul2/mul1                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_7
+sbox/inv1/mul2/mul1/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_15
+sbox/inv1/mul2/mul2                 30.0352      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_6
+sbox/inv1/mul2/mul2/mul_1           30.0352      2.4    30.0352     0.0000  0.0000  mul_2_13
+sbox/inv1/mul2/mul3                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_5
+sbox/inv1/mul2/mul3/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_11
+sbox/inv1/mul2/mul4                  8.9167      0.7     0.0000     0.0000  0.0000  mul_2_with_masked_4
+sbox/inv1/mul2/mul4/mul_1            8.9167      0.7     8.9167     0.0000  0.0000  mul_2_9
+sbox/inv1/mul3                     160.0313     12.9    36.6054     0.0000  0.0000  mul_4_0
+sbox/inv1/mul3/imap1                 8.9167      0.7     8.9167     0.0000  0.0000  invmapping_4_1
+sbox/inv1/mul3/map1                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_3
+sbox/inv1/mul3/map2                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_1
+sbox/inv1/mul3/mul1                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_3
+sbox/inv1/mul3/mul1/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_7
+sbox/inv1/mul3/mul2                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_2
+sbox/inv1/mul3/mul2/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_5
+sbox/inv1/mul3/mul3                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_1
+sbox/inv1/mul3/mul3/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_3
+sbox/inv1/mul3/mul4                  6.1009      0.5     0.0000     0.0000  0.0000  mul_2_with_masked_0
+sbox/inv1/mul3/mul4/mul_1            6.1009      0.5     6.1009     0.0000  0.0000  mul_2_1
+sbox/inv1/sqr1                      62.4169      5.0    14.0790     0.0000  0.0000  square_4
+sbox/inv1/sqr1/imap1                 8.9167      0.7     8.9167     0.0000  0.0000  invmapping_4_9
+sbox/inv1/sqr1/map1                  9.8553      0.8     9.8553     0.0000  0.0000  mapping_4_15
+sbox/inv1/sqr1/mul1                 29.5659      2.4     0.0000     0.0000  0.0000  mul_2_with_masked_15
+sbox/inv1/sqr1/mul1/mul_1           29.5659      2.4    29.5659     0.0000  0.0000  mul_2_31
+--------------------------------  ---------  -------  ---------  ---------  ------  --------------------
+Total                                                 1109.4252   127.6496  0.0000
+
+1

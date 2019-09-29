@@ -37,7 +37,7 @@ S_BOX = {
 }
 
 # generate sv file for simulation
-with open("../rtl/sbox.sv","w") as f:
+with open("../dc/sbox_memory.sv","w") as f:
     print("module sbox_memory(", file=f)
     print("  input [7:0] i", file=f)
     print("  ,output logic [7:0] o", file=f)

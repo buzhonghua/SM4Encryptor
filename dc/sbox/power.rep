@@ -1,0 +1,49 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : sbox_wrapper
+Version: N-2017.09-SP4
+Date   : Mon Sep 30 00:31:08 2019
+****************************************
+
+
+Library(s) Used:
+
+    gscl45nm (File: /home/xusine/FreePDK/lib/files/gscl45nm.db)
+
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 163.4233 uW   (71%)
+  Net Switching Power  =  68.3028 uW   (29%)
+                         ---------
+Total Dynamic Power    = 231.7262 uW  (100%)
+
+Cell Leakage Power     =   7.4796 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register       7.7245e-02        1.3249e-03          879.6384        7.9449e-02  (  33.21%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  8.6179e-02        6.6978e-02        6.5999e+03            0.1598  (  66.79%)
+--------------------------------------------------------------------------------------------------
+Total              0.1634 mW     6.8303e-02 mW     7.4796e+03 nW         0.2392 mW
+1
