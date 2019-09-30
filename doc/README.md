@@ -710,3 +710,8 @@ int main(){
 5. 补充UVM测试。目前的测试都是基于FPGA进行的功能测试。对于uvm来说还有很大的空间。
 
 ### 参考文献
+1. Liu F , Ji W , Hu L , et al. Analysis of the SMS4 block cipher[C]// Information Security and Privacy, 12th Australasian Conference, ACISP 2007, Townsville, Australia, July 2-4, 2007, Proceedings. Springer, Berlin, Heidelberg, 2007.
+
+2. Canright D . A very compact S-box for AES[J]. Ches, 2005, 3659:441-455.
+
+3. 徐艳华, 白雪飞, 郭立. 适合SMS4算法硬件实现的S盒构造新方法[J]. 中国科学技术大学学报, 2009, 39(11).
