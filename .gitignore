@@ -5,3 +5,4 @@ obj_dir/*
 src/sm4
 obj_dir
 *.drawio
+out/*
