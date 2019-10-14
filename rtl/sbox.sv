@@ -368,7 +368,7 @@ module and_linear_2(
   output m_o
 );
   
-  assign d_o =  (~x1 & x2 & m1) | (x1 & ~x2 & m2) | (x1 & x2 & (m1 == m2));
+  assign d_o =  (~x1 & x2 & m1) | (x1 & ~x2 & m2) | (x1 & x2 & ~(m1 ^ m2));
   assign m_o = m1 & m2;
 
 endmodule
