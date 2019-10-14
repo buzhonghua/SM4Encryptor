@@ -46,7 +46,7 @@ wire [word_width_p-1:0] sbox_lo;
 for (genvar j = 0; j < 4; ++j) begin: SBOX_ARRAY
     sbox sbox (
         .i(xor_tree_0_lo[j*byte_width_p+:byte_width_p])
-        ,.m(mask_i[j*byte_width_p+:byte_width_p])
+        ,.m_i(mask_i[j*byte_width_p+:byte_width_p])
         ,.o(sbox_lo[j*byte_width_p+:byte_width_p])
         ,.m_o(m_lo[j*byte_width_p+:byte_width_p])
     );

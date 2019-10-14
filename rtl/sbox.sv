@@ -13,7 +13,7 @@
 
 module sbox(
   input [7:0] i
-  ,input [7:0] m
+  ,input [7:0] m_i
   ,output logic [7:0] o
   ,output logic [7:0] m_o
 );
@@ -21,7 +21,7 @@ module sbox(
   wire [7:0] m1, m2;
 
   affine_8 aff1(.x(i), .d(t1));
-  affine_8 affm1(.x(m), .d(m1));
+  affine_8 affm1(.x(m_i), .d(m1));
 
   inversion_8 inv1(.x(t1 ^ 8'b11010011), .mask(m1), .d(t2), .d_masked(m2));
 
@@ -284,48 +284,7 @@ module inversion_2(
 
 endmodule
 
-// This module hopes to complement the nonlinearity.
-module mul_2_with_masked(
-  // With masked
-  input [1:0] x1,
-  input [1:0] x2,
-
-  input [1:0] m1,
-  input [1:0] m2,
-
-  output [1:0] d,
-  output [1:0] d_masked
-);
-  wire [1:0] t0; // (x_o_1 ^ m1) * (x_o_2 ^ m2)
-  wire t1, t2;
-
-  wire t3 = x1[1] ^ m1[0];
-  wire t4 = x1[0] ^ m1[1];
-  wire t5 = x2[1] ^ m2[0];
-  wire t6 = x2[0] ^ m2[1];
-  wire t7 = x1[0] ^ m1[0];
-  wire t8 = x2[0] ^ m2[0];
-  wire t9 = x1[1] ^ m1[1];
-  wire t10 = x2[1] ^ m2[1];
-  
-
-  assign t1 = (t3 ^ t4) & (t5 ^ t6);
-  assign t2 = t8 & t7;
-  assign t0[1] = t1 ^ t2;
-
-  assign t0[0] = (t9 & t10) ^ t2;
-
-  mul_2 mul_2( // m1 * m2
-    .x1(m1)
-    ,.x2(m2)
-    ,.d(d_masked)
-  );
-
-  assign d = t0 ^ d_masked;
-
-endmodule
-
-//The multiplier on GF(2^2)
+/*
 module mul_2(
   input [1:0] x1,
   input [1:0] x2,
@@ -336,5 +295,80 @@ module mul_2(
   assign t2 = x1[0] & x2[0];
   assign d[1] = t1 ^ t2;
   assign d[0] = (x1[1] & x2[1]) ^ t2;
+
+endmodule
+
+*/
+
+module mul_2_with_masked(
+  input [1:0] x1,
+  input [1:0] x2,
+
+  input [1:0]  m1,
+  input [1:0]  m2,
+
+  output [1:0] d,
+  output [1:0] d_masked
+);
+  wire t1, t2, t3;
+  wire m11, m22, m33;
+
+
+  and_linear_2 a1(
+    .x1(x1[1] ^ x1[0]),
+    .x2(x2[1] ^ x2[0]),
+
+    .m1(m1[1] ^ m1[0]),
+    .m2(m2[1] ^ m2[0]),
+
+    .d_o(t1),
+    .m_o(m11)
+  );
+
+  and_linear_2 a2(
+    .x1(x1[0]),
+    .x2(x2[0]),
+
+    .m1(m1[0]),
+    .m2(m2[0]),
+
+    .d_o(t2),
+    .m_o(m22)
+  );
+
+  and_linear_2 a3(
+    .x1(x1[1]),
+    .x2(x2[1]),
+    
+    .m1(m1[1]),
+    .m2(m2[1]),
+
+    .d_o(t3),
+    .m_o(m33)
+  );
+
+  assign d[1] = t1 ^ t2;
+  assign d_masked[1] = m11 ^ m22;
+
+  assign d[0] = t3 ^ t2;
+  assign d_masked[0] = m33 ^ m22;
+
+endmodule
+
+// a linear and operation for mul_2
+// (a ^ m1) &' (c ^ m2) = (a & c) ^ (m1 & m2)
+
+module and_linear_2(
+  input x1,
+  input x2,
+  input m1,
+  input m2,
+
+  output d_o,
+  output m_o
+);
+  
+  assign d_o =  (~x1 & x2 & m1) | (x1 & ~x2 & m2) | (x1 & x2 & (m1 == m2));
+  assign m_o = m1 & m2;
 
 endmodule
