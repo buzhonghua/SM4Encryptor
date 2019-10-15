@@ -112,6 +112,66 @@ src|C++源程序，用于算法验证
 testing|适用于Verilator的C++ Testbench文件
 uvm_testing|适用于UVM平台搭建的文件，目前只有一个interface.
 
+dc目录下主要为Design Compiler的综合报告，其主要文件有：
+
+文件名|说明
+-|-
+sbox|直接使用组合逻辑的SBox的DC综合报告
+sbox_memory|使用查找表的SBox的DC综合报告
+top|顶层模块的DC综合报告
+
+driver目录下主要是IP核和驱动程序，其主要的文件有：
+
+文件名|说明
+-|-
+AXI_SM4_v1_0_S00_AXI.sv|Vivado产生的AXI接口顶层模块
+AXI_SM4_v1_0.sv|Vivado产生的IP核的顶层模块
+sm4_driver.c|IP核加速器的驱动源程序，包括加密，ECB和CBC分组加密实现
+sm4_driver.h|IP核加速器的驱动源程序的头文件
+
+include目录下主要的文件有：
+
+文件名|说明
+-|-
+sm4_encryptor_pkg.svh|RTL设计中常量的定义
+sm4_encryptor.hpp|SM4算法验证的C++头文件
+
+rtl目录下主要为RTL电路设计，的文件有：
+
+文件名|说明
+-|-
+key_cache.sv|Cache设计文件
+lru_recorder.sv|LRU状态机设计文件
+priority_encoder.sv|4bit优先编码器的设计文件
+random_mask.sv|32位LFSR随机数产生器设计文件
+roll_shifter.sv|32位循环移位模块设计文件
+<span>sbox.sv</span>|Sbox设计文件
+sm4_encryptor.sv|SM4加速器的顶层文件
+turn_transform.sv|执行一次轮变换的组合逻辑的文件
+xor_tree.sv|异或树设计文件
+
+script目录下的主要文件有：
+
+文件名|说明
+-|-
+<span>script.py</span>|用于产生SBox查找表的Python脚本
+
+src目录下主要为C++源代码文件，其主要文件有：
+
+文件名|说明
+-|-
+lfsr.cpp|用于验证LFSR周期的C++设计文件
+sm4.cpp|用于验证SM4顶层算法的C++文件
+
+testing目录下的主要文件都是用于Verilator验证器的Testbench, 有：
+
+文件名|说明
+-|-
+Makefile|用于模块验证Make文件
+sm4_box.cpp|用于验证SBox的TB
+sm4_encryptor.cpp|用于验证顶层的TB
+turn_transform.cpp|用于验证轮变换模块的TB
+
 ### 方案介绍
 
 
@@ -271,6 +331,7 @@ SM4是一种分组加密算法，这也意味着长度超过128bit的明文需�
 0xE|无|清除Cache
 0xF|无|设置用于掩码的随机数
 
+顶层模块的定义可以参考driver/AXI_SM4_v1_0.sv。
 
 #### SBox
 模块`Sbox`的I/O口如下：
@@ -385,11 +446,13 @@ F[(X_0 \oplus M_0) \otimes' (X_1 \oplus M_1)] \\
 $$
 其中$F(X_0X_1)$为期望的结果$\text{SBox}(x)$, 而$F(M_0M_1)$就是求得的$M_o$。
 
+SBox的具体定义可以参考rtl/sbox.sv文件。
+
 #### AXI4-Lite 接口模块
 
 AXI4-Lite模块主要是由Xilinx官方生成的，因而程序可以很容易的打包成IP核，供ZYNQ系列的FPGA验证和使用。
 
-AXI4接口定义文件可以参考driver/AXI_SM4的两个SystemVerilog文件。
+AXI4接口定义文件可以参考driver/AXI_SM4_v1_0_S00_AXI.sv文件。
 
 #### SM4算法模块
 
@@ -427,6 +490,8 @@ eCrypt|32次迭代进行加密/解密。
 eReverse|翻转4个字的顺序
 eDone| 操作完成，如果yumi此时为1,那么跳转到eIdle阶段，否则继续保持在eDone阶段。
 
+SM4加速器的设计文件可以参考rtl/sm4_encryptor.sv.
+
 #### Cache
 
 Cache的主要作用是用于存储最近密钥的轮密钥。其系统框图如下所示：
@@ -457,6 +522,8 @@ v_w_i|1|输入|写入是否有效
 tkey_o|32|输出|读轮密钥得到的结果
 invalid_i|1|输入|是否清空Cache
 
+Cache设计文件可以参考rtl/key_cache.sv。
+
 #### 轮变换模块
 
 从根本上讲，轮密钥的产生和加密/解密的过程都是使用类似的轮函数，但二者的区别是循环移位的量不同。模块`turn_transform`的作用就是执行每一次轮变换。
@@ -480,6 +547,8 @@ mask_i|32|输入|当前轮用于保护加密过程的Mask
 o|32|输出|当前迭代的结果
 mask_o|32|输出|变换后的Mask.
 
+轮变换的结构可以参考文件rtl/turn_transform.sv。
+
 #### 辅助性模块
 
 其他的辅助性模块包括实现LRU的模块`lru_recorder`，用于选择被替换的元素，其I/O口的分布如下：
@@ -492,12 +561,16 @@ access[1/2]_1|2|输入|访问的表项
 v[1/2]_i|1|输入|访问是否有效
 replace_which_o|2|输出|哪一项为替换项
 
+其设计文件为rtl/lru_recorder.sv。
+
 `priority_encoder`是一个4位优先编码器，主要被用在了Cache和LRU的实现逻辑中，其内部的实现本质上是一个case语句。其I/O口定义如下：
 
 名称|位宽|方向|意义
 -|-|-|-
 i|4|输入|被编码信号（单活跃态）
 o|2|输出|编码输出
+
+其设计文件为rtl/priority_encoder.sv。
 
 `roll_shifter`是用户可以自定义的用于进行循环移位的硬件。其I/O口和参数定义如下：
 
@@ -506,12 +579,28 @@ o|2|输出|编码输出
 i| width_p | 输入 | 操作数
 o| width_p | 输出 | 结果
 
+其设计文件为rtl/roll_shifter.sv。
+
 `xor_tree`则是用于多个操作数异或的平衡二叉树。如果要异或的个数不为$2^N$，那么剩余的位置用0补齐。其I/O口的定义如下：
 
 名称|位宽|方向|意义
 -|-|-|-
 i| width_p | 输入 | 操作数
 o| width_p | 输出 | 结果
+
+其设计文件为rtl/xor_tree.sv。
+
+除此之外，我们还设计了一个用于生成随机数的LSFR。其I/O口定义如下：
+
+名称|位宽|方向|意义
+-|-|-|-
+clk_i|1|输入|时钟
+reset_i|1|输入|高电平有效复位信号
+load_i|32|输入|计数器Load值
+load_n_i|1|输入|load有效信号，高电平有效
+o|32|输出|LSFR的输出
+
+
 
 ### 验证方案
 

@@ -1,5 +1,5 @@
 sm4_encryptor:
-	verilator --cc -sv -Wno-fatal \
+	verilator --cc -sv -Wno-fatal --coverage \
 	../include/sm4_encryptor_pkg.svh \
 	../rtl/xor_tree.sv \
 	../rtl/key_cache.sv \

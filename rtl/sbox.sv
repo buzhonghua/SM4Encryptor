@@ -170,7 +170,7 @@ module mul_4(
   output [3:0] d_masked
 );
   wire [1:0] t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, n;
-  wire [1:0] m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12;
+  wire [1:0] m1, m2, m3, m4, m5, m6, m7, m8, m9, m11, m12;
 
   mapping_4 map1(.x(x1), .d_h(t1), .d_l(t2));
   mapping_4 mapm1(.x(mask1), .d_h(m1), .d_l(m2));
@@ -181,7 +181,7 @@ module mul_4(
   mul_2_with_masked mul1(.x1(t5), .x2(t6), .m1(m5), .m2(m6), .d(t7), .d_masked(m7));
   mul_2_with_masked mul2(.x1(t1), .x2(t3), .m1(m1), .m2(m3), .d(t8), .d_masked(m8));
   mul_2_with_masked mul3(.x1(t2), .x2(t4), .m1(m2), .m2(m4), .d(t9), .d_masked(m9));
-  mul_2_with_masked mul4(.x1(t8), .x2(n),  .m1(m8), .m2('0),  .d(t10), .d_masked(m10));
+  mul_2_with_masked mul4(.x1(t8), .x2(n),  .m1(m8), .m2('0),  .d(t10), .d_masked());
 
   invmapping_4 imap1(.x1(t11), .x2(t12), .d(d));
   invmapping_4 imap2(.x1(m11), .x2(m12), .d(d_masked));
@@ -198,7 +198,7 @@ module mul_4(
   assign m11 = m7 ^ m9;
 
   assign t12 = t10 ^ t9;
-  assign m12 = m10 ^ m9;
+  assign m12 = m9;
 
 endmodule
 

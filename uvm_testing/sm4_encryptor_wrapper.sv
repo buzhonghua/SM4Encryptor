@@ -7,7 +7,7 @@
 
 import sm4_encryptor_pkg::*;
 
-interface sm4_encryptor_if(
+module sm4_encryptor_wrapper(
     input clk_i
     ,input reset_i
     // data ports
@@ -39,35 +39,16 @@ interface sm4_encryptor_if(
     ,output [3:0] cache_valid_o
 );
 
-endinterface
+sm4_encryptor core( .* );
 
-
-module sm4_encryptor_wrapper(
-    sm4_encryptor_if inf
-);
-
-sm4_encryptor core(
-    ,.clk_i(inf.clk_i)
-    ,.reset_i(inf.reset_i)
-    ,.content_i(inf.content_i)
-    ,.key_i(inf.key_i)
-    ,.encode_or_decode_i(inf.encode_or_decode_i)
-    ,.v_i(inf.v_i)
-    ,.ready_o(inf.ready_o)
-    ,.crypt_o(inf.crypt_o)
-    ,.v_o(inf.v_o)
-    ,.yumi_i(inf.yumi_i)
-    ,.invalid_cache_i(inf.invalid_cache_i)
-);
-
-assign inf.state_o = core.state_cnt_r;
-assign inf.state_cnt_o = core.state_cnt_r;
-assign inf.sfr_o = core.sfr_r;
-assign inf.replace_which_o = core.cache.to_replace;
-assign inf.selected_o = core.cache.selected_n;
-assign inf.cache_is_missed_o = core.cache_is_miss;
-assign inf.cam_o = core.cache.cam_r;
-assign inf.cache_data_o = core.cache.cache_r;
-assign inf.cache_valid_o = core.cache.cache_valid_r;
+assign state_o = core.state_cnt_r;
+assign state_cnt_o = core.state_cnt_r;
+assign sfr_o = core.sfr_r;
+assign replace_which_o = core.cache.to_replace;
+assign selected_o = core.cache.selected_n;
+assign cache_is_missed_o = core.cache_is_miss;
+assign cam_o = core.cache.cam_r;
+assign cache_data_o = core.cache.cache_r;
+assign cache_valid_o = core.cache.cache_valid_r;
 
 endmodule

@@ -13,8 +13,6 @@ module sm4_encryptor
     ,input [group_size_p-1:0] content_i
     ,input [group_size_p-1:0] key_i
     ,input encode_or_decode_i // decode is 1.
-    // random masking.
-    ,input [word_width_p-1:0] mask_i
     // handshake ports
     ,input v_i
     ,output ready_o
@@ -52,7 +50,9 @@ module sm4_encryptor
             eCrypt: if(iteration_is_done) state_r <= eReverse; else state_r <= eCrypt;
             eReverse: state_r <= eDone;
             eDone: if(yumi_i) state_r <= eIdle; else state_r <= eDone;
-            default: state_r <= state_r;
+            default: begin /*verilator coverage_block_off*/
+                state_r <= eIdle;
+            end
         endcase
     end
 
@@ -72,13 +72,12 @@ module sm4_encryptor
         endcase
     end
 
-    reg [group_size_p-1:0] sfr_r; // register containing current operand to perform turn keys
+    reg [3:0][word_width_p-1:0] sfr_r; // register containing current operand to perform turn keys
     wire [group_size_p-1:0] xor_res = sfr_r ^ key_xor_mask_p;
     wire [word_width_p-1:0] turn_transform_res;
 
     logic [word_width_p-1:0] mask_n;
-    reg [word_width_p-1:0] mask_r;
-    reg [word_width_p-1:0] mask_delay_r;
+    reg [3:0][word_width_p-1:0] mask_r;
 
     always_ff @(posedge clk_i) begin
         if(reset_i) begin
@@ -87,41 +86,55 @@ module sm4_encryptor
         else unique case(state_r)
             eIdle: if(v_i) sfr_r <= key_i;
             eCheckKey: sfr_r <= xor_res;
-            eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[group_size_p-1:word_width_p]};
-            eLoadCrypt: sfr_r <= content_i ^ {mask_i, 96'b0};
-            eCrypt: sfr_r <= {turn_transform_res, sfr_r[4*word_width_p-1:3*word_width_p] ^ mask_r, sfr_r[3*word_width_p-1:word_width_p]};
-            eReverse: sfr_r <= {sfr_r[word_width_p-1:0], sfr_r[2*word_width_p-1:word_width_p], sfr_r[3*word_width_p-1:2*word_width_p], (sfr_r[group_size_p-1:3*word_width_p]) ^ mask_r};
+            eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[3:1]};
+            eLoadCrypt: sfr_r <= content_i ^ {content_i[word_width_p-1:0] ^ mask_r[3], 96'b0};
+            eCrypt: sfr_r <= {turn_transform_res, sfr_r[3:1]};
+            eReverse: sfr_r <= {sfr_r[0] ^ mask_r[0], sfr_r[1] ^ mask_r[1], sfr_r[2] ^ mask_r[2], sfr_r[3] ^ mask_r[3]};
             default: begin
 
             end
         endcase
     end
-    // Update for mask_r
+
+    wire [word_width_p-1:0] mask_li = mask_r[3] ^ mask_r[2] ^ mask_r[1];
+
+    // Update for mask_r[3]
     always_ff @(posedge clk_i) begin
         if(reset_i) begin
-            mask_r <= '0;
+            mask_r[3] <= '0;
         end
         else unique case(state_r)
-            eCheckKey: begin
-                mask_r <= '0;
-            end
             eLoadCrypt: begin
-                mask_r <= mask_i;
+                mask_r[3] <= content_i[word_width_p-1:0] ^ mask_r[3];
             end
             eCrypt: begin
-                mask_r <= mask_n;
+                mask_r[3] <= mask_n;
             end
             default: begin
                 
             end
         endcase
     end
+
+    // Update for mask[2:0]
     always_ff @(posedge clk_i) begin
-        //for(integer i = 0; i < 4; ++i) begin
-        //    $write("%b ",sfr_r[i*word_width_p+:word_width_p]);
-        //end
-        //$display("");
-        $display("%b", mask_r);
+        if(reset_i) begin
+            mask_r[2] <= '0;
+            mask_r[1] <= '0;
+            mask_r[0] <= '0;
+        end
+        else unique case(state_r)
+            eCrypt: begin
+                mask_r[2] <= mask_r[3];
+                mask_r[1] <= mask_r[2];
+                mask_r[0] <= mask_r[1];
+            end
+            default: begin
+                mask_r[2] <= '0;
+                mask_r[1] <= '0;
+                mask_r[0] <= '0;
+            end
+        endcase
     end
 
     logic [word_width_p-1:0] turn_rkeys;
@@ -130,7 +143,8 @@ module sm4_encryptor
         .i(sfr_r)
         ,.is_key_i(state_r == eEvaKey)
         ,.rkey_i(turn_rkeys)
-        ,.mask_i(mask_r)
+        ,.mask_i(mask_li)
+        ,.dismask_i(mask_r[0])
         ,.o(turn_transform_res)
         ,.mask_o(mask_n)
     );

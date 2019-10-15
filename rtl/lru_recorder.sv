@@ -21,19 +21,26 @@ module lru_recorder(
 
     for(genvar i = 0; i < 4; ++i) begin
         for(genvar j = 0; j < 4; ++j) begin
-            always_ff @(posedge clk_i) begin
-                if(reset_i) matrix_r[i][j] <= '0;
-                else if(v1_i) begin
-                    if(access1_i == j)
-                        matrix_r[i][j] <= 1'b0;
-                    else if(access1_i == i)
-                        matrix_r[i][j] <= 1'b1;
+            if(i != j) begin: NO_DIA
+                always_ff @(posedge clk_i) begin
+                    if(reset_i) matrix_r[i][j] <= '0;
+                    else if(v1_i) begin
+                        if(access1_i == j)
+                            matrix_r[i][j] <= 1'b0;
+                        else if(access1_i == i)
+                            matrix_r[i][j] <= 1'b1;
+                    end
+                    else if(v2_i) begin
+                        if(access2_i == j)
+                            matrix_r[i][j] <= 1'b0;
+                        else if(access2_i == i)
+                            matrix_r[i][j] <= 1'b1;
+                    end
                 end
-                else if(v2_i) begin
-                    if(access2_i == j)
-                        matrix_r[i][j] <= 1'b0;
-                    else if(access2_i == i)
-                        matrix_r[i][j] <= 1'b1;
+            end
+            else begin
+                always_ff @(posedge clk_i) begin
+                    matrix_r[i][j] <= 1'b0;
                 end
             end
         end

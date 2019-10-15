@@ -15,6 +15,7 @@ module turn_transform
     ,input is_key_i // Whether i is key. Because rolling shifting is different for key and content.
     ,input [word_width_p-1:0] rkey_i
     ,input [word_width_p-1:0] mask_i
+    ,input [word_width_p-1:0] dismask_i // to canceling the last mask signal
     ,output [word_width_p-1:0] o
     ,output [word_width_p-1:0] mask_o
 );
@@ -65,7 +66,7 @@ rolling_shifting_group#(
     ,.o(rkey_shift)
 );
 
-wire [7:0][word_width_p-1:0] content_shift;
+wire [4:0][word_width_p-1:0] content_shift;
 
 rolling_shifting_group#(
     .width_p(word_width_p)
@@ -79,35 +80,37 @@ rolling_shifting_group#(
 //32'd10,32'd24
 rolling_shifting_group #(
     .width_p(word_width_p)
-    ,.size_p(2)
-    ,.shift_number_p({32'd2,  32'd18})
+    ,.size_p(1)
+    ,.shift_number_p({32'd2})
 ) mo_con (
     .i(m_lo)
-    ,.o(content_shift[5:4])
+    ,.o(content_shift[4])
 );
 
-logic [2:0][word_width_p-1:0] extra_shift;
+logic [3:0][word_width_p-1:0] extra_shift;
 
 rolling_shifting_group #(
     .width_p(word_width_p)
-    ,.size_p(2)
-    ,.shift_number_p({32'd10,  32'd24})
+    ,.size_p(3)
+    ,.shift_number_p({32'd10,  32'd24,  32'd18})
 ) mo_ext (
     .i(m_lo)
-    ,.o(extra_shift[1:0])
+    ,.o(extra_shift[2:0])
 );
 
-assign extra_shift[2] = m_lo;
+assign extra_shift[3] = m_lo;
 
 wire [7:0][word_width_p-1:0] sel_shift;
 
-for(genvar j = 0; j < 6; ++j) begin
+for(genvar j = 0; j < 5; ++j) begin
     if(j < 2)
         assign sel_shift[j] = is_key_i ? rkey_shift[j] : content_shift[j];
     else
         assign sel_shift[j] = is_key_i ? '0 :content_shift[j];
 end
 
+
+assign sel_shift[5] = dismask_i;
 assign sel_shift[6] = i[word_width_p-1:0];
 assign sel_shift[7] = sbox_lo;
 
@@ -122,7 +125,7 @@ xor_tree #(
 
 xor_tree #(
     .width_p(word_width_p)
-    ,.size_p(3)
+    ,.size_p(4)
 ) mo_xor (
     .i(extra_shift)
     ,.o(mask_o)
