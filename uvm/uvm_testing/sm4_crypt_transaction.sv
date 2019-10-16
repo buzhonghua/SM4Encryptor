@@ -13,7 +13,15 @@ class sm4_crypt_transaction extends uvm_sequence_item;
     bit [group_size_p-1:0] expected_crypt;
 
     function void post_randomize();
+        
+    endfunction
+
+    function void evaluate_expectation();
         encryption(key, content, decode, expected_crypt);
+    endfunction
+
+    function random_content();
+        content = {$random, $random, $random, $random};
     endfunction
 
     `uvm_object_utils(sm4_crypt_transaction);

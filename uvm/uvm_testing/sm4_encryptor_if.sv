@@ -6,7 +6,6 @@ interface sm4_encryptor_if
 (
 
 );
-    
 logic clk_i;
 logic reset_i;
 
@@ -32,5 +31,6 @@ logic [group_size_p-1:0] sfr_o;
 logic [1:0] replace_which_o;
 logic [1:0] selected_o;
 logic cache_is_missed_o;
+
 
 endinterface

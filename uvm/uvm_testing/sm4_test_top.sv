@@ -24,8 +24,10 @@ sm4_encryptor_wrapper dut(
 );
 
 initial begin
-    uvm_config_db #(virtual sm4_encryptor_if)::set(null, "uvm_test_top", "vif", dut_if);
-    run_test("sm4_driver");
+    uvm_config_db #(virtual sm4_encryptor_if)::set(null, "uvm_test_top.sm4_driver", "vif", dut_if);
+    uvm_config_db #(virtual sm4_encryptor_if)::set(null, "uvm_test_top.sm4_monitor", "vif", dut_if);
+    uvm_coreservice_t::get().get_root().set_timeout(1000000ns);
+    run_test("sm4_env");
 end
 
 

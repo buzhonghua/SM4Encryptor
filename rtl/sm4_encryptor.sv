@@ -87,7 +87,7 @@ module sm4_encryptor
             eIdle: if(v_i) sfr_r <= key_i;
             eCheckKey: sfr_r <= xor_res;
             eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[3:1]};
-            eLoadCrypt: sfr_r <= content_i ^ {content_i[word_width_p-1:0] ^ mask_r[3], 96'b0};
+            eLoadCrypt: sfr_r <= content_i ^ {content_i[word_width_p-1:0], 96'b0};
             eCrypt: sfr_r <= {turn_transform_res, sfr_r[3:1]};
             eReverse: sfr_r <= {sfr_r[0] ^ mask_r[0], sfr_r[1] ^ mask_r[1], sfr_r[2] ^ mask_r[2], sfr_r[3] ^ mask_r[3]};
             default: begin
@@ -104,8 +104,11 @@ module sm4_encryptor
             mask_r[3] <= '0;
         end
         else unique case(state_r)
+            eCheckKey: begin
+                mask_r[3] <= '0;
+            end
             eLoadCrypt: begin
-                mask_r[3] <= content_i[word_width_p-1:0] ^ mask_r[3];
+                mask_r[3] <= content_i[word_width_p-1:0];
             end
             eCrypt: begin
                 mask_r[3] <= mask_n;

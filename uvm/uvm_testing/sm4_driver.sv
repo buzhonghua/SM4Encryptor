@@ -13,7 +13,6 @@ class sm4_driver extends uvm_driver;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        `uvm_info("sm4_driver", "build_phase is called!", UVM_LOW);
         if(!uvm_config_db #(virtual sm4_encryptor_if)::get(this, "", "vif", vif))
             `uvm_fatal("sm4_driver", "virtual interface must be set for vif!");
     endfunction
@@ -31,7 +30,6 @@ task sm4_driver::main_phase(uvm_phase phase);
     sm4_crypt_transaction trans;
     phase.raise_objection(this);
     reset();
-    `uvm_info("sm4_driver", "main_phase is called!", UVM_LOW);
     for(int i = 0; i < 32; ++i) begin
         trans = new;
         trans.randomize();
@@ -65,7 +63,6 @@ endtask
 
 task sm4_driver::encrypt(sm4_crypt_transaction trans);
     int result = 0;
-    `uvm_info("sm4_driver", "encrypt is called!", UVM_LOW);
     // set value to interface.
     vif.content_i = trans.content;
     vif.key_i = trans.key;
@@ -74,14 +71,6 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
     while(vif.v_o == 0) begin
         tick();
         result++;
-    end
-    trans.display();
-    $display("actual_output:%h", vif.crypt_o);
-    if(trans.expected_crypt != vif.crypt_o) begin    
-        `uvm_info("sm4_driver", "mismatch!", UVM_LOW);
-    end
-    else begin
-        `uvm_info("sm4_driver", "passed!", UVM_LOW);
     end
 
     vif.yumi_i = 1'b1;
