@@ -68,7 +68,7 @@ module sm4_encryptor
         else unique case(state_r)
             eEvaKey: state_cnt_r <= state_cnt_n;
             eCrypt: state_cnt_r <= state_cnt_n;
-            default: state_cnt_r <= '0; // This should be replaced with a random number for preventing PDA.
+            default: state_cnt_r <= '0;
         endcase
     end
 

@@ -77,24 +77,33 @@ uint32_t CK[32] = {
 };
 
 
-QWord encryption(const QWord &value, const QWord &key){
+QWord encryption(const QWord &value, const QWord &key, bool decode){
     // 1. Generate Extended Key
     QWord ext_key{};
     for(int i = 0; i < 4; i++) {
         ext_key[i] = key[i] ^ FK[i];
     }
     QWord position = value;
-    // 2. Call Turn Function
+    // 2. Generate Round key
+
+    uint32_t rk[32];
+
+    for(int i = 0; i < 32; ++i){
+        rk[i] = turnFunction(ext_key, CK[i], {0, 13, 23});
+        ext_key = ext_key << 1;
+        ext_key[3] = rk[i];
+    }
+
     for(int i = 0; i < 32; ++i) {
         // generate rk
-        uint32_t rk = turnFunction(ext_key, CK[i], {0, 13, 23});
-        ext_key = ext_key << 1;
-        ext_key[3] = rk;
-        uint32_t new_ele = turnFunction(position, rk, {0, 2, 10, 18, 24});
+        uint32_t new_ele = 0;
+        if(decode)
+            new_ele = turnFunction(position, rk[31-i], {0, 2, 10, 18, 24});
+        else
+            new_ele = turnFunction(position, rk[i], {0, 2, 10, 18, 24});
+            
         position = position << 1;
         position[3] = new_ele;
-        // std::printf("rk[%d] = %x\n", i, rk);
-        // std::printf("X[%d] = %x\n", i, new_ele);
     }
     position.reverseInPlace();
     return position;

@@ -18,6 +18,7 @@ module priority_encoder
             4'b?100: o = 2'd2;
             4'b1000: o = 2'd3;
             4'b0000: o = 2'd0;
+            default: o = 2'd0;
         endcase
     else 
         always_comb unique casez(i)
@@ -26,5 +27,6 @@ module priority_encoder
             4'b?011: o = 2'd2;
             4'b0111: o = 2'd3;
             4'b1111: o = 2'd0;
+            default: o = 2'd0;
         endcase
 endmodule

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
 
 
 struct QWord {
@@ -24,6 +25,11 @@ struct QWord {
         for(int i = 0; i <4; ++i){
             value[i] = rand() & 0x1? - rand() : rand();
         }
+    }
+
+    void reverseInPlace(){
+        std::swap(this->value[0], this->value[3]);
+        std::swap(this->value[1], this->value[2]);
     }
 };
 
@@ -117,6 +123,7 @@ int main(int argc, char ** argv){
     dut->eval();
 
     reset();
+
 
     for(int i = 0; i < 32; ++i){
         QWord key1;
