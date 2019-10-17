@@ -644,6 +644,10 @@ DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证�
 上述各类之间的信号均通过封装的Transaction进行通信，为了简单起见，本验证平台定义了两种类型的Transaction：`sm4_crypt_transaction`和`sm4_check_transaction`，二者的数据格式分别与DUT的输入信号和输出信号保持一致，由此使得数据流比较易于解析。在`sm4_env`中启用了3个*uvm_tlm_analysis_fifo*：连接Driver和Reference model的`dri_ref_fifo`；连接Reference model和Scoreboard的`ref_scb_fifo`；以及连接Monitor和Scoreboard的`mon_scb_fifo`。它们一起构成了验证平台各单元间的数据通道。
 除此之外，一个独立的单元`testcase`用于产生特定的测试向量，该向量通过Sequencer送出，成为整个验证平台的激励。
 
+为了提高代码覆盖率，我们设计了两种测试方式。首先是对复位测试，主要是用于测试不同的状态复位进入Idle态的情况。这个测试的执行函数是`sm4_driver`中的`reset_test`完成的。
+
+其次是适用于Cache的测试。我们在`testcase`中模拟了一个Cache的情况，即发出的测试向量有1/4的概率为Cache中存在的密钥，其余的情况下我们会同时修改`testcase`中维护的列表。最终我们成功覆盖了4个Cache位置的Miss/Hit情况。这种情况下的我们采用了300次模拟就达到了100%的代码覆盖率。
+
 #### 软件验证/仿真
 
 首先，我们使用Vivado搭建基于Zynq 7000系列FPGA的测试平台，并使用框图构建以下系统：
