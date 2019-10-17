@@ -39,6 +39,10 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
         }
         coverpoint trans.content;
         coverpoint trans.key;
+        coverpoint trans.enable_mask{
+            bins enabled = {1};
+            bins disabled = {0};
+        }
     endgroup
 
     virtual function void report_phase(uvm_phase phase);
@@ -93,6 +97,7 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
     vif.content_i = trans.content;
     vif.key_i = trans.key;
     vif.encode_or_decode_i = trans.decode;
+    vif.enable_mask_i = trans.enable_mask;
     vif.v_i = 1'b1;
     while(vif.v_o == 0) begin
         tick();
