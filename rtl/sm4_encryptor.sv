@@ -23,6 +23,7 @@ module sm4_encryptor
     ,input yumi_i
     // invalid cache lines.
     ,input invalid_cache_i
+    ,input enable_mask_i
 );
     /*
         State Machine of Accelerator:
@@ -79,6 +80,8 @@ module sm4_encryptor
     logic [word_width_p-1:0] mask_n;
     reg [3:0][word_width_p-1:0] mask_r;
 
+    wire [word_width_p-1:0] mask_input = content_i[word_width_p-1:0] & {word_width_p{enable_mask_i}};
+
     always_ff @(posedge clk_i) begin
         if(reset_i) begin
             sfr_r <= '0; 
@@ -87,7 +90,7 @@ module sm4_encryptor
             eIdle: if(v_i) sfr_r <= key_i;
             eCheckKey: sfr_r <= xor_res;
             eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[3:1]};
-            eLoadCrypt: sfr_r <= content_i ^ {content_i[word_width_p-1:0], 96'b0};
+            eLoadCrypt: sfr_r <= content_i ^ {mask_input, 96'b0};
             eCrypt: sfr_r <= {turn_transform_res, sfr_r[3:1]};
             eReverse: sfr_r <= {sfr_r[0] ^ mask_r[0], sfr_r[1] ^ mask_r[1], sfr_r[2] ^ mask_r[2], sfr_r[3] ^ mask_r[3]};
             default: begin
@@ -108,7 +111,7 @@ module sm4_encryptor
                 mask_r[3] <= '0;
             end
             eLoadCrypt: begin
-                mask_r[3] <= content_i[word_width_p-1:0];
+                mask_r[3] <= mask_input;
             end
             eCrypt: begin
                 mask_r[3] <= mask_n;

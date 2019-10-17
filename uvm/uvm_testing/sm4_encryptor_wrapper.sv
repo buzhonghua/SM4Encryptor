@@ -23,6 +23,7 @@ sm4_encryptor core(
     ,.v_o(ifc.v_o)
     ,.yumi_i(ifc.yumi_i)
     ,.invalid_cache_i(ifc.invalid_cache_i)
+    ,.enable_mask_i(ifc.enable_mask_i)
 );
 
 //assign ifc.replace_which_o = core.cache.to_replace;

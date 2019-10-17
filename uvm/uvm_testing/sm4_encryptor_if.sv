@@ -28,4 +28,6 @@ logic cache_is_missed_o;
 
 logic [7:0] cycle_o;
 
+logic enable_mask_i;
+
 endinterface

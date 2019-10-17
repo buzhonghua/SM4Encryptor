@@ -112,7 +112,7 @@
 	reg is_ready_r;
 	reg decode_r;
 	reg clear_cache_r;
-	reg [C_S_AXI_DATA_WIDTH-1:0] shuffle_seed_r;
+	reg enable_masked_r;
 
 	wire	 slv_reg_rden;
 	wire	 slv_reg_wren;
@@ -231,6 +231,7 @@
 		  start_r <= '0;
 		  decode_r <= '0;
 		  clear_cache_r <= '0;
+          enable_masked_r <= '0;
 	    end 
 	  else begin
 	    if (slv_reg_wren)
@@ -299,12 +300,7 @@
 			4'hE:
 			clear_cache_r <= S_AXI_WDATA[0];
 			4'hF:
-			for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
-				if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-				// Respective byte enables are asserted as per write strobes 
-				// Slave register 7
-				shuffle_seed_r[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-				end
+			enable_masked_r <= S_AXI_WDATA[0];
 			default : begin
 
 			end
@@ -473,6 +469,7 @@
 		,.v_o(valid)
 		,.yumi_i(1'b1)
 		,.invalid_cache_i(clear_cache_r)
+        ,.enable_mask_i(enable_masked_r)
 	);
 
 	always_ff @(posedge S_AXI_ACLK) begin
