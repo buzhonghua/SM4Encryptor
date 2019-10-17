@@ -617,17 +617,10 @@ o|32|输出|LSFR的输出
 此处详细介绍所有的功能验证方案，包括软件和硬件。
 
 在硬件上验证系统功能主要基于`sm4_encryptor`模块，主要需要验证的方案有：
-- 加密/解密结果的正确性， 包括
-    - 每一次迭代结果的取值
-    - 抵抗侧信道攻击而引入的带有随机Maks信息的结果
-- 状态机的正确性，包括
-    - 完成一次加密/解密所需要周期数是否符合预期
-    - 状态机是否正确跳转，包括eIdle->eCheckKey, eCheckKey->eEvaKey, eCheckKey->eLoadCrypt和eReverse->eDone四个状态。
+- 加密/解密结果的正确性
 - Cache的正确性，包括：
-    - Cache的读写是否有效
+    - Cache的命中带来的效率提升
     - Cache的LRU替换策略是否有效
-- SBox的正确性，包括：
-    - SBox的输出值是否符合预期
 
 软件方面，主要的测试方面为：
 - AXI总线的正确配置，软件层与硬件层的联合操作是否符合预期
@@ -637,13 +630,9 @@ o|32|输出|LSFR的输出
 
 #### UVM 整体平台
 
-下图描述了我们顶层UVM平台的整体框图：
+下图介绍了我们的UVM测试平台。
 
-<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg"></div>
-
-顶层平台上有两个Environment, 其分别对应不同的Scoreboard, 一个用于检测正确性，另外一个则用于检测Cycle的数目，以验证是否符合周期。
-
-目前UVM验证方面我们只构造了用于验证的interface和后续计划。剩余的内容将于决赛期间完成。
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="100%"></div>
 
 #### 软件验证/仿真
 
