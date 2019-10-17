@@ -630,9 +630,19 @@ o|32|输出|LSFR的输出
 
 #### UVM 整体平台
 
-下图介绍了我们的UVM测试平台。
+参照UVM标准模型我们建立了如下的验证平台：
 
 <div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="100%"></div>
+
+DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证平台的主体为`sm4_test_top`下的`sm4_env`环境，其中实例化了5个类：
+- `sm4_sequencer`：派生自*uvm_sequencer*，该类按顺序将测试用例`testcase`中生成的测试向量以Transaction的形式发射到Driver中。
+- `sm4_driver`：派生自*uvm_driver*，该类接收来自Sequencer的Transaction，将其解析后驱动到DUT对应的输入端口上，同时还将其发送到Reference model中用以产生参考输出。此外，该类为数据设置了覆盖组（covergroup)，用以测试设计的功能覆盖率。
+- `sm4_monitor`：派生自*uvm_monitor*，在本验证平台中，仅为DUT的输出端口设置一个Monitor。受Driver上驱动信号的变化，DUT产生相应的输出，该类监测到DUT输出端口的变化，将其打包成Transaction发送给Scoreboard用以验证结果是否正确。此外，该类为数据设置了覆盖组（covergroup)，用以测试设计的功能覆盖率。
+- `sm4_reference`：派生自*uvm_component*，该类接收与DUT一致的输入信号，依靠SystemVerilog的DPI-C接口，通过软件方法计算参考输出，并将其发送到Scoreboard中用于比较验证对象的正确性。
+- `sm4_scoreboard`：派生自*uvm_scoreboard*，该类接收两个来源的信号，另一个来自DUT，一个来自Reference model，比较二者是否完全一致以验证硬件功能是否符合设计预期。
+
+上述各类之间的信号均通过封装的Transaction进行通信，为了简单起见，本验证平台定义了两种类型的Transaction：`sm4_crypt_transaction`和`sm4_check_transaction`，二者的数据格式分别与DUT的输入信号和输出信号保持一致，由此使得数据流比较易于解析。在`sm4_env`中启用了3个*uvm_tlm_analysis_fifo*：连接Driver和Reference model的`dri_ref_fifo`；连接Reference model和Scoreboard的`ref_scb_fifo`；以及连接Monitor和Scoreboard的`mon_scb_fifo`。它们一起构成了验证平台各单元间的数据通道。
+除此之外，一个独立的单元`testcase`用于产生特定的测试向量，该向量通过Sequencer送出，成为整个验证平台的激励。
 
 #### 软件验证/仿真
 
