@@ -187,7 +187,7 @@ sm4_scoreboard.sv|比较DUT输出和参考输出，验证设计的正确性
 sm4_sequencer.sv|将测试向量驱动到Driver上
 sm4_test_top.sv|验证平台的顶层模块，产生uvm_test_top根节点
 sm4_test.sv|测试用例的封装
-testcase.sv|生成测试向量
+<span>testcase.sv</span>|生成测试向量
 uvm_wrapper.cpp|DUT功能的软件实现，用于产生参考输出
 
 
@@ -249,7 +249,7 @@ $$
 
 同时，在进行第二轮加密时，128位的输入$[X_4, X_3， X_2, X_1]$中的$X_4$已经带有Mask信息。但加密过程中$X_4$，$X_3$和$X_2$三项是亦或在一起的，因而可以把$X_3$和$X_2$的Mask都等效在$X_4$上。因而本次迭代的Mask应该为三者Mask的亦或。
 
-当迭代到第四轮时，128位的输入变成了$[X_7, X_6， X_5, X_4]$，为了得到正确的结果，必须要把$X_4$的Mask拿掉才能得到正确的结果。我们在轮变换函数中增加了一个端口`dismask_i`，这个结果再最后一步会和X_4进行亦或，即拿掉了Mask。
+当迭代到第四轮时，128位的输入变成了$[X_7, X_6， X_5, X_4]$，为了得到正确的结果，必须要把$X_4$的Mask拿掉才能得到正确的结果。我们在轮变换函数中增加了端口`dismask_i`，这个结果再最后一步会和$X_4$进行亦或，即还原了结果。后面的迭代同理。
 
 #### 面积优化
 
@@ -665,7 +665,7 @@ DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证�
 
 为了提高代码覆盖率，我们设计了两种测试方式。首先是对复位测试，主要是用于测试不同的状态复位进入Idle态的情况。这个测试的执行函数是`sm4_driver`中的`reset_test`完成的。
 
-其次是适用于Cache的测试。我们在`testcase`中模拟了一个Cache的情况，即发出的测试向量有1/4的概率为Cache中存在的密钥，其余的情况下我们会同时修改`testcase`中维护的列表。最终我们成功覆盖了4个Cache位置的Miss/Hit情况。这种情况下的我们采用了300次模拟就达到了100%的代码覆盖率。
+其次是适用于Cache的测试。我们在`testcase`中模拟了一个Cache的情况，即发出的测试向量有1/4的概率为Cache中存在的密钥，其余的情况下我们会同时修改`testcase`中维护的列表。最终我们成功覆盖了4个Cache位置的Miss/Hit情况。这种情况下的我们采用了300次测试就达到了100%的代码覆盖率。
 
 #### 软件验证/仿真
 
@@ -821,8 +821,6 @@ int main(){
 2. Cache的LRU记录。目前的设计是采用矩阵法实现LRU,其复杂度为$O(N^2)$.对于高性能的LRU,可以使用状态机来替代，将复杂度降到$O(\log{(N!)})$.
 3. 流水级适当展开。如果希望缩短迭代的周期，则可以适当的展开一些迭代，或者增加迭代次数以缩短一些关键路径。
 4. IP核的地址空间利用率很低，可以增加一些其他的配置选项，比如设置中断。借助于AXI总线的模块，这种实现也非常便捷。
-5. 补充UVM测试。目前的测试都是基于FPGA进行的功能测试。对于uvm来说还有很大的空间。
-
 ### 参考文献
 1. Liu F , Ji W , Hu L , et al. Analysis of the SMS4 block cipher[C]// Information Security and Privacy, 12th Australasian Conference, ACISP 2007, Townsville, Australia, July 2-4, 2007, Proceedings. Springer, Berlin, Heidelberg, 2007.
 
