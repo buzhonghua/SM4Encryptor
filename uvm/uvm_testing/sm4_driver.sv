@@ -13,6 +13,7 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
 
     function new(string name="sm4_driver", uvm_component parent = null);
         super.new(name, parent);
+        input_cvr = new();
     endfunction
 
     virtual function void build_phase(uvm_phase phase);
@@ -30,6 +31,17 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
     extern virtual task tick();
 
     extern virtual task reset_test();
+
+    covergroup input_cvr with function sample(sm4_crypt_transaction trans);
+        coverpoint trans.decode;
+        coverpoint trans.content;
+        coverpoint trans.key;
+    endgroup
+
+    virtual function void report_phase(uvm_phase phase);
+        $display("Driver Coverage:%0.2f %%",input_cvr.get_inst_coverage());
+    endfunction
+
 endclass
 
 
@@ -39,6 +51,7 @@ task sm4_driver::main_phase(uvm_phase phase);
     reset_test();
     while(1) begin
         seq_item_port.get_next_item(req);
+        input_cvr.sample(req);
         ap.write(req);
         encrypt(req);
         seq_item_port.item_done();
@@ -74,7 +87,6 @@ endtask
 task sm4_driver::encrypt(sm4_crypt_transaction trans);
     int result = 0;
     // set value to interface.
-    `uvm_info("driver", "encrypt!", UVM_LOW);
     vif.content_i = trans.content;
     vif.key_i = trans.key;
     vif.encode_or_decode_i = trans.decode;

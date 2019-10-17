@@ -22,15 +22,10 @@ logic v_o;
 logic yumi_i;
 // invalid cache lines.
 logic invalid_cache_i;
-// SM4 FSM
-state_e state_o;
-logic [4:0] state_cnt_o;
-//SM4 GPR
-logic [group_size_p-1:0] sfr_o;
 // Cache
 logic [1:0] replace_which_o;
-logic [1:0] selected_o;
 logic cache_is_missed_o;
 
+logic [7:0] cycle_o;
 
 endinterface

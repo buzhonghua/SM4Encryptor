@@ -41,7 +41,7 @@ task sm4_scoreboard::main_phase(uvm_phase phase);
             if(check_queue.size() > 0) begin
                 get_queue = check_queue.pop_front();
                 result = get_actual.compare(get_queue);
-                if(result) begin
+                if(result && get_actual.compare_expected_cycle()) begin
                     `uvm_info("sm4_scoreboard", "passed!", UVM_LOW);
                 end
                 else begin

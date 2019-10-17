@@ -25,11 +25,52 @@ sm4_encryptor core(
     ,.invalid_cache_i(ifc.invalid_cache_i)
 );
 
-assign ifc.state_o = core.state_r;
-assign ifc.state_cnt_o = core.state_cnt_r;
-assign ifc.sfr_o = core.sfr_r;
-assign ifc.replace_which_o = core.cache.to_replace;
-assign ifc.selected_o = core.cache.selected_n;
-assign ifc.cache_is_missed_o = core.cache_is_miss;
+//assign ifc.replace_which_o = core.cache.to_replace;
+//assign ifc.cache_is_missed_o = core.cache_is_miss;
+
+reg [1:0] replace_which_r;
+reg cache_is_missed_r;
+
+always @(posedge ifc.clk_i) begin
+    if(ifc.reset_i) begin
+        replace_which_r <= '0;
+        cache_is_missed_r <= '0;
+    end
+    else unique case(core.state_r) 
+        eIdle: if(ifc.v_i) begin
+            replace_which_r <= '0;
+            cache_is_missed_r <= '0;
+        end
+        eCheckKey: begin
+            cache_is_missed_r <= core.cache_is_miss;
+            replace_which_r <= core.cache.to_replace;
+        end
+        default: begin
+
+        end
+    endcase
+end
+
+reg [7:0] cycle_r;
+
+always @(posedge ifc.clk_i) begin
+    if(ifc.reset_i) cycle_r <= '0;
+    else unique case(core.state_r) 
+        eIdle: if(ifc.v_i) begin
+            cycle_r <= '0;
+        end
+        default: begin
+            cycle_r <= cycle_r + 1;
+        end
+        eDone: begin
+            
+        end
+    endcase
+end
+
+assign ifc.replace_which_o = replace_which_r;
+assign ifc.cache_is_missed_o = cache_is_missed_r;
+assign ifc.cycle_o = cycle_r;
+
 
 endmodule

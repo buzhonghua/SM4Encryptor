@@ -20,12 +20,12 @@ class case_num extends uvm_sequence #(sm4_crypt_transaction);
    virtual task body();
       int operation;
      //Code here
-     repeat (32) begin
-        operation = $urandom % 8;
+     repeat (300) begin
+        operation = $urandom % 16;
         if(operation > 3) begin
            // replace cache
-           tr_list[operation-4].randomize();
-           `uvm_send(tr_list[operation-4]);
+           tr_list[operation%4].randomize();
+           `uvm_send(tr_list[operation%4]);
         end
         else begin
            tr_list[operation].random_content();
