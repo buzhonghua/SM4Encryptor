@@ -9,7 +9,7 @@
     0xC             start           ready
     0xD             decode          
     0xE             clear cache
-    0xF             shuffle_seed
+    0xF             
 */
 
 static volatile int *timer_base = (int *)0x42800000;
