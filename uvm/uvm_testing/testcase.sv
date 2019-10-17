@@ -6,8 +6,9 @@ import sm4_encryptor_pkg::*;
 class case_num extends uvm_sequence #(sm4_crypt_transaction);
    sm4_crypt_transaction tr;
 
-   function  new(string name= "case_num");
+   function new(string name= "case_num");
       super.new(name);
+      set_automatic_phase_objection(1);
    endfunction 
    
    virtual task body();

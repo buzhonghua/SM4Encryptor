@@ -21,13 +21,13 @@ class sm4_monitor extends uvm_monitor;
 
     task main_phase(uvm_phase phase);
         sm4_check_transaction trans;
-        phase.raise_objection(this);
+        //phase.raise_objection(this);
         while(1) begin
             trans = new("trans");
             transaction_pack(trans);
             ap.write(trans);
         end
-        phase.drop_objection(this);
+        //phase.drop_objection(this);
     endtask
 
     task transaction_pack(sm4_check_transaction trans);

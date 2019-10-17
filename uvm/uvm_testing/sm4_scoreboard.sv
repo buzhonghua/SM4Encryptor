@@ -29,7 +29,7 @@ endfunction
 task sm4_scoreboard::main_phase(uvm_phase phase);
     sm4_check_transaction get_expect, get_actual, get_queue;
     bit result;
-    phase.raise_objection(this);
+    //phase.raise_objection(this);
     super.main_phase(phase);
     fork
         while(1) begin
@@ -53,6 +53,6 @@ task sm4_scoreboard::main_phase(uvm_phase phase);
             end
         end
     join
-    phase.drop_objection(this);
+    //phase.drop_objection(this);
 
 endtask
