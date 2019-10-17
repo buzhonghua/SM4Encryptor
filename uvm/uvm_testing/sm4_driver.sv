@@ -28,12 +28,15 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
     extern virtual task reset();
     extern virtual task invalid_cache();
     extern virtual task tick();
+
+    extern virtual task reset_test();
 endclass
 
 
 task sm4_driver::main_phase(uvm_phase phase);
     //phase.raise_objection(this);
     reset();
+    reset_test();
     while(1) begin
         seq_item_port.get_next_item(req);
         ap.write(req);
@@ -52,9 +55,12 @@ endtask
 
 task sm4_driver::reset();
     vif.reset_i = 1'b1;
-    tick();
+    #1
+    vif.clk_i = 1'b1;
+    #1
     vif.reset_i = 1'b0;
-    tick();
+    #1
+    vif.clk_i = 1'b0;
 endtask
 
 task sm4_driver::invalid_cache();
@@ -77,6 +83,7 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
         tick();
         result++;
     end
+    tick();
     vif.yumi_i = 1'b1;
     tick();
     vif.v_i = 1'b0;
@@ -84,5 +91,19 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
     tick();
 
 //    cycle = result;
+endtask
+
+
+task sm4_driver::reset_test();
+    vif.v_i = 1'b1;
+    vif.content_i = '0;
+    vif.key_i = '0;
+    for(int i = 0; i < 70; ++i) begin
+        for(int j = 0; j < i; ++j) begin
+            tick();
+        end
+        reset();
+    end
+    vif.v_i = 1'b0;
 endtask
 

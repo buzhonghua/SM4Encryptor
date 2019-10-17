@@ -50,7 +50,7 @@ module sm4_encryptor
             eCrypt: if(iteration_is_done) state_r <= eReverse; else state_r <= eCrypt;
             eReverse: state_r <= eDone;
             eDone: if(yumi_i) state_r <= eIdle; else state_r <= eDone;
-            default: begin /*verilator coverage_block_off*/
+            default: begin /*verilator coverage_block_off*/ //VCS coverage off
                 state_r <= eIdle;
             end
         endcase
