@@ -632,7 +632,7 @@ o|32|输出|LSFR的输出
 
 下图介绍了我们的UVM测试平台。
 
-<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="100%"></div>
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="90%"></div>
 
 #### 软件验证/仿真
 

@@ -9,14 +9,7 @@ module sm4_test_top
     
 );
 
-
-logic clk_li;
-logic reset_li;
-
 sm4_encryptor_if dut_if();
-
-assign dut_if.clk_i = clk_li;
-assign dut_if.reset_i = reset_li;
 
 sm4_encryptor_wrapper dut(
     .ifc(dut_if)
