@@ -110,7 +110,7 @@ rtl|SystemVerilog设计文件
 script|实用脚本
 src|C++源程序，用于算法验证
 testing|适用于Verilator的C++ Testbench文件
-uvm_testing|适用于UVM平台搭建的文件，目前只有一个interface.
+uvm|适用于UVM平台搭建的文件，目前只有一个interface.
 
 dc目录下主要为Design Compiler的综合报告，其主要文件有：
 
@@ -154,7 +154,7 @@ script目录下的主要文件有：
 
 文件名|说明
 -|-
-<span>script.py</span>|用于产生SBox查找表的Python脚本
+<span>sbox.py</span>|用于产生SBox查找表的Python脚本
 
 src目录下主要为C++源代码文件，其主要文件有：
 
@@ -171,6 +171,25 @@ Makefile|用于模块验证Make文件
 sm4_box.cpp|用于验证SBox的TB
 sm4_encryptor.cpp|用于验证顶层的TB
 turn_transform.cpp|用于验证轮变换模块的TB
+
+uvm目录是为测试硬件设计搭建的验证平台，包含两个子文件夹：uvm/uvm_lib中为各种库文件，包括必要的宏定义和基类；uvm/uvm_testing中为uvm组件，主要文件有：
+
+文件名|说明
+-|-
+sm4_check_transaction.sv|定义的数据封装
+sm4_crypt_transaction.sv|定义的数据封装
+sm4_driver.sv|Driver类，驱动DUT输入
+sm4_encryptor_wrapper.sv|经Interface封装后的DUT顶层模块
+sm4_env.sv|unv_test_top的枝，构成uvm主要环境
+sm4_monitor.sv|Monitor类，监控DUT输出
+sm4_reference.sv|调用DPI-C产生参考输出
+sm4_scoreboard.sv|比较DUT输出和参考输出，验证设计的正确性
+sm4_sequencer.sv|将测试向量驱动到Driver上
+sm4_test_top.sv|验证平台的顶层模块，产生uvm_test_top根节点
+sm4_test.sv|测试用例的封装
+testcase.sv|生成测试向量
+uvm_wrapper.cpp|DUT功能的软件实现，用于产生参考输出
+
 
 ### 方案介绍
 
@@ -639,7 +658,7 @@ DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证�
 - `sm4_driver`：派生自*uvm_driver*，该类接收来自Sequencer的Transaction，将其解析后驱动到DUT对应的输入端口上，同时还将其发送到Reference model中用以产生参考输出。此外，该类为数据设置了覆盖组（covergroup)，用以测试设计的功能覆盖率。
 - `sm4_monitor`：派生自*uvm_monitor*，在本验证平台中，仅为DUT的输出端口设置一个Monitor。受Driver上驱动信号的变化，DUT产生相应的输出，该类监测到DUT输出端口的变化，将其打包成Transaction发送给Scoreboard用以验证结果是否正确。此外，该类为数据设置了覆盖组（covergroup)，用以测试设计的功能覆盖率。
 - `sm4_reference`：派生自*uvm_component*，该类接收与DUT一致的输入信号，依靠SystemVerilog的DPI-C接口，通过软件方法计算参考输出，并将其发送到Scoreboard中用于比较验证对象的正确性。
-- `sm4_scoreboard`：派生自*uvm_scoreboard*，该类接收两个来源的信号，另一个来自DUT，一个来自Reference model，比较二者是否完全一致以验证硬件功能是否符合设计预期。
+- `sm4_scoreboard`：派生自*uvm_scoreboard*，该类接收两个来源的信号，一个来自DUT，另一个来自Reference model，比较二者是否完全一致以验证硬件功能是否符合设计预期。
 
 上述各类之间的信号均通过封装的Transaction进行通信，为了简单起见，本验证平台定义了两种类型的Transaction：`sm4_crypt_transaction`和`sm4_check_transaction`，二者的数据格式分别与DUT的输入信号和输出信号保持一致，由此使得数据流比较易于解析。在`sm4_env`中启用了3个*uvm_tlm_analysis_fifo*：连接Driver和Reference model的`dri_ref_fifo`；连接Reference model和Scoreboard的`ref_scb_fifo`；以及连接Monitor和Scoreboard的`mon_scb_fifo`。它们一起构成了验证平台各单元间的数据通道。
 除此之外，一个独立的单元`testcase`用于产生特定的测试向量，该向量通过Sequencer送出，成为整个验证平台的激励。
