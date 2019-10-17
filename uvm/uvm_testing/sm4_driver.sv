@@ -32,13 +32,12 @@ endclass
 
 
 task sm4_driver::main_phase(uvm_phase phase);
-    sm4_crypt_transaction trans;
     //phase.raise_objection(this);
     reset();
     while(1) begin
         seq_item_port.get_next_item(req);
-        ap.write(trans);
         encrypt(req);
+        ap.put(req);
         seq_item_port.item_done();
     end
     //phase.drop_objection(this);
