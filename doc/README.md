@@ -650,7 +650,7 @@ DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证�
 
 #### 软件验证/仿真
 
-首先，我们使用Vivado搭建基于Zynq 7000系列FPGA的测试平台，并使用框图构建以下系统：
+首先，我们使用Vivado搭建基于Zynq 7000系列FPGA的测试平台，构建以下系统：
 
 <div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="vivado_system.svg"></div>
 
