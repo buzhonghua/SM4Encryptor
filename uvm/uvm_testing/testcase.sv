@@ -10,7 +10,6 @@ class case_num extends uvm_sequence #(sm4_crypt_transaction);
    function new(string name= "case_num");
       super.new(name);
       set_automatic_phase_objection(1);
-
       for(int i = 0; i < 4; ++i) begin
          tr_list[i] = new("cache_seq");
          tr_list[i].randomize();
@@ -21,6 +20,7 @@ class case_num extends uvm_sequence #(sm4_crypt_transaction);
       int operation;
      //Code here
      repeat (300) begin
+        
         operation = $urandom % 16;
         if(operation > 3) begin
            // replace cache

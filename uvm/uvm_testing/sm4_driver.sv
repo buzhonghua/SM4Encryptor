@@ -33,7 +33,10 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
     extern virtual task reset_test();
 
     covergroup input_cvr with function sample(sm4_crypt_transaction trans);
-        coverpoint trans.decode;
+        coverpoint trans.decode{
+            bins decode = {1};
+            bins encode = {1};
+        }
         coverpoint trans.content;
         coverpoint trans.key;
     endgroup
