@@ -8,7 +8,7 @@ COVERAGE= -cm cond+line+fsm
 
 run: simv
 	./simv $(COVERAGE)
-	urg -dir simv.vdb
+	urg -full64 -dir simv.vdb
 
 simv:
 	$(VCS) $(COVERAGE) \

@@ -5,7 +5,7 @@ import sm4_encryptor_pkg::*;
 
 
 class sm4_check_transaction extends uvm_sequence_item;
-    rand bit [group_size_p-1:0] expected_crypt;
+    bit [group_size_p-1:0] expected_crypt;
 
     function void post_randomize();
         
