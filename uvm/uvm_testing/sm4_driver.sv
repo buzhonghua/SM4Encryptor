@@ -98,7 +98,7 @@ task sm4_driver::reset_test();
     vif.v_i = 1'b1;
     vif.content_i = '0;
     vif.key_i = '0;
-    for(int i = 0; i < 70; ++i) begin
+    for(int i = 0; i < 68; ++i) begin
         for(int j = 0; j < i; ++j) begin
             tick();
         end

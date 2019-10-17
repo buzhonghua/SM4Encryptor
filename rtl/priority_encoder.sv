@@ -17,7 +17,7 @@ module priority_encoder
             4'b??10: o = 2'd1;
             4'b?100: o = 2'd2;
             4'b1000: o = 2'd3;
-            4'b0000: o = 2'd0;
+            4'b0000: o = 2'd0; //VCS coverage off
             default: o = 2'd0;
         endcase
     else 
