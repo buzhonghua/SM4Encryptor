@@ -4,9 +4,13 @@ import uvm_pkg::*;
 import sm4_encryptor_pkg::*;
 
 
-class sm4_driver extends uvm_driver;
+class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
+
     virtual sm4_encryptor_if vif;
     `uvm_component_utils(sm4_driver);
+
+    uvm_analysis_port #(sm4_crypt_transaction) ap;
+
     function new(string name="sm4_driver", uvm_component parent = null);
         super.new(name, parent);
     endfunction
@@ -15,6 +19,7 @@ class sm4_driver extends uvm_driver;
         super.build_phase(phase);
         if(!uvm_config_db #(virtual sm4_encryptor_if)::get(this, "", "vif", vif))
             `uvm_fatal("sm4_driver", "virtual interface must be set for vif!");
+        ap = new("ap", this);
     endfunction
 
     extern virtual task main_phase(uvm_phase phase);
@@ -30,20 +35,20 @@ task sm4_driver::main_phase(uvm_phase phase);
     sm4_crypt_transaction trans;
     phase.raise_objection(this);
     reset();
-    for(int i = 0; i < 32; ++i) begin
-        trans = new;
-        trans.randomize();
-        encrypt(trans);
+    while(1) begin
+        seq_item_port.get_next_item(req);
+        ap.write(trans);
+        encrypt(req);
+        seq_item_port.item_done();
     end
-
     phase.drop_objection(this);
 endtask
 
 task sm4_driver::tick();
     vif.clk_i = 1'b1;
-    #10
+    #1
     vif.clk_i = 1'b0;
-    #10;
+    #1;
 endtask
 
 task sm4_driver::reset();
@@ -64,6 +69,7 @@ endtask
 task sm4_driver::encrypt(sm4_crypt_transaction trans);
     int result = 0;
     // set value to interface.
+    `uvm_info("driver", "encrypt!", UVM_LOW);
     vif.content_i = trans.content;
     vif.key_i = trans.key;
     vif.encode_or_decode_i = trans.decode;
@@ -72,7 +78,6 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
         tick();
         result++;
     end
-
     vif.yumi_i = 1'b1;
     tick();
     vif.v_i = 1'b0;

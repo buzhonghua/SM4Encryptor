@@ -1,7 +1,10 @@
 VCS=vcs -full64 -cc gcc-4.9 -cpp g++-4.9 -sverilog -CC -DVCSMX +v2k -notice -CFLAGS "-std=c++11"
 INCLUDE= +incdir+./uvm_lib/src
-CFILE=./uvm_lib/src/dpi/uvm_dpi.cc ./uvm_testing/uvm_wrapper.cpp
+UVM_TESTING=uvm_testing
+CFILE=./uvm_lib/src/dpi/uvm_dpi.cc ./$(UVM_TESTING)/uvm_wrapper.cpp
 COVERAGE= -cm cond+line+fsm
+
+
 
 run: simv
 	./simv $(COVERAGE)
@@ -20,13 +23,19 @@ simv:
 	../rtl/sm4_encryptor.sv \
 	../rtl/turn_transform.sv \
 	../rtl/priority_encoder.sv \
-	uvm_testing/sm4_encryptor_wrapper.sv \
-	uvm_testing/sm4_crypt_transaction.sv \
-	uvm_testing/sm4_driver.sv \
-	uvm_testing/sm4_monitor.sv \
-	uvm_testing/sm4_encryptor_if.sv \
-	uvm_testing/sm4_env.sv \
-	uvm_testing/sm4_test_top.sv \
+	$(UVM_TESTING)/sm4_encryptor_wrapper.sv \
+	$(UVM_TESTING)/sm4_crypt_transaction.sv \
+	$(UVM_TESTING)/sm4_check_transaction.sv \
+	$(UVM_TESTING)/sm4_driver.sv \
+	$(UVM_TESTING)/sm4_monitor.sv \
+	$(UVM_TESTING)/sm4_encryptor_if.sv \
+	$(UVM_TESTING)/sm4_reference.sv \
+	$(UVM_TESTING)/sm4_scoreboard.sv \
+	$(UVM_TESTING)/sm4_sequencer.sv \
+	$(UVM_TESTING)/sm4_env.sv \
+	$(UVM_TESTING)/sm4_test.sv \
+	$(UVM_TESTING)/testcase.sv \
+	$(UVM_TESTING)/sm4_test_top.sv \
 	$(CFILE)
 	
 
