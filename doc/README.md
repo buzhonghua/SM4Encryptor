@@ -632,7 +632,7 @@ o|32|输出|LSFR的输出
 
 参照UVM标准模型我们建立了如下的验证平台：
 
-<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="100%"></div>
+<div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="uvm.svg" width="90%"></div>
 
 DUT即为前面写好的`sm4_encryptor`，是待验证的主要对象。验证平台的主体为`sm4_test_top`下的`sm4_env`环境，其中实例化了5个类：
 - `sm4_sequencer`：派生自*uvm_sequencer*，该类按顺序将测试用例`testcase`中生成的测试向量以Transaction的形式发射到Driver中。
