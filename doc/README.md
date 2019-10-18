@@ -770,7 +770,7 @@ int main(){
 
 <div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="pict3.png"></div>
 
-可见二者之间的差距大约为32个周期。
+可见二者之间的差距大约为32个周期。(此处的周期为总线周期，其频率为30MHz)
 
 随后我们测试了ECB和CBC两种不同加密方式的正确性。这里以CBC为例说明，其代码如下所示：
 
@@ -825,7 +825,9 @@ int main(){
 
 <div style="text-align:center"><img style="text-align:center; margin: 0 auto;" src="pic5.png"></div>
 
-第三组结果也是可以对应上的，也可以看到程序确实成功实现了解密。更为基础的ECB算法的验证过程同理，这里就不给出详细过程了。
+第三组结果也是可以对应上的，也可以看到程序确实成功实现了解密。我们还给出了Golden数据的测试结果，其结果如图所示：
+
+![](golden.png)
 
 ### 总结
 
@@ -845,12 +847,16 @@ int main(){
 
 #### 优化设计
 
+相比初赛，我们已经优化的地方又：
+1. 优化了AXI的地址空间，目前已经支持了中断。
+2. SBox进行了优化。
+
 除了根据特定的应用进行优化，整个加速器本身也有可供优化之处：
 
 1. 适当使用查找表代替一定的组合逻辑，特别是Sbox。对一些小规模逻辑，可以直接使用查找表实现，这样可以缩短关键路径，提高效率。
 2. Cache的LRU记录。目前的设计是采用矩阵法实现LRU,其复杂度为$O(N^2)$.对于高性能的LRU,可以使用状态机来替代，将复杂度降到$O(\log{(N!)})$.
 3. 流水级适当展开。如果希望缩短迭代的周期，则可以适当的展开一些迭代，或者增加迭代次数以缩短一些关键路径。
-4. IP核的地址空间利用率很低，可以增加一些其他的配置选项，比如设置中断。借助于AXI总线的模块，这种实现也非常便捷。
+
 ### 参考文献
 1. Liu F , Ji W , Hu L , et al. Analysis of the SMS4 block cipher[C]// Information Security and Privacy, 12th Australasian Conference, ACISP 2007, Townsville, Australia, July 2-4, 2007, Proceedings. Springer, Berlin, Heidelberg, 2007.
 
