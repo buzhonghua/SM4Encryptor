@@ -39,10 +39,11 @@ class sm4_driver extends uvm_driver#(sm4_crypt_transaction);
         }
         coverpoint trans.content;
         coverpoint trans.key;
-        coverpoint trans.enable_mask{
+        coverpoint trans.protection_v{
             bins enabled = {1};
             bins disabled = {0};
         }
+
     endgroup
 
     virtual function void report_phase(uvm_phase phase);
@@ -68,18 +69,18 @@ endtask
 
 task sm4_driver::tick();
     vif.clk_i = 1'b1;
-    #1
+    #2
     vif.clk_i = 1'b0;
-    #1;
+    #2;
 endtask
 
 task sm4_driver::reset();
     vif.reset_i = 1'b1;
-    #1
+    #2
     vif.clk_i = 1'b1;
-    #1
+    #2
     vif.reset_i = 1'b0;
-    #1
+    #2
     vif.clk_i = 1'b0;
 endtask
 
@@ -96,8 +97,9 @@ task sm4_driver::encrypt(sm4_crypt_transaction trans);
     // set value to interface.
     vif.content_i = trans.content;
     vif.key_i = trans.key;
+    vif.random_i = trans.random_i;
     vif.encode_or_decode_i = trans.decode;
-    vif.enable_mask_i = trans.enable_mask;
+    vif.protection_v_i = trans.protection_v;
     vif.v_i = 1'b1;
     while(vif.v_o == 0) begin
         tick();
@@ -118,12 +120,14 @@ task sm4_driver::reset_test();
     vif.v_i = 1'b1;
     vif.content_i = '0;
     vif.key_i = '0;
-    for(int i = 0; i < 68; ++i) begin
+    vif.protection_v_i = 1'b1;
+    for(int i = 0; i < 102; ++i) begin
         for(int j = 0; j < i; ++j) begin
             tick();
         end
         reset();
     end
     vif.v_i = 1'b0;
+    vif.protection_v_i = 1'b0;
 endtask
 

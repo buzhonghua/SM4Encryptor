@@ -9,6 +9,7 @@ class sm4_check_transaction extends uvm_sequence_item;
     bit [7:0] expected_cycle;
     bit [1:0] replace_which;
     bit cache_is_miss;
+    bit protection;
 
     function void post_randomize();
         
@@ -23,10 +24,12 @@ class sm4_check_transaction extends uvm_sequence_item;
         super.new(name);
     endfunction
 
-    function bit compare_expected_cycle();
-        if(cache_is_miss && expected_cycle == 67) return 1;
-        else if(!cache_is_miss && expected_cycle == 35) return 1;
-        else return 0;
+    function int get_expected_cycle();
+        int res = 0;
+        if(cache_is_miss) res = 67;
+        else res = 35;
+        if(protection) res += 34;
+        return expected_cycle;
     endfunction
 
     function display();

@@ -43,6 +43,7 @@ QWord encrypt(const QWord &key, const QWord &content, bool decode = 1){
     }
     dut->v_i = 1;
     dut->encode_or_decode_i = decode;
+    dut->protection_v_i = 1;
     dut->eval();
 
     dut->clk_i = 1;

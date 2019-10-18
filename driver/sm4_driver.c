@@ -1,17 +1,6 @@
 #include "sm4_driver.h"
 #ifdef SM4_PROFILE
 #include <stdio.h>
-/*
-    address         Write           Read
-    0x0-0x3         content         content
-    0x4-0x7         key             key
-    0x8-0xB                         result
-    0xC             start           ready
-    0xD             decode          
-    0xE             clear cache
-    0xF             enable cache
-*/
-
 static volatile int *timer_base = (int *)0x42800000;
 
 void setupTimer(){
@@ -31,6 +20,16 @@ int stopTimer(){
 
 #endif
 
+
+void config(volatile void *device, int enable_protection, int enable_interrupt){
+    volatile int *base_device = (volatile int *)device;
+    base_device[0xE] = (enable_protection) | (enable_interrupt << 1);
+}
+
+void handle_irq(volatile void *device){
+    volatile int *base_device = (volatile int *)device;
+    base_device[0xF] = 0x8;
+}
 struct QWord encrypt(volatile void *device, struct QWord content, struct QWord key, int is_decrypt, int mask){
     struct QWord res = {0, 0, 0, 0};
     volatile int *base_device = (volatile int *)device;
@@ -38,9 +37,8 @@ struct QWord encrypt(volatile void *device, struct QWord content, struct QWord k
         base_device[i] = content.value[i];
         base_device[i+4] = key.value[i];
     }
-    base_device[0xD] = is_decrypt;
-    base_device[0xC] = 1; // Start
-    base_device[0xF] = mask;
+
+    base_device[0xF] = 1 | (is_decrypt << 1); // Start
 #ifdef SM4_PROFILE
     startTimer();
 #endif
@@ -57,7 +55,7 @@ struct QWord encrypt(volatile void *device, struct QWord content, struct QWord k
 
 void invalid_cache(volatile void *device){
 	volatile int *base_device = (volatile int *)device;
-	base_device[0xE] = 1;
+	base_device[0xF] = 0x4;
 }
 
 int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, char *output, int is_decrypt, int mask){

@@ -26,8 +26,10 @@ logic invalid_cache_i;
 logic [1:0] replace_which_o;
 logic cache_is_missed_o;
 
-logic [7:0] cycle_o;
+logic [31:0] cycle_o;
 
-logic enable_mask_i;
+logic [31:0] random_i;
+
+logic protection_v_i;
 
 endinterface

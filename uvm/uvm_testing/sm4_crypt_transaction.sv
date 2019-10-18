@@ -8,7 +8,8 @@ class sm4_crypt_transaction extends uvm_sequence_item;
     rand bit [group_size_p-1:0] key;
     rand bit [group_size_p-1:0] content;
     rand bit decode;
-    rand bit enable_mask;
+    rand bit protection_v;
+    rand bit [word_width_p-1:0] random_i;
 
 
     function void post_randomize();
@@ -36,7 +37,7 @@ class sm4_crypt_transaction extends uvm_sequence_item;
         $display("key:%h", key);
         $display("content:%h", content);
         $display("decode:%b", decode);
-        $display("enable_mask:%b", enable_mask);
+        $display("protection_v:%b", protection_v);
     endfunction
 
 endclass

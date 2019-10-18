@@ -11,7 +11,9 @@ module sm4_test_top
 
 sm4_encryptor_if dut_if();
 
-sm4_encryptor_wrapper dut(
+sm4_encryptor_wrapper #(
+    .cache_is_enabled_p(1'b1)
+)dut(
     .ifc(dut_if)
 );
 

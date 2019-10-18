@@ -78,7 +78,9 @@
 		output wire  S_AXI_RVALID,
 		// Read ready. This signal indicates that the master can
     		// accept the read data and response information.
-		input wire  S_AXI_RREADY
+		input wire  S_AXI_RREADY,
+		// Interrupt
+		output wire interrupt
 	);
 
 	// AXI4LITE signals
@@ -107,12 +109,15 @@
 	reg [3:0][C_S_AXI_DATA_WIDTH-1:0] content_r;
 	reg [3:0][C_S_AXI_DATA_WIDTH-1:0] key_r;
 	reg [3:0][C_S_AXI_DATA_WIDTH-1:0] result_r;
+	reg [C_S_AXI_DATA_WIDTH-1:0] random_r;
 
 	reg start_r;
 	reg is_ready_r;
 	reg decode_r;
 	reg clear_cache_r;
-	reg enable_masked_r;
+	reg protection_v_r;
+	reg yumi_r;
+	reg interrupt_r;
 
 	wire	 slv_reg_rden;
 	wire	 slv_reg_wren;
@@ -231,7 +236,9 @@
 		  start_r <= '0;
 		  decode_r <= '0;
 		  clear_cache_r <= '0;
-          enable_masked_r <= '0;
+          protection_v_r <= '0;
+		  interrupt_r <= '0;
+		  yumi_r <= 1'b1;
 	    end 
 	  else begin
 	    if (slv_reg_wren)
@@ -293,15 +300,26 @@
 				// Slave register 7
 				key_r[3][(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 				end
-			4'hC:
-			start_r <= 1'b1;  
+			4'hC: begin
+				
+			end
 			4'hD:
-			decode_r <= S_AXI_WDATA[0];
+			for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
+				if ( S_AXI_WSTRB[byte_index] == 1 ) begin
+				// Respective byte enables are asserted as per write strobes 
+				// Slave register 
+				random_r[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+				end
 			4'hE:
-			clear_cache_r <= S_AXI_WDATA[0];
+			protection_v_r <= S_AXI_WDATA[0];
+			interrupt_r <= S_AXI_WDATA[1];
 			4'hF:
-			enable_masked_r <= S_AXI_WDATA[0];
-			default : begin
+			start_r <= S_AXI_WDATA[0];  
+			decode_r <= S_AXI_WDATA[1];
+			clear_cache_r <= S_AXI_WDATA[3];
+			if(v_o)
+				yumi_r <= 1'b1;
+			default: begin
 
 			end
 	        endcase
@@ -309,6 +327,7 @@
 		  else begin
 			if(start_r) start_r <= '0;
 			if(clear_cache_r) clear_cache_r <= '0;
+			if(yumi_i == interrupt_r) yumi_i <= ~interrupt_r;
 		  end
 	  end
 	end    
@@ -428,6 +447,7 @@
 	        4'hA   : reg_data_out <= result_r[2];
 	        4'hB   : reg_data_out <= result_r[3];
 	        4'hC   : reg_data_out <= is_ready_r;
+			4'hE   ：reg_data_out <= {interrupt_r,protection_v_r};
 	        default : reg_data_out <= 0;
 	      endcase
 	end
@@ -455,6 +475,8 @@
 	wire [127:0] result;
 	wire is_ready;
 	wire valid;
+
+	assign interrupt = is_ready;
 	
 	sm4_encryptor core(
 		.clk_i(S_AXI_ACLK)
@@ -467,9 +489,9 @@
 
 		,.crypt_o(result)
 		,.v_o(valid)
-		,.yumi_i(1'b1)
+		,.yumi_i(yumi_i)
 		,.invalid_cache_i(clear_cache_r)
-        ,.enable_mask_i(enable_masked_r)
+        ,.protection_v_i(protection_v_r)
 	);
 
 	always_ff @(posedge S_AXI_ACLK) begin
