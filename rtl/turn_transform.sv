@@ -60,7 +60,7 @@ wire [1:0] [word_width_p-1:0] rkey_shift;
 rolling_shifting_group#(
     .width_p(word_width_p)
     ,.size_p(2)
-    ,.shift_number_p({32'd13, 32'd23})
+    ,.shift_number_p({5'd13, 5'd23})
 ) rsg_key (
     .i(sbox_lo)
     ,.o(rkey_shift)
@@ -71,7 +71,7 @@ wire [4:0][word_width_p-1:0] content_shift;
 rolling_shifting_group#(
     .width_p(word_width_p)
     ,.size_p(4)
-    ,.shift_number_p({32'd2, 32'd10, 32'd18, 32'd24})
+    ,.shift_number_p({5'd2, 5'd10, 5'd18, 5'd24})
 ) rsg_con (
     .i(sbox_lo)
     ,.o(content_shift[3:0])
@@ -81,7 +81,7 @@ rolling_shifting_group#(
 rolling_shifting_group #(
     .width_p(word_width_p)
     ,.size_p(1)
-    ,.shift_number_p({32'd2})
+    ,.shift_number_p({5'd2})
 ) mo_con (
     .i(m_lo)
     ,.o(content_shift[4])
@@ -92,7 +92,7 @@ logic [3:0][word_width_p-1:0] extra_shift;
 rolling_shifting_group #(
     .width_p(word_width_p)
     ,.size_p(3)
-    ,.shift_number_p({32'd10,  32'd24,  32'd18})
+    ,.shift_number_p({5'd10,  5'd24,  5'd18})
 ) mo_ext (
     .i(m_lo)
     ,.o(extra_shift[2:0])
@@ -141,7 +141,7 @@ module rolling_shifting_group
 #(
     parameter integer width_p = "inv"
     ,parameter integer size_p = "inv"
-    ,parameter logic [size_p-1:0][31:0] shift_number_p = '0
+    ,parameter logic [size_p-1:0][$clog2(width_p)-1:0] shift_number_p = '0
 )(
     input [width_p-1:0] i
     ,output [size_p-1:0][width_p-1:0] o

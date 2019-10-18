@@ -6,12 +6,15 @@
 
 module sm4_encryptor
     import sm4_encryptor_pkg::*;
-(
+#(
+    parameter bit cache_is_enabled_p = 1'b1
+)(
     input clk_i
     ,input reset_i
     // data ports
     ,input [group_size_p-1:0] content_i
     ,input [group_size_p-1:0] key_i
+    ,input [word_width_p-1:0] random_i
     ,input encode_or_decode_i // decode is 1.
     // handshake ports
     ,input v_i
@@ -23,7 +26,7 @@ module sm4_encryptor
     ,input yumi_i
     // invalid cache lines.
     ,input invalid_cache_i
-    ,input enable_mask_i
+    ,input protection_v_i
 );
     /*
         State Machine of Accelerator:
@@ -39,6 +42,8 @@ module sm4_encryptor
 
     wire cache_is_miss; 
     wire iteration_is_done; // signal indicating whether iteration (eEvaKey, eCrypt) is the complete.
+    wire need_check;
+    logic check_is_match;
 
     // State Machine
     always_ff @(posedge clk_i) begin
@@ -49,10 +54,17 @@ module sm4_encryptor
             eEvaKey: if(iteration_is_done) state_r <= eLoadCrypt; else state_r <= eEvaKey;
             eLoadCrypt: state_r <= eCrypt;
             eCrypt: if(iteration_is_done) state_r <= eReverse; else state_r <= eCrypt;
-            eReverse: state_r <= eDone;
+            eReverse: if(need_check) state_r <= eDecrypt; else state_r <= eDone;
+            eDecrypt: if(iteration_is_done) state_r <= eRepReverse; else state_r <= eDecrypt;
+            eRepReverse: state_r <= eCheck;
+            eCheck: 
+                if(check_is_match)
+                     state_r <= eDone; 
+                else //VCS coverage off
+                    state_r <= eLoadCrypt;
             eDone: if(yumi_i) state_r <= eIdle; else state_r <= eDone;
-            default: begin /*verilator coverage_block_off*/ //VCS coverage off
-                state_r <= eIdle;
+            default: begin //VCS coverage off
+                
             end
         endcase
     end
@@ -69,9 +81,15 @@ module sm4_encryptor
         else unique case(state_r)
             eEvaKey: state_cnt_r <= state_cnt_n;
             eCrypt: state_cnt_r <= state_cnt_n;
+            eDecrypt: state_cnt_r <= state_cnt_n;
             default: state_cnt_r <= '0;
         endcase
     end
+
+    reg [group_size_p-1:0] content_r;
+    reg [group_size_p-1:0] result_r;
+    reg check_is_on_r;
+    assign need_check = check_is_on_r;
 
     reg [3:0][word_width_p-1:0] sfr_r; // register containing current operand to perform turn keys
     wire [group_size_p-1:0] xor_res = sfr_r ^ key_xor_mask_p;
@@ -79,8 +97,9 @@ module sm4_encryptor
 
     logic [word_width_p-1:0] mask_n;
     reg [3:0][word_width_p-1:0] mask_r;
+    wire [group_size_p-1:0] sfr_n = {sfr_r[0] ^ mask_r[0], sfr_r[1] ^ mask_r[1], sfr_r[2] ^ mask_r[2], sfr_r[3] ^ mask_r[3]};
 
-    wire [word_width_p-1:0] mask_input = content_i[word_width_p-1:0] & {word_width_p{enable_mask_i}};
+    wire [word_width_p-1:0] mask_input = random_i & {word_width_p{check_is_on_r}};
 
     always_ff @(posedge clk_i) begin
         if(reset_i) begin
@@ -90,14 +109,48 @@ module sm4_encryptor
             eIdle: if(v_i) sfr_r <= key_i;
             eCheckKey: sfr_r <= xor_res;
             eEvaKey: sfr_r <= {turn_transform_res ,sfr_r[3:1]};
-            eLoadCrypt: sfr_r <= content_i ^ {mask_input, 96'b0};
+            eLoadCrypt: sfr_r <= content_r ^ {mask_input, 96'b0};
             eCrypt: sfr_r <= {turn_transform_res, sfr_r[3:1]};
-            eReverse: sfr_r <= {sfr_r[0] ^ mask_r[0], sfr_r[1] ^ mask_r[1], sfr_r[2] ^ mask_r[2], sfr_r[3] ^ mask_r[3]};
+            eReverse: sfr_r <= {sfr_r[0], sfr_r[1], sfr_r[2], sfr_r[3]};
+            eDecrypt: sfr_r <= {turn_transform_res, sfr_r[3:1]};
+            eRepReverse: sfr_r <= sfr_n;
             default: begin
 
             end
         endcase
     end
+
+    // Update for result_r, check_is_on_r and content_r.
+    always_ff @(posedge clk_i) begin
+        if(reset_i) begin
+            content_r <= '0;
+            result_r <= '0;
+            check_is_on_r <= '0;
+        end
+        else unique case(state_r)
+            eIdle: if(v_i) begin
+                content_r <= content_i;
+                result_r <= '0;
+                check_is_on_r <= protection_v_i;
+            end
+            eReverse: begin
+                result_r <= sfr_n;
+            end
+            default: begin
+
+            end
+        endcase
+    end
+
+    // Update for check_is_match
+    always_comb unique case(state_r)
+        eCheck: begin
+            check_is_match = (sfr_r == content_r);
+        end
+        default: begin
+            check_is_match = '0;
+        end
+    endcase
 
     wire [word_width_p-1:0] mask_li = mask_r[3] ^ mask_r[2] ^ mask_r[1];
 
@@ -116,6 +169,12 @@ module sm4_encryptor
             eCrypt: begin
                 mask_r[3] <= mask_n;
             end
+            eReverse: begin
+                mask_r[3] <= mask_r[0];
+            end
+            eDecrypt: begin
+                mask_r[3] <= mask_n;
+            end
             default: begin
                 
             end
@@ -131,6 +190,16 @@ module sm4_encryptor
         end
         else unique case(state_r)
             eCrypt: begin
+                mask_r[2] <= mask_r[3];
+                mask_r[1] <= mask_r[2];
+                mask_r[0] <= mask_r[1];
+            end
+            eReverse: begin
+                mask_r[0] <= mask_r[3];
+                mask_r[1] <= mask_r[2];
+                mask_r[2] <= mask_r[1];
+            end
+            eDecrypt: begin
                 mask_r[2] <= mask_r[3];
                 mask_r[1] <= mask_r[2];
                 mask_r[0] <= mask_r[1];
@@ -171,10 +240,14 @@ module sm4_encryptor
     always_ff @(posedge clk_i) begin
         if(reset_i) decode_r <= '0;
         else if(state_r == eIdle && v_i) decode_r <= encode_or_decode_i;
+        else if(state_r == eReverse && need_check) decode_r <= ~decode_r;
+        else if(state_r == eRepReverse) decode_r <= decode_r;
     end
 
     // Cache used for storing keys.
-    key_cache cache (
+    key_cache #(
+        .enabled_p(cache_is_enabled_p)
+    ) cache (
         .clk_i(clk_i)
         ,.reset_i(reset_i)
 
@@ -195,7 +268,7 @@ module sm4_encryptor
     );
 
     assign ready_o = state_r == eIdle;
-    assign crypt_o = sfr_r;
+    assign crypt_o = result_r;
     assign v_o = state_r == eDone;
 
 endmodule

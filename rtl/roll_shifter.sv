@@ -7,7 +7,7 @@
 
 module roll_shifter #(
     parameter integer width_p = "inv"
-    ,parameter integer shift_num_p = "inv"
+    ,parameter logic [$clog2(width_p)-1:0] shift_num_p = "inv"
     ,parameter bit left_shifted_p = 1
 )(
     input [width_p-1:0] i

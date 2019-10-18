@@ -39,13 +39,16 @@ class sm4_monitor extends uvm_monitor;
         trans.expected_cycle = vif.cycle_o;
         trans.replace_which = vif.replace_which_o;
         trans.cache_is_miss = vif.cache_is_missed_o;
+        trans.protection = vif.protection_v_i;
     endtask
 
     covergroup output_cvr with function sample(sm4_check_transaction trans);
         coverpoint trans.expected_crypt;
         coverpoint trans.expected_cycle {
-            bins miss = {67};
-            bins hit = {35};
+            bins hit_no_protection = {35};
+            bins hit_protection = {69};
+            bins miss_no_protection = {67};
+            bins miss_protection = {101};
         }
         coverpoint trans.replace_which;
         coverpoint trans.cache_is_miss;
