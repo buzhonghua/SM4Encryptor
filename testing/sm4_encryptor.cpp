@@ -56,6 +56,9 @@ QWord encrypt(const QWord &key, const QWord &content, bool decode = 1){
         dut->eval();
         dut->clk_i = 0;
         dut->eval();
+        if(dut->ready_o == 1){
+            printf("Ready is Advanced!\n");
+        }
     }
 
     for(int i = 0; i < 4; ++i){
@@ -124,6 +127,13 @@ int main(int argc, char ** argv){
     dut->eval();
 
     reset();
+
+    QWord key1 = {0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210};
+    for(int i = 0; i < 16; ++i){
+        printf("%x ", ((unsigned char *)&key1)[i]);
+    }
+    printf("\n");
+    encrypt(key1, key1, 0).display();
 
 
     for(int i = 0; i < 32; ++i){

@@ -118,6 +118,7 @@
 	reg protection_v_r;
 	reg yumi_r;
 	reg interrupt_r;
+	wire valid;
 
 	wire	 slv_reg_rden;
 	wire	 slv_reg_wren;
@@ -310,15 +311,17 @@
 				// Slave register 
 				random_r[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 				end
-			4'hE:
-			protection_v_r <= S_AXI_WDATA[0];
-			interrupt_r <= S_AXI_WDATA[1];
-			4'hF:
-			start_r <= S_AXI_WDATA[0];  
-			decode_r <= S_AXI_WDATA[1];
-			clear_cache_r <= S_AXI_WDATA[3];
-			if(v_o)
-				yumi_r <= 1'b1;
+			4'hE: begin
+				protection_v_r <= S_AXI_WDATA[0];
+				interrupt_r <= S_AXI_WDATA[1];
+			end
+			4'hF: begin
+				start_r <= S_AXI_WDATA[0];  
+				decode_r <= S_AXI_WDATA[1];
+				clear_cache_r <= S_AXI_WDATA[2];
+				if(valid)
+					yumi_r <= S_AXI_WDATA[3];
+			end
 			default: begin
 
 			end
@@ -327,7 +330,7 @@
 		  else begin
 			if(start_r) start_r <= '0;
 			if(clear_cache_r) clear_cache_r <= '0;
-			if(yumi_i == interrupt_r) yumi_i <= ~interrupt_r;
+			if(yumi_r == interrupt_r) yumi_r <= ~interrupt_r;
 		  end
 	  end
 	end    
@@ -426,6 +429,8 @@
 	    end
 	end    
 
+	reg [31:0] timer_r; // For Timing
+
 	// Implement memory mapped register select and read logic generation
 	// Slave register read enable is asserted when valid address is available
 	// and the slave is ready to accept the read address.
@@ -447,7 +452,8 @@
 	        4'hA   : reg_data_out <= result_r[2];
 	        4'hB   : reg_data_out <= result_r[3];
 	        4'hC   : reg_data_out <= is_ready_r;
-			4'hE   ：reg_data_out <= {interrupt_r,protection_v_r};
+			4'hE   : reg_data_out <= {30'h0, interrupt_r,protection_v_r}; 
+			4'hF   : reg_data_out <= timer_r;
 	        default : reg_data_out <= 0;
 	      endcase
 	end
@@ -474,9 +480,9 @@
 	
 	wire [127:0] result;
 	wire is_ready;
-	wire valid;
+	
 
-	assign interrupt = is_ready;
+	assign interrupt = valid;
 	
 	sm4_encryptor core(
 		.clk_i(S_AXI_ACLK)
@@ -486,25 +492,47 @@
 		,.encode_or_decode_i(decode_r)
 		,.v_i(start_r)
 		,.ready_o(is_ready)
+		,.random_i(random_r)
 
 		,.crypt_o(result)
 		,.v_o(valid)
-		,.yumi_i(yumi_i)
+		,.yumi_i(yumi_r)
 		,.invalid_cache_i(clear_cache_r)
         ,.protection_v_i(protection_v_r)
 	);
 
 	always_ff @(posedge S_AXI_ACLK) begin
-	if(!S_AXI_ARESETN) begin
-		result_r <= '0;
-		is_ready_r <= '0;
+		if(!S_AXI_ARESETN) begin
+			result_r <= '0;
+			is_ready_r <= '0;
+		end
+		else begin
+			if(interrupt_r) begin
+				if(valid)
+					result_r <= result;
+				is_ready_r <= valid;
+			end
+			else begin
+				if(is_ready)
+					result_r <= result;
+				is_ready_r <= is_ready;
+			end
+		end
 	end
-	else begin
-		if(valid)
-			result_r <= result;
-		is_ready_r <= is_ready;
-	end
-end
 	// User logic ends
+
+	always_ff @(posedge S_AXI_ACLK) begin
+		if(!S_AXI_ARESETN) begin
+			timer_r <= '0;
+		end
+		else begin
+			if(start_r) begin
+				timer_r <= '0;
+			end
+			else if(!is_ready) begin
+				timer_r <= timer_r + 1;
+			end
+		end
+	end
 
 	endmodule

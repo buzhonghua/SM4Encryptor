@@ -1,5 +1,4 @@
 #include "sm4_driver.h"
-#ifdef SM4_PROFILE
 #include <stdio.h>
 static volatile int *timer_base = (int *)0x42800000;
 
@@ -18,9 +17,6 @@ int stopTimer(){
 	return timer_base[2];
 }
 
-#endif
-
-
 void config(volatile void *device, int enable_protection, int enable_interrupt){
     volatile int *base_device = (volatile int *)device;
     base_device[0xE] = (enable_protection) | (enable_interrupt << 1);
@@ -37,15 +33,10 @@ struct QWord encrypt(volatile void *device, struct QWord content, struct QWord k
         base_device[i] = content.value[i];
         base_device[i+4] = key.value[i];
     }
-
+    base_device[0xD] = mask;
     base_device[0xF] = 1 | (is_decrypt << 1); // Start
-#ifdef SM4_PROFILE
-    startTimer();
-#endif
     while(!base_device[0xC]);
-#ifdef SM4_PROFILE
-    printf("Interval: %d\n",stopTimer());
-#endif
+    handle_irq(device);
     for(int i = 0; i <4; i++){
         res.value[i] = base_device[i+8];
     }
@@ -58,7 +49,7 @@ void invalid_cache(volatile void *device){
 	base_device[0xF] = 0x4;
 }
 
-int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, char *output, int is_decrypt, int mask){
+int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, char *output, int is_decrypt, int mask,char *time_recording){
     unsigned int expected_n = (N >> 4) + ((N % 16) != 0);
     unsigned int index = 0;
     volatile int *base_device = (volatile int *)device;
@@ -75,16 +66,13 @@ int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key
                 buffer_target[i] = 0;
             ++index;
         }
-        // Start encryption
-        base_device[0xD] = is_decrypt;
-        base_device[0xC] = 1;
-#ifdef SM4_PROFILE
-        startTimer();
-#endif
-        while(!base_device[0xC]);
-#ifdef SM4_PROFILE
-        printf("Interval: %d\n",stopTimer());
-#endif
+    // Start encryption
+    base_device[0xD] = mask;
+    base_device[0xF] = 1 | (is_decrypt << 1); // Start
+    startTimer();
+    while(!base_device[0xC]);
+    time_recording[expected_n] = stopTimer();
+    handle_irq(device);
         for(int j = 0; j < 4; ++j){
             ((struct QWord *)output)[i].value[j] = base_device[j+8];
         }
@@ -92,7 +80,7 @@ int ecb_encrypt(volatile void *device, char *input, unsigned N, struct QWord key
     return expected_n * 16;
 }
 
-int cbc_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, struct QWord initial, char *output, int is_decrypt, int mask){
+int cbc_encrypt(volatile void *device, char *input, unsigned N, struct QWord key, struct QWord initial, char *output, int is_decrypt, int mask,char *time_recording){
     unsigned int expected_n = (N >> 4) + ((N % 16) != 0);
     unsigned int index = 0;
     unsigned int decrypt_index = 0;
@@ -117,15 +105,12 @@ int cbc_encrypt(volatile void *device, char *input, unsigned N, struct QWord key
                     buffer_target[i] = 0;
             ++index;
         }
-        base_device[0xD] = is_decrypt;
-        base_device[0xC] = 1;
-#ifdef SM4_PROFILE
-        startTimer();
-#endif
-        while(!base_device[0xC]);
-#ifdef SM4_PROFILE
-        printf("Interval: %d\n",stopTimer());
-#endif
+    base_device[0xD] = mask;
+    base_device[0xF] = 1 | (is_decrypt << 1); // Start
+    startTimer();
+    while(!base_device[0xC]);
+    time_recording[expected_n] = stopTimer();
+    handle_irq(device);
         for(int j = 0; j < 4; ++j){
             if(!is_decrypt){ //encryption
                 ((struct QWord *)output)[i].value[j] = base_device[j+8];

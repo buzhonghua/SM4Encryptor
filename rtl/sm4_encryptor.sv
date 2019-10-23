@@ -62,9 +62,9 @@ module sm4_encryptor
                      state_r <= eDone; 
                 else //VCS coverage off
                     state_r <= eLoadCrypt;
-            eDone: if(yumi_i) state_r <= eIdle; else state_r <= eDone;
+            eDone: if(yumi_i) state_r <= eIdle;
             default: begin //VCS coverage off
-                
+                state_r <= eIdle;
             end
         endcase
     end
